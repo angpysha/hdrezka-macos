@@ -51,4 +51,3 @@ struct TVCardView: View {
         .focused($isFocused)
     }
 }
-

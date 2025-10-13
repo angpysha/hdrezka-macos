@@ -6,6 +6,8 @@ struct TVDetailsView: View {
     let movie: MovieSimple
     
     @State private var viewModel: DetailsViewModel
+    @State private var isPlayerPresented = false
+    
     @Default(.isLoggedIn) private var isLoggedIn
     @Environment(AppState.self) private var appState
     
@@ -45,7 +47,7 @@ struct TVDetailsView: View {
                                     .foregroundStyle(.secondary)
                             }
                             
-                            // Рейтинг, рік, тривалість
+                            // Рейтинг, рік
                             HStack(spacing: 20) {
                                 if let rating = details.imdbRating?.value {
                                     HStack(spacing: 8) {
@@ -81,27 +83,40 @@ struct TVDetailsView: View {
                             
                             // Кнопки дій
                             HStack(spacing: 30) {
-                                Button {
-                                    // Відкрити плеєр
-                                    playMovie()
-                                } label: {
+                                // Кнопка відтворення
+                                if details.available {
+                                    Button {
+                                        playMovie()
+                                    } label: {
+                                        HStack(spacing: 15) {
+                                            Image(systemName: "play.fill")
+                                            Text("key.watch")
+                                        }
+                                        .font(.system(size: 32, weight: .semibold))
+                                        .foregroundStyle(.black)
+                                        .padding(.horizontal, 50)
+                                        .padding(.vertical, 20)
+                                        .background(Color.white)
+                                        .cornerRadius(15)
+                                    }
+                                    .buttonStyle(.plain)
+                                } else if details.comingSoon {
                                     HStack(spacing: 15) {
-                                        Image(systemName: "play.fill")
-                                        Text("key.play")
+                                        Image(systemName: "clock")
+                                        Text("key.coming_soon")
                                     }
                                     .font(.system(size: 32, weight: .semibold))
-                                    .foregroundStyle(.black)
+                                    .foregroundStyle(.white)
                                     .padding(.horizontal, 50)
                                     .padding(.vertical, 20)
-                                    .background(Color.white)
+                                    .background(Color.gray.opacity(0.5))
                                     .cornerRadius(15)
                                 }
-                                .buttonStyle(.plain)
                                 
                                 if isLoggedIn {
-                                Button {
-                                    // Додати до закладок - треба реалізувати
-                                } label: {
+                                    Button {
+                                        // Додати до закладок - TODO
+                                    } label: {
                                         Image(systemName: "bookmark")
                                             .font(.system(size: 32))
                                             .foregroundStyle(.white)
@@ -184,12 +199,17 @@ struct TVDetailsView: View {
                 viewModel.load()
             }
         }
+        .fullScreenCover(isPresented: $isPlayerPresented) {
+            if let details = viewModel.state.data {
+                TVPlayerView(details: details)
+            }
+        }
+        .navigationDestination(for: MovieSimple.self) { movie in
+            TVDetailsView(movie: movie)
+        }
     }
     
     private func playMovie() {
-        // Логіка запуску плеєра буде тут
-        // Потрібно отримати потік та передати в AVPlayerViewController
-        // TODO: Implement player
+        isPlayerPresented = true
     }
 }
-
