@@ -1,7 +1,9 @@
 import Combine
 import FactoryKit
 import SwiftUI
+#if os(macOS)
 import YouTubePlayerKit
+#endif
 
 @Observable
 class DetailsViewModel {
@@ -18,7 +20,11 @@ class DetailsViewModel {
     @ObservationIgnored private var subscriptions: Set<AnyCancellable> = []
 
     private(set) var state: DataState<MovieDetailed> = .loading
+    #if os(macOS)
     private(set) var trailer: YouTubePlayer?
+    #else
+    private(set) var trailerId: String?
+    #endif
 
     func load() {
         state = .loading
@@ -39,6 +45,7 @@ class DetailsViewModel {
                         self.getMovieTrailerIdUseCase(movieId: movieId)
                             .receive(on: DispatchQueue.main)
                             .sink { _ in } receiveValue: { trailerId in
+                                #if os(macOS)
                                 #if DEBUG
                                     let isLoggingEnabled = true
                                 #else
@@ -62,6 +69,12 @@ class DetailsViewModel {
                                         isLoggingEnabled: isLoggingEnabled,
                                     )
                                 }
+                                #else
+                                // На tvOS зберігаємо тільки ID трейлера
+                                withAnimation(.easeInOut) {
+                                    self.trailerId = trailerId
+                                }
+                                #endif
                             }
                             .store(in: &self.subscriptions)
                     }

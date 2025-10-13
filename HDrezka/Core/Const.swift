@@ -29,7 +29,15 @@ class Const {
         let appName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? "HDrezka"
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
         let appBundle = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        #if os(macOS)
         let osName = "macOS"
+        #elseif os(tvOS)
+        let osName = "tvOS"
+        #elseif os(iOS)
+        let osName = "iOS"
+        #else
+        let osName = "Unknown"
+        #endif
         let osVersion = ProcessInfo.processInfo.operatingSystemVersion
 
         var size = 0
@@ -38,6 +46,7 @@ class Const {
         sysctlbyname("hw.model", &model, &size, nil, 0)
         let deviceModel = String(cString: model)
 
+        #if os(macOS)
         let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
         if service != 0 {
             defer { IOObjectRelease(service) }
@@ -46,6 +55,7 @@ class Const {
                 return "\(appName)/\(appVersion)(\(appBundle)) (\(deviceModel); \(osName) \(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion); \(uuid))"
             }
         }
+        #endif
 
         return "\(appName)/\(appVersion)(\(appBundle)) (\(deviceModel); \(osName) \(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion))"
     }

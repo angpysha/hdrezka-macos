@@ -2,7 +2,9 @@ import CoreImage.CIFilterBuiltins
 import Defaults
 import SwiftUI
 import Vision
+#if os(macOS)
 import YouTubePlayerKit
+#endif
 
 struct DetailsView: View {
     private let title: String?
@@ -35,14 +37,18 @@ struct DetailsView: View {
                 if let details = viewModel.state.data {
                     DetailsViewComponent(
                         details: details,
+                        #if os(macOS)
                         trailer: viewModel.trailer,
+                        #else
+                        trailerId: viewModel.trailerId,
+                        #endif
                         topSafeAreaInset: topSafeAreaInset,
                         isSchedulePresented: $isSchedulePresented,
                         countryDestination: $countryDestination,
                         genreDestination: $genreDestination,
                         personDestination: $personDestination,
                         listDestination: $listDestination,
-                        collectionDestination: $collectionDestination,
+                        collectionDestination: $collectionDestination
                     )
                     .environment(viewModel)
                 }
@@ -169,7 +175,11 @@ struct DetailsView: View {
 
     private struct DetailsViewComponent: View {
         private let details: MovieDetailed
+        #if os(macOS)
         private let trailer: YouTubePlayer?
+        #else
+        private let trailerId: String?
+        #endif
         private let topSafeAreaInset: CGFloat
         @Binding private var isSchedulePresented: Bool
 
@@ -181,6 +191,7 @@ struct DetailsView: View {
         @Binding private var listDestination: MovieList?
         @Binding private var collectionDestination: MoviesCollection?
 
+        #if os(macOS)
         init(details: MovieDetailed,
              trailer: YouTubePlayer?,
              topSafeAreaInset: CGFloat,
@@ -201,6 +212,28 @@ struct DetailsView: View {
             _listDestination = listDestination
             _collectionDestination = collectionDestination
         }
+        #else
+        init(details: MovieDetailed,
+             trailerId: String?,
+             topSafeAreaInset: CGFloat,
+             isSchedulePresented: Binding<Bool>,
+             countryDestination: Binding<MovieCountry?>,
+             genreDestination: Binding<MovieGenre?>,
+             personDestination: Binding<PersonSimple?>,
+             listDestination: Binding<MovieList?>,
+             collectionDestination: Binding<MoviesCollection?>)
+        {
+            self.details = details
+            self.trailerId = trailerId
+            self.topSafeAreaInset = topSafeAreaInset
+            _isSchedulePresented = isSchedulePresented
+            _countryDestination = countryDestination
+            _genreDestination = genreDestination
+            _personDestination = personDestination
+            _listDestination = listDestination
+            _collectionDestination = collectionDestination
+        }
+        #endif
 
         @State private var isPlayPresented: Bool = false
         @State private var isDownloadPresented: Bool = false
@@ -596,6 +629,7 @@ struct DetailsView: View {
                     .font(.system(size: 15))
                     .textSelection(.enabled)
 
+                #if os(macOS)
                 if let trailer {
                     YouTubePlayerView(trailer, transaction: .init(animation: .easeInOut)) { state in
                         if state.isIdle {
@@ -622,6 +656,10 @@ struct DetailsView: View {
                         }
                     }
                 }
+                #else
+                // На tvOS трейлери не показуємо (YouTubePlayerKit не підтримується)
+                // Можна додати посилання на YouTube у майбутньому
+                #endif
             }
             .padding(.horizontal, 36)
 

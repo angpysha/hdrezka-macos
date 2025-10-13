@@ -319,6 +319,7 @@ private extension Element {
             try br.replaceWith(TextNode("\n", nil))
         }
 
+        #if os(macOS)
         let commentText: NSMutableAttributedString = .init()
         var spoilers: [Comment.Spoiler] = []
 
@@ -396,6 +397,12 @@ private extension Element {
         }
 
         return (commentText, spoilers)
+        #else
+        // На tvOS просто повертаємо plain text без форматування
+        let plainText = try text()
+        let attributedString = NSAttributedString(string: plainText)
+        return (attributedString, [])
+        #endif
     }
 
     func getComments(depth: Int = 0) throws -> [Comment] {

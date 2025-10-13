@@ -1,6 +1,7 @@
 import Combine
 import FactoryKit
 import SwiftUI
+import SwiftSoup
 
 @Observable
 class SearchViewModel {

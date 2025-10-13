@@ -3,6 +3,7 @@ import Combine
 import Defaults
 import FactoryKit
 import Foundation
+import SwiftSoup
 
 struct AccountRepositoryImpl: AccountRepository {
     @Injected(\.session) private var session

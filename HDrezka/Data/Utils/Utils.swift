@@ -181,6 +181,9 @@ extension Optional {
     }
 }
 
+#if os(macOS)
+import AppKit
+
 class AttributedTextStyle {
     private(set) var attributes: [NSAttributedString.Key: Any] = [:]
 
@@ -237,6 +240,7 @@ extension NSMutableAttributedString {
         append(NSAttributedString(string: string, attributes: style.attributes))
     }
 }
+#endif
 
 extension Publisher where Failure == Error {
     func handleError() -> AnyPublisher<Output, Failure> {

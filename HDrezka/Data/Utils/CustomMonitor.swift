@@ -2,6 +2,7 @@ import Alamofire
 import Defaults
 import FirebaseCrashlytics
 import Foundation
+import SwiftSoup
 
 final class CustomMonitor: EventMonitor {
     func request(_: DataRequest, didParseResponse response: DataResponse<some Any, AFError>) {

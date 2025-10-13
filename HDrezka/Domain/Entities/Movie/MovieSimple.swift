@@ -1,6 +1,9 @@
 import SwiftUI
+#if os(macOS)
+import UniformTypeIdentifiers
+#endif
 
-struct MovieSimple: Identifiable, Codable, Hashable {
+struct MovieSimple: Identifiable, Codable, Hashable, Sendable {
     let movieId: String
     let name: String?
     let details: String?
@@ -20,11 +23,13 @@ struct MovieSimple: Identifiable, Codable, Hashable {
     }
 }
 
+#if os(macOS)
 extension MovieSimple: Transferable {
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation(for: MovieSimple.self, contentType: .json)
     }
 }
+#endif
 
 extension MovieSimple {
     enum Cat: Codable, Hashable {

@@ -26,12 +26,12 @@ struct Aria2Request<E: Encodable>: Encodable {
     }
 }
 
-struct Aria2Response<D: Decodable>: Decodable {
+struct Aria2Response<D: Decodable & Sendable>: Decodable, Sendable {
     let result: D?
     let error: Aria2Error?
 }
 
-struct Aria2Error: Decodable {
+struct Aria2Error: Decodable, Sendable {
     let code: Aria2ErrorCode
 }
 
@@ -239,7 +239,7 @@ struct OptionsParams<E: Encodable>: TokenParams {
     }
 }
 
-struct GlobalStatusResult: Decodable {
+struct GlobalStatusResult: Decodable, Sendable {
     let numActive: Int
     let numWaiting: Int
     let numStopped: Int
@@ -257,7 +257,7 @@ struct GlobalStatusResult: Decodable {
     }
 }
 
-struct StatusResult: Codable, Hashable {
+struct StatusResult: Codable, Hashable, Sendable {
     let gid: String
     private(set) var status: Status
     let totalLength: Int64
@@ -312,7 +312,7 @@ struct StatusResult: Codable, Hashable {
     }
 }
 
-enum Status: String, Decodable {
+enum Status: String, Decodable, Sendable {
     case active, waiting, paused, error, complete, removed
 }
 
