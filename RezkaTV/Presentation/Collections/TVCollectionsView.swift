@@ -2,12 +2,12 @@ import SwiftUI
 
 struct TVCollectionsView: View {
     @State private var viewModel = CollectionsViewModel()
-    
+
     var body: some View {
         ScrollView {
             if let collections = viewModel.state.data, !collections.isEmpty {
                 LazyVGrid(columns: [
-                    GridItem(.adaptive(minimum: 400, maximum: 500), spacing: 40)
+                    GridItem(.adaptive(minimum: 400, maximum: 500), spacing: 40),
                 ], spacing: 40) {
                     ForEach(collections) { collection in
                         NavigationLink(value: collection) {
@@ -19,17 +19,17 @@ struct TVCollectionsView: View {
                                             LinearGradient(
                                                 colors: [.orange, .red],
                                                 startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            )
+                                                endPoint: .bottomTrailing,
+                                            ),
                                         )
-                                    
+
                                     Image(systemName: "rectangle.stack")
                                         .font(.system(size: 60))
                                         .foregroundStyle(.white)
                                 }
                                 .frame(height: 200)
                                 .cornerRadius(20)
-                                
+
                                 VStack(alignment: .leading, spacing: 8) {
                                     Text(collection.name)
                                         .font(.system(size: 32, weight: .semibold))
@@ -53,11 +53,11 @@ struct TVCollectionsView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text(error.localizedDescription)
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         viewModel.load()
                     } label: {
@@ -85,7 +85,7 @@ struct TVCollectionDetailsView: View {
     @State private var selectedFilter: CollectionFilter = .latest
     @State private var movies: [MovieSimple] = []
     @State private var isLoading = false
-    
+
     var body: some View {
         VStack(spacing: 0) {
             // Фільтри
@@ -110,11 +110,11 @@ struct TVCollectionDetailsView: View {
                 .padding(.horizontal, 90)
                 .padding(.vertical, 40)
             }
-            
+
             // Список фільмів
             ScrollView {
                 LazyVGrid(columns: [
-                    GridItem(.adaptive(minimum: 300, maximum: 350), spacing: 50)
+                    GridItem(.adaptive(minimum: 300, maximum: 350), spacing: 50),
                 ], spacing: 50) {
                     ForEach(movies) { movie in
                         NavigationLink(value: movie) {
@@ -135,7 +135,7 @@ struct TVCollectionDetailsView: View {
             TVDetailsView(movie: movie)
         }
     }
-    
+
     private func loadMovies() {
         // Тут буде логіка завантаження фільмів з колекції
         isLoading = true
@@ -149,14 +149,13 @@ enum CollectionFilter: CaseIterable {
     case popular
     case soon
     case watchingNow
-    
+
     var title: String {
         switch self {
-        case .latest: return String(localized: "key.latest")
-        case .popular: return String(localized: "key.popular")
-        case .soon: return String(localized: "key.soon")
-        case .watchingNow: return String(localized: "key.watching_now")
+        case .latest: String(localized: "key.latest")
+        case .popular: String(localized: "key.popular")
+        case .soon: String(localized: "key.soon")
+        case .watchingNow: String(localized: "key.watching_now")
         }
     }
 }
-

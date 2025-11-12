@@ -182,64 +182,64 @@ extension Optional {
 }
 
 #if os(macOS)
-import AppKit
+    import AppKit
 
-class AttributedTextStyle {
-    private(set) var attributes: [NSAttributedString.Key: Any] = [:]
+    class AttributedTextStyle {
+        private(set) var attributes: [NSAttributedString.Key: Any] = [:]
 
-    func font(
-        bold: Bool = false,
-        italic: Bool = false,
-        underline: Bool = false,
-        strikethrough: Bool = false,
-        link: String? = nil,
-    ) {
-        var font = NSFont.systemFont(ofSize: 13)
-        let fontManager = NSFontManager.shared
+        func font(
+            bold: Bool = false,
+            italic: Bool = false,
+            underline: Bool = false,
+            strikethrough: Bool = false,
+            link: String? = nil,
+        ) {
+            var font = NSFont.systemFont(ofSize: 13)
+            let fontManager = NSFontManager.shared
 
-        if bold {
-            font = fontManager.convert(font, toHaveTrait: .boldFontMask)
+            if bold {
+                font = fontManager.convert(font, toHaveTrait: .boldFontMask)
+            }
+
+            if italic {
+                font = fontManager.convert(font, toHaveTrait: .italicFontMask)
+            }
+
+            self.font(font, underline, strikethrough, link)
         }
 
-        if italic {
-            font = fontManager.convert(font, toHaveTrait: .italicFontMask)
-        }
+        func font(_ font: NSFont, _ underline: Bool, _ strikethrough: Bool, _ link: String?) {
+            attributes[.font] = font
+            attributes[.foregroundColor] = NSColor.labelColor
 
-        self.font(font, underline, strikethrough, link)
+            if underline {
+                attributes[.underlineStyle] = 1
+            }
+
+            if strikethrough {
+                attributes[.strikethroughStyle] = 1
+            }
+
+            if let link {
+                attributes[.link] = link
+                attributes[.foregroundColor] = NSColor(Color.accentColor)
+            }
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .left
+            paragraphStyle.lineBreakMode = .byWordWrapping
+
+            attributes[.paragraphStyle] = paragraphStyle
+        }
     }
 
-    func font(_ font: NSFont, _ underline: Bool, _ strikethrough: Bool, _ link: String?) {
-        attributes[.font] = font
-        attributes[.foregroundColor] = NSColor.labelColor
-
-        if underline {
-            attributes[.underlineStyle] = 1
+    extension NSMutableAttributedString {
+        func append(string: String, _ styleConfigurationBlock: (AttributedTextStyle) -> Void) {
+            let style = AttributedTextStyle()
+            styleConfigurationBlock(style)
+            append(NSAttributedString(string: string, attributes: style.attributes))
         }
-
-        if strikethrough {
-            attributes[.strikethroughStyle] = 1
-        }
-
-        if let link {
-            attributes[.link] = link
-            attributes[.foregroundColor] = NSColor(Color.accentColor)
-        }
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .left
-        paragraphStyle.lineBreakMode = .byWordWrapping
-
-        attributes[.paragraphStyle] = paragraphStyle
     }
-}
-
-extension NSMutableAttributedString {
-    func append(string: String, _ styleConfigurationBlock: (AttributedTextStyle) -> Void) {
-        let style = AttributedTextStyle()
-        styleConfigurationBlock(style)
-        append(NSAttributedString(string: string, attributes: style.attributes))
-    }
-}
 #endif
 
 extension Publisher where Failure == Error {

@@ -7,7 +7,7 @@ struct TVSettingsView: View {
     @Default(.theme) private var theme
     @Default(.isUserPremium) private var isUserPremium
     @Environment(AppState.self) private var appState
-    
+
     var body: some View {
         List {
             Section("key.account") {
@@ -22,7 +22,7 @@ struct TVSettingsView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    
+
                     Button {
                         appState.isSignOutPresented = true
                     } label: {
@@ -44,7 +44,7 @@ struct TVSettingsView: View {
                             Image(systemName: "arrow.right")
                         }
                     }
-                    
+
                     Button {
                         appState.isSignUpPresented = true
                     } label: {
@@ -57,7 +57,7 @@ struct TVSettingsView: View {
                     }
                 }
             }
-            
+
             Section("key.appearance") {
                 Picker("key.theme", selection: $theme) {
                     ForEach(Theme.allCases) { themeOption in
@@ -67,7 +67,7 @@ struct TVSettingsView: View {
                 }
                 .font(.system(size: 28))
             }
-            
+
             Section("key.network") {
                 HStack {
                     Text("key.mirror")
@@ -78,7 +78,7 @@ struct TVSettingsView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            
+
             Section("key.about") {
                 HStack {
                     Text("key.version")
@@ -88,7 +88,7 @@ struct TVSettingsView: View {
                         .font(.system(size: 24))
                         .foregroundStyle(.secondary)
                 }
-                
+
                 HStack {
                     Text("key.build")
                         .font(.system(size: 28))
@@ -102,4 +102,3 @@ struct TVSettingsView: View {
         .listStyle(.grouped)
     }
 }
-

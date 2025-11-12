@@ -4,30 +4,30 @@ import SwiftUI
 
 struct TVRestoreSheetView: View {
     @Injected(\.restoreUseCase) private var restoreUseCase
-    
+
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var email = ""
     @State private var isLoading = false
     @State private var error: String?
     @State private var success = false
     @State private var subscriptions: Set<AnyCancellable> = []
-    
+
     @FocusState private var isEmailFocused: Bool
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 50) {
                 Text("key.restore")
                     .font(.system(size: 56, weight: .bold))
                     .padding(.top, 60)
-                
+
                 if success {
                     VStack(spacing: 30) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 100))
                             .foregroundStyle(.green)
-                        
+
                         Text("key.restore.success")
                             .font(.system(size: 28))
                             .foregroundStyle(.secondary)
@@ -41,12 +41,12 @@ struct TVRestoreSheetView: View {
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 60)
-                        
+
                         VStack(alignment: .leading, spacing: 15) {
                             Text("key.email")
                                 .font(.system(size: 28))
                                 .foregroundStyle(.secondary)
-                            
+
                             TextField("", text: $email)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 32))
@@ -62,7 +62,7 @@ struct TVRestoreSheetView: View {
                         }
                         .frame(maxWidth: 800)
                         .padding(.horizontal, 60)
-                        
+
                         if let error {
                             Text(error)
                                 .font(.system(size: 24))
@@ -70,7 +70,7 @@ struct TVRestoreSheetView: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 60)
                         }
-                        
+
                         Button {
                             restore()
                         } label: {
@@ -94,7 +94,7 @@ struct TVRestoreSheetView: View {
                         .padding(.horizontal, 60)
                     }
                 }
-                
+
                 Spacer()
             }
             .padding(.bottom, 60)
@@ -113,11 +113,11 @@ struct TVRestoreSheetView: View {
             isEmailFocused = true
         }
     }
-    
+
     private func restore() {
         isLoading = true
         error = nil
-        
+
         restoreUseCase(login: email)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -134,4 +134,3 @@ struct TVRestoreSheetView: View {
             .store(in: &subscriptions)
     }
 }
-

@@ -7,19 +7,19 @@ import SwiftUI
 struct TVContentView: View {
     @Injected(\.logoutUseCase) private var logoutUseCase
     @Injected(\.getVersionUseCase) private var getVersionUseCase
-    
+
     @Default(.isLoggedIn) private var isLoggedIn
     @Default(.mirror) private var mirror
     @Default(.isUserPremium) private var isUserPremium
     @Default(.lastHdrezkaAppVersion) private var lastHdrezkaAppVersion
-    
+
     @Environment(AppState.self) private var appState
-    
+
     @State private var subscriptions: Set<AnyCancellable> = []
-    
+
     var body: some View {
         @Bindable var appState = appState
-        
+
         TabView(selection: $appState.selectedTab) {
             // Основні таби, які не потребують акаунт
             ForEach(Tabs.allCases.filter { !$0.needAccount }) { tab in
@@ -36,7 +36,7 @@ struct TVContentView: View {
                 }
                 .tag(tab)
             }
-            
+
             // Таби для залогінених користувачів
             if isLoggedIn {
                 ForEach(Tabs.allCases.filter(\.needAccount)) { tab in
@@ -54,7 +54,7 @@ struct TVContentView: View {
                     .tag(tab)
                 }
             }
-            
+
             // Таб налаштувань
             NavigationStack {
                 TVSettingsView()
@@ -137,4 +137,3 @@ extension Tabs {
         }
     }
 }
-

@@ -4,18 +4,18 @@ import SwiftUI
 
 struct TVDetailsView: View {
     let movie: MovieSimple
-    
+
     @State private var viewModel: DetailsViewModel
     @State private var isPlayerPresented = false
-    
+
     @Default(.isLoggedIn) private var isLoggedIn
     @Environment(AppState.self) private var appState
-    
+
     init(movie: MovieSimple) {
         self.movie = movie
         _viewModel = State(initialValue: DetailsViewModel(id: movie.movieId))
     }
-    
+
     var body: some View {
         ScrollView {
             if let details = viewModel.state.data {
@@ -30,23 +30,23 @@ struct TVDetailsView: View {
                                         .fill(Color.gray.opacity(0.3))
                                 }
                                 .resizable()
-                                .aspectRatio(2/3, contentMode: .fit)
+                                .aspectRatio(2 / 3, contentMode: .fit)
                                 .frame(width: 400)
                                 .cornerRadius(20)
                                 .shadow(radius: 20)
                         }
-                        
+
                         // Інформація
                         VStack(alignment: .leading, spacing: 30) {
                             Text(details.nameRussian)
                                 .font(.system(size: 56, weight: .bold))
-                            
+
                             if let nameOriginal = details.nameOriginal {
                                 Text(nameOriginal)
                                     .font(.system(size: 32))
                                     .foregroundStyle(.secondary)
                             }
-                            
+
                             // Рейтинг, рік
                             HStack(spacing: 20) {
                                 if let rating = details.imdbRating?.value {
@@ -57,14 +57,14 @@ struct TVDetailsView: View {
                                     }
                                     .font(.system(size: 28))
                                 }
-                                
+
                                 if let year = details.year {
                                     Text(year)
                                         .font(.system(size: 28))
                                         .foregroundStyle(.secondary)
                                 }
                             }
-                            
+
                             // Жанри
                             if let genres = details.genres, !genres.isEmpty {
                                 ScrollView(.horizontal, showsIndicators: false) {
@@ -80,7 +80,7 @@ struct TVDetailsView: View {
                                     }
                                 }
                             }
-                            
+
                             // Кнопки дій
                             HStack(spacing: 30) {
                                 // Кнопка відтворення
@@ -112,7 +112,7 @@ struct TVDetailsView: View {
                                     .background(Color.gray.opacity(0.5))
                                     .cornerRadius(15)
                                 }
-                                
+
                                 if isLoggedIn {
                                     Button {
                                         // Додати до закладок - TODO
@@ -129,31 +129,31 @@ struct TVDetailsView: View {
                             }
                             .padding(.top, 20)
                         }
-                        
+
                         Spacer()
                     }
                     .padding(.horizontal, 90)
                     .padding(.top, 60)
-                    
+
                     // Опис
                     VStack(alignment: .leading, spacing: 20) {
                         Text("key.description")
                             .font(.system(size: 38, weight: .semibold))
-                        
+
                         Text(details.description)
                             .font(.system(size: 28))
                             .foregroundStyle(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     .padding(.horizontal, 90)
-                    
+
                     // Схожі фільми
                     if !details.watchAlsoMovies.isEmpty {
                         VStack(alignment: .leading, spacing: 30) {
                             Text("key.similar")
                                 .font(.system(size: 38, weight: .semibold))
                                 .padding(.horizontal, 90)
-                            
+
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 50) {
                                     ForEach(details.watchAlsoMovies) { movie in
@@ -178,11 +178,11 @@ struct TVDetailsView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text(error.localizedDescription)
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         viewModel.load()
                     } label: {
@@ -208,7 +208,7 @@ struct TVDetailsView: View {
             TVDetailsView(movie: movie)
         }
     }
-    
+
     private func playMovie() {
         isPlayerPresented = true
     }

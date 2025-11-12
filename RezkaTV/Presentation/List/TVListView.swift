@@ -2,28 +2,28 @@ import SwiftUI
 
 struct TVListView: View {
     @State private var viewModel: ListViewModel
-    
+
     init(list: MovieList) {
         _viewModel = State(initialValue: ListViewModel(list: list))
     }
-    
+
     init(country: MovieCountry) {
         _viewModel = State(initialValue: ListViewModel(country: country))
     }
-    
+
     init(genre: MovieGenre) {
         _viewModel = State(initialValue: ListViewModel(genre: genre))
     }
-    
+
     init(collection: MoviesCollection) {
         _viewModel = State(initialValue: ListViewModel(collection: collection))
     }
-    
+
     var body: some View {
         ScrollView {
             if let movies = viewModel.state.data, !movies.isEmpty {
                 LazyVGrid(columns: [
-                    GridItem(.adaptive(minimum: 300, maximum: 350), spacing: 50)
+                    GridItem(.adaptive(minimum: 300, maximum: 350), spacing: 50),
                 ], spacing: 50) {
                     ForEach(movies) { movie in
                         NavigationLink(value: movie) {
@@ -40,7 +40,7 @@ struct TVListView: View {
                 }
                 .padding(.horizontal, 90)
                 .padding(.vertical, 60)
-                
+
                 // Індикатор підвантаження
                 if viewModel.paginationState == .loading {
                     ProgressView()
@@ -56,11 +56,11 @@ struct TVListView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text(error.localizedDescription)
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         viewModel.load()
                     } label: {
@@ -75,7 +75,7 @@ struct TVListView: View {
                     Image(systemName: "film")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text("key.empty")
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
@@ -94,4 +94,3 @@ struct TVListView: View {
         }
     }
 }
-

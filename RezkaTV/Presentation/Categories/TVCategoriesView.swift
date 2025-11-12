@@ -2,12 +2,12 @@ import SwiftUI
 
 struct TVCategoriesView: View {
     @State private var viewModel = CategoriesViewModel()
-    
+
     var body: some View {
         ScrollView {
             if let categories = viewModel.state.data, !categories.isEmpty {
                 LazyVGrid(columns: [
-                    GridItem(.adaptive(minimum: 400, maximum: 500), spacing: 40)
+                    GridItem(.adaptive(minimum: 400, maximum: 500), spacing: 40),
                 ], spacing: 40) {
                     ForEach(categories) { type in
                         NavigationLink(value: type) {
@@ -21,11 +21,11 @@ struct TVCategoriesView: View {
                                         LinearGradient(
                                             colors: [.blue, .purple],
                                             startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
+                                            endPoint: .bottomTrailing,
+                                        ),
                                     )
                                     .cornerRadius(20)
-                                
+
                                 VStack(alignment: .leading, spacing: 8) {
                                     Text(type.name)
                                         .font(.system(size: 32, weight: .semibold))
@@ -49,11 +49,11 @@ struct TVCategoriesView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text(error.localizedDescription)
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         viewModel.load()
                     } label: {
@@ -74,7 +74,7 @@ struct TVCategoriesView: View {
             Text("Type: \(type.name)")
         }
     }
-    
+
     private func categoryIcon(for type: MovieType) -> String {
         // Підбираємо іконку залежно від типу категорії
         let titleLower = type.name.lowercased()
@@ -91,4 +91,3 @@ struct TVCategoriesView: View {
         }
     }
 }
-

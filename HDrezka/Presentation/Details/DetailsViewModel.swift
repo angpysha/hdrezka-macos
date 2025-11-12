@@ -2,7 +2,7 @@ import Combine
 import FactoryKit
 import SwiftUI
 #if os(macOS)
-import YouTubePlayerKit
+    import YouTubePlayerKit
 #endif
 
 @Observable
@@ -21,9 +21,9 @@ class DetailsViewModel {
 
     private(set) var state: DataState<MovieDetailed> = .loading
     #if os(macOS)
-    private(set) var trailer: YouTubePlayer?
+        private(set) var trailer: YouTubePlayer?
     #else
-    private(set) var trailerId: String?
+        private(set) var trailerId: String?
     #endif
 
     func load() {
@@ -46,34 +46,34 @@ class DetailsViewModel {
                             .receive(on: DispatchQueue.main)
                             .sink { _ in } receiveValue: { trailerId in
                                 #if os(macOS)
-                                #if DEBUG
-                                    let isLoggingEnabled = true
-                                #else
-                                    let isLoggingEnabled = false
-                                #endif
+                                    #if DEBUG
+                                        let isLoggingEnabled = true
+                                    #else
+                                        let isLoggingEnabled = false
+                                    #endif
 
-                                withAnimation(.easeInOut) {
-                                    self.trailer = YouTubePlayer(
-                                        source: .video(id: trailerId),
-                                        parameters: .init(
-                                            autoPlay: false,
-                                            loopEnabled: true,
-                                            showControls: true,
-                                            showFullscreenButton: true,
-                                        ),
-                                        configuration: .init(
-                                            openURLAction: .init { url, _ in
-                                                NSWorkspace.shared.open(url)
-                                            },
-                                        ),
-                                        isLoggingEnabled: isLoggingEnabled,
-                                    )
-                                }
+                                    withAnimation(.easeInOut) {
+                                        self.trailer = YouTubePlayer(
+                                            source: .video(id: trailerId),
+                                            parameters: .init(
+                                                autoPlay: false,
+                                                loopEnabled: true,
+                                                showControls: true,
+                                                showFullscreenButton: true,
+                                            ),
+                                            configuration: .init(
+                                                openURLAction: .init { url, _ in
+                                                    NSWorkspace.shared.open(url)
+                                                },
+                                            ),
+                                            isLoggingEnabled: isLoggingEnabled,
+                                        )
+                                    }
                                 #else
-                                // На tvOS зберігаємо тільки ID трейлера
-                                withAnimation(.easeInOut) {
-                                    self.trailerId = trailerId
-                                }
+                                    // На tvOS зберігаємо тільки ID трейлера
+                                    withAnimation(.easeInOut) {
+                                        self.trailerId = trailerId
+                                    }
                                 #endif
                             }
                             .store(in: &self.subscriptions)

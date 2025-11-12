@@ -8,32 +8,32 @@ import SwiftData
 @Observable
 class TVDownloaderStub {
     static let shared = TVDownloaderStub()
-    
+
     var downloads: [Download] = []
-    
+
     private init() {}
-    
-    func download(_ data: DownloadData) {
+
+    func download(_: DownloadData) {
         // На tvOS не підтримується завантаження
         print("Downloads are not supported on tvOS")
     }
-    
-    func remove(_ gid: String) {
+
+    func remove(_: String) {
         // Не підтримується
     }
-    
-    func pause(_ gid: String) {
+
+    func pause(_: String) {
         // Не підтримується
     }
-    
-    func resume(_ gid: String) {
+
+    func resume(_: String) {
         // Не підтримується
     }
-    
-    func setModelContext(modelContext: ModelContext) {
+
+    func setModelContext(modelContext _: ModelContext) {
         // Не потрібно на tvOS
     }
-    
+
     func terminate() {
         // Нічого не робимо
     }
@@ -41,4 +41,3 @@ class TVDownloaderStub {
 
 // Alias для сумісності з існуючим кодом
 typealias Downloader = TVDownloaderStub
-

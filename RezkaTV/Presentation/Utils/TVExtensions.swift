@@ -1,24 +1,23 @@
-import SwiftUI
 import Defaults
+import SwiftUI
 
 // Корисні розширення для tvOS
 
 extension View {
     /// Додає ефект масштабування при фокусі
     func tvFocusScale(isFocused: Bool, scale: CGFloat = 1.1) -> some View {
-        self
-            .scaleEffect(isFocused ? scale : 1.0)
+        scaleEffect(isFocused ? scale : 1.0)
             .animation(.easeInOut(duration: 0.2), value: isFocused)
     }
-    
+
     /// Додає тінь для фокусу
     func tvFocusShadow(isFocused: Bool) -> some View {
-        self.shadow(radius: isFocused ? 20 : 8)
+        shadow(radius: isFocused ? 20 : 8)
     }
-    
+
     /// Безпечні відступи для tvOS
     func tvSafeArea() -> some View {
-        self.padding(.horizontal, 90)
+        padding(.horizontal, 90)
     }
 }
 
@@ -27,22 +26,22 @@ enum Theme: Int, CaseIterable, Identifiable, Defaults.Serializable {
     case system
     case light
     case dark
-    
+
     var id: Int { rawValue }
-    
+
     var name: String {
         switch self {
-        case .system: return String(localized: "key.theme.system")
-        case .light: return String(localized: "key.theme.light")
-        case .dark: return String(localized: "key.theme.dark")
+        case .system: String(localized: "key.theme.system")
+        case .light: String(localized: "key.theme.light")
+        case .dark: String(localized: "key.theme.dark")
         }
     }
-    
+
     var scheme: ColorScheme? {
         switch self {
-        case .system: return nil
-        case .light: return .light
-        case .dark: return .dark
+        case .system: nil
+        case .light: .light
+        case .dark: .dark
         }
     }
 }
@@ -56,9 +55,9 @@ enum DefaultQuality: String, CaseIterable, Identifiable, Defaults.Serializable {
     case q1080 = "1080p"
     case q1440 = "1440p"
     case q2160 = "2160p"
-    
+
     var id: String { rawValue }
-    
+
     var name: String { rawValue }
 }
 
@@ -67,14 +66,14 @@ enum SpatialAudio: Int, CaseIterable, Identifiable, Defaults.Serializable {
     case off
     case on
     case auto
-    
+
     var id: Int { rawValue }
-    
+
     var name: String {
         switch self {
-        case .off: return String(localized: "key.off")
-        case .on: return String(localized: "key.on")
-        case .auto: return String(localized: "key.auto")
+        case .off: String(localized: "key.off")
+        case .on: String(localized: "key.on")
+        case .auto: String(localized: "key.auto")
         }
     }
 }
@@ -82,7 +81,7 @@ enum SpatialAudio: Int, CaseIterable, Identifiable, Defaults.Serializable {
 // URL extension для безпечного отримання host
 extension URL {
     func host() -> String? {
-        return self.host
+        host
     }
 }
 
@@ -99,12 +98,12 @@ enum Genres: LocalizedStringKey, CaseIterable, Identifiable {
 
     var genreCode: Int {
         switch self {
-        case .all: return 0
-        case .films: return 1
-        case .series: return 2
-        case .cartoons: return 3
-        case .anime: return 82
-        case .show: return 4
+        case .all: 0
+        case .films: 1
+        case .series: 2
+        case .cartoons: 3
+        case .anime: 82
+        case .show: 4
         }
     }
 }
@@ -142,7 +141,7 @@ struct Download: Identifiable, Equatable {
     let id: String
     let title: String
     let progress: Double
-    
+
     static func == (lhs: Download, rhs: Download) -> Bool {
         lhs.id == rhs.id
     }
@@ -159,4 +158,3 @@ extension String {
         NSLocalizedString(self, comment: "")
     }
 }
-

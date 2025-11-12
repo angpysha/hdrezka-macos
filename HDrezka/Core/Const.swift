@@ -30,13 +30,13 @@ class Const {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
         let appBundle = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
         #if os(macOS)
-        let osName = "macOS"
+            let osName = "macOS"
         #elseif os(tvOS)
-        let osName = "tvOS"
+            let osName = "tvOS"
         #elseif os(iOS)
-        let osName = "iOS"
+            let osName = "iOS"
         #else
-        let osName = "Unknown"
+            let osName = "Unknown"
         #endif
         let osVersion = ProcessInfo.processInfo.operatingSystemVersion
 
@@ -47,14 +47,14 @@ class Const {
         let deviceModel = String(cString: model)
 
         #if os(macOS)
-        let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
-        if service != 0 {
-            defer { IOObjectRelease(service) }
+            let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
+            if service != 0 {
+                defer { IOObjectRelease(service) }
 
-            if let uuid = IORegistryEntryCreateCFProperty(service, kIOPlatformUUIDKey as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? String, !uuid.isEmpty {
-                return "\(appName)/\(appVersion)(\(appBundle)) (\(deviceModel); \(osName) \(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion); \(uuid))"
+                if let uuid = IORegistryEntryCreateCFProperty(service, kIOPlatformUUIDKey as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? String, !uuid.isEmpty {
+                    return "\(appName)/\(appVersion)(\(appBundle)) (\(deviceModel); \(osName) \(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion); \(uuid))"
+                }
             }
-        }
         #endif
 
         return "\(appName)/\(appVersion)(\(appBundle)) (\(deviceModel); \(osName) \(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion))"

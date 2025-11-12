@@ -1,5 +1,5 @@
-import Foundation
 import CoreGraphics
+import Foundation
 
 class WebVTTParser {
     fileprivate let scanner: CustomScanner

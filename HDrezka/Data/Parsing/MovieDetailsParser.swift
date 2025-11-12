@@ -320,88 +320,88 @@ private extension Element {
         }
 
         #if os(macOS)
-        let commentText: NSMutableAttributedString = .init()
-        var spoilers: [Comment.Spoiler] = []
+            let commentText: NSMutableAttributedString = .init()
+            var spoilers: [Comment.Spoiler] = []
 
-        func processElement(_ element: Element, _ styles: Set<Comment.TextStyles> = .init()) throws {
-            var styles: Set<Comment.TextStyles> = styles
+            func processElement(_ element: Element, _ styles: Set<Comment.TextStyles> = .init()) throws {
+                var styles: Set<Comment.TextStyles> = styles
 
-            switch element.tagName() {
-            case "b":
-                styles.insert(.bold)
-            case "i":
-                styles.insert(.italic)
-            case "u":
-                styles.insert(.underline)
-            case "s":
-                styles.insert(.strikethrough)
-            case "a":
-                try styles.insert(.link(element.attr("href")))
-            case "div" where element.hasClass("text_spoiler"):
-                try spoilers.append(.init(range: .init(location: commentText.length, length: element.text(trimAndNormaliseWhitespace: false).count)))
-            default:
-                break
-            }
+                switch element.tagName() {
+                case "b":
+                    styles.insert(.bold)
+                case "i":
+                    styles.insert(.italic)
+                case "u":
+                    styles.insert(.underline)
+                case "s":
+                    styles.insert(.strikethrough)
+                case "a":
+                    try styles.insert(.link(element.attr("href")))
+                case "div" where element.hasClass("text_spoiler"):
+                    try spoilers.append(.init(range: .init(location: commentText.length, length: element.text(trimAndNormaliseWhitespace: false).count)))
+                default:
+                    break
+                }
 
-            for child in element.getChildNodes() {
-                if let childElement = child as? Element {
-                    try processElement(childElement, styles)
-                } else if let childTextNode = child as? TextNode {
-                    let text: String = if case .link = styles.first(where: {
-                        if case .link = $0 {
-                            true
-                        } else {
-                            false
-                        }
-                    }), let url = URL(string: childTextNode.getWholeText()), let host = url.host(), Const.mirror.host() == host, let redirectHost = Const.redirectMirror.host() {
-                        childTextNode.getWholeText().replacingOccurrences(of: host, with: redirectHost)
-                    } else {
-                        childTextNode.getWholeText()
-                    }
-
-                    commentText.append(string: text) {
-                        let link: String? = if case let .link(link) = styles.first(where: {
+                for child in element.getChildNodes() {
+                    if let childElement = child as? Element {
+                        try processElement(childElement, styles)
+                    } else if let childTextNode = child as? TextNode {
+                        let text: String = if case .link = styles.first(where: {
                             if case .link = $0 {
                                 true
                             } else {
                                 false
                             }
-                        }), let url = URL(string: link) {
-                            if let host = url.host(), Const.mirror.host() == host, let redirectHost = Const.redirectMirror.host() {
-                                link.replacingOccurrences(of: host, with: redirectHost)
-                            } else {
-                                link
-                            }
+                        }), let url = URL(string: childTextNode.getWholeText()), let host = url.host(), Const.mirror.host() == host, let redirectHost = Const.redirectMirror.host() {
+                            childTextNode.getWholeText().replacingOccurrences(of: host, with: redirectHost)
                         } else {
-                            nil
+                            childTextNode.getWholeText()
                         }
 
-                        $0.font(
-                            bold: styles.contains(.bold),
-                            italic: styles.contains(.italic),
-                            underline: styles.contains(.underline),
-                            strikethrough: styles.contains(.strikethrough),
-                            link: link,
-                        )
+                        commentText.append(string: text) {
+                            let link: String? = if case let .link(link) = styles.first(where: {
+                                if case .link = $0 {
+                                    true
+                                } else {
+                                    false
+                                }
+                            }), let url = URL(string: link) {
+                                if let host = url.host(), Const.mirror.host() == host, let redirectHost = Const.redirectMirror.host() {
+                                    link.replacingOccurrences(of: host, with: redirectHost)
+                                } else {
+                                    link
+                                }
+                            } else {
+                                nil
+                            }
+
+                            $0.font(
+                                bold: styles.contains(.bold),
+                                italic: styles.contains(.italic),
+                                underline: styles.contains(.underline),
+                                strikethrough: styles.contains(.strikethrough),
+                                link: link,
+                            )
+                        }
                     }
                 }
             }
-        }
 
-        for child in getChildNodes() {
-            if let element = child as? Element {
-                try processElement(element)
-            } else if let textNode = child as? TextNode {
-                commentText.append(string: textNode.getWholeText()) { $0.font() }
+            for child in getChildNodes() {
+                if let element = child as? Element {
+                    try processElement(element)
+                } else if let textNode = child as? TextNode {
+                    commentText.append(string: textNode.getWholeText()) { $0.font() }
+                }
             }
-        }
 
-        return (commentText, spoilers)
+            return (commentText, spoilers)
         #else
-        // На tvOS просто повертаємо plain text без форматування
-        let plainText = try text()
-        let attributedString = NSAttributedString(string: plainText)
-        return (attributedString, [])
+            // На tvOS просто повертаємо plain text без форматування
+            let plainText = try text()
+            let attributedString = NSAttributedString(string: plainText)
+            return (attributedString, [])
         #endif
     }
 

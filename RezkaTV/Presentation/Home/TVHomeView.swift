@@ -3,14 +3,14 @@ import SwiftUI
 
 struct TVHomeView: View {
     private let title = String(localized: "key.home")
-    
+
     @State private var viewModel = HomeViewModel()
-    
+
     @Default(.isLoggedIn) private var isLoggedIn
-    
+
     @State private var movieDestination: MovieSimple?
     @Namespace private var namespace
-    
+
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack(alignment: .leading, spacing: 60, pinnedViews: []) {
@@ -22,9 +22,9 @@ struct TVHomeView: View {
                                 Text(category.title)
                                     .font(.system(size: 48, weight: .bold))
                                     .foregroundStyle(.primary)
-                                
+
                                 Spacer()
-                                
+
                                 NavigationLink(value: Destinations.category(HomeCategory.latest)) {
                                     HStack(spacing: 12) {
                                         Text("key.see_all")
@@ -35,7 +35,7 @@ struct TVHomeView: View {
                                 }
                             }
                             .padding(.horizontal, 90)
-                            
+
                             // Горизонтальний скрол фільмів
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(alignment: .top, spacing: 50) {
@@ -54,13 +54,13 @@ struct TVHomeView: View {
                 }
             }
             .padding(.vertical, 60)
-            
+
             if let error = viewModel.paginationState.error {
                 VStack(spacing: 30) {
                     Text(error.localizedDescription)
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         viewModel.loadMore(reset: true)
                     } label: {
@@ -91,12 +91,12 @@ struct TVHomeView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text(error.localizedDescription)
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
-                    
+
                     Button {
                         viewModel.load()
                     } label: {
@@ -112,11 +112,11 @@ struct TVHomeView: View {
                     Image(systemName: "film")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text("key.home.empty")
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         viewModel.load()
                     } label: {
@@ -148,14 +148,13 @@ struct TVHomeView: View {
         }
         .navigationDestination(for: Destinations.self) { destination in
             switch destination {
-            case .category(let category):
+            case let .category(category):
                 Text("Category: \(category.localized)")
-            case .person(let person):
+            case let .person(person):
                 Text("Person: \(person.name)")
-            case .collection(let collection):
+            case let .collection(collection):
                 Text("Collection: \(collection.name)")
             }
         }
     }
 }
-

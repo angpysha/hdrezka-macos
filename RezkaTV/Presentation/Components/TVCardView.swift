@@ -1,11 +1,11 @@
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct TVCardView: View {
     let movie: MovieSimple
     let width: CGFloat
     @FocusState private var isFocused: Bool
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // Постер
@@ -16,7 +16,7 @@ struct TVCardView: View {
                             .fill(Color.gray.opacity(0.3))
                     }
                     .resizable()
-                    .aspectRatio(2/3, contentMode: .fit)
+                    .aspectRatio(2 / 3, contentMode: .fit)
                     .frame(width: width)
                     .cornerRadius(16)
                     .shadow(radius: isFocused ? 20 : 5)
@@ -25,11 +25,11 @@ struct TVCardView: View {
             } else {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
-                    .aspectRatio(2/3, contentMode: .fit)
+                    .aspectRatio(2 / 3, contentMode: .fit)
                     .frame(width: width)
                     .cornerRadius(16)
             }
-            
+
             // Назва фільму
             if let name = movie.name {
                 Text(name)
@@ -37,7 +37,7 @@ struct TVCardView: View {
                     .lineLimit(2)
                     .frame(width: width, alignment: .leading)
             }
-            
+
             // Додаткова інформація
             if let details = movie.details {
                 Text(details)

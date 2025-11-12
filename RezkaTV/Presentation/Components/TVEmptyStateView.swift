@@ -4,29 +4,29 @@ struct TVEmptyStateView: View {
     let message: String
     let systemImage: String
     let action: (() -> Void)?
-    
+
     init(
         _ message: String,
         systemImage: String = "film",
-        action: (() -> Void)? = nil
+        action: (() -> Void)? = nil,
     ) {
         self.message = message
         self.systemImage = systemImage
         self.action = action
     }
-    
+
     var body: some View {
         VStack(spacing: 40) {
             Image(systemName: systemImage)
                 .font(.system(size: 100))
                 .foregroundStyle(.secondary)
-            
+
             Text(message)
                 .font(.system(size: 32))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            
-            if let action = action {
+
+            if let action {
                 Button {
                     action()
                 } label: {
@@ -47,7 +47,7 @@ struct TVLoadingStateView: View {
         VStack(spacing: 40) {
             ProgressView()
                 .scaleEffect(2.5)
-            
+
             Text("key.loading")
                 .font(.system(size: 32))
                 .foregroundStyle(.secondary)
@@ -59,18 +59,18 @@ struct TVLoadingStateView: View {
 struct TVErrorStateView: View {
     let error: Error
     let retry: () -> Void
-    
+
     var body: some View {
         VStack(spacing: 40) {
             Image(systemName: "exclamationmark.triangle")
                 .font(.system(size: 100))
                 .foregroundStyle(.red)
-            
+
             Text(error.localizedDescription)
                 .font(.system(size: 28))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            
+
             Button {
                 retry()
             } label: {
@@ -84,4 +84,3 @@ struct TVErrorStateView: View {
         .padding(90)
     }
 }
-

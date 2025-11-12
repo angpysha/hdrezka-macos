@@ -4,7 +4,7 @@ import SwiftUI
 struct TVBookmarksView: View {
     @State private var viewModel = BookmarksViewModel()
     @Default(.isLoggedIn) private var isLoggedIn
-    
+
     var body: some View {
         Group {
             if isLoggedIn {
@@ -17,15 +17,15 @@ struct TVBookmarksView: View {
                                     HStack {
                                         Text(category.name)
                                             .font(.system(size: 42, weight: .bold))
-                                        
+
                                         Spacer()
-                                        
+
                                         Text("\(category.count)")
                                             .font(.system(size: 28))
                                             .foregroundStyle(.secondary)
                                     }
                                     .padding(.horizontal, 90)
-                                    
+
                                     // Список фільмів - треба завантажити окремо
                                     Text("key.tap_to_view")
                                         .font(.system(size: 24))
@@ -45,11 +45,11 @@ struct TVBookmarksView: View {
                         Image(systemName: "exclamationmark.triangle")
                             .font(.system(size: 80))
                             .foregroundStyle(.secondary)
-                        
+
                         Text(error.localizedDescription)
                             .font(.system(size: 32))
                             .foregroundStyle(.secondary)
-                        
+
                         Button {
                             viewModel.load()
                         } label: {
@@ -64,7 +64,7 @@ struct TVBookmarksView: View {
                         Image(systemName: "bookmark")
                             .font(.system(size: 80))
                             .foregroundStyle(.secondary)
-                        
+
                         Text("key.bookmarks.empty")
                             .font(.system(size: 32))
                             .foregroundStyle(.secondary)
@@ -77,11 +77,11 @@ struct TVBookmarksView: View {
                     Image(systemName: "person.fill.questionmark")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    
+
                     Text("key.sign_in.required")
                         .font(.system(size: 32))
                         .foregroundStyle(.secondary)
-                    
+
                     Button {
                         // Відкрити екран входу
                         AppState.shared.isSignInPresented = true
@@ -105,4 +105,3 @@ struct TVBookmarksView: View {
         }
     }
 }
-
