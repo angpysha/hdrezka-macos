@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,437 +12,171 @@
 		04B3CA8A2BA06CAC0039F76E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 04B3CA892BA06CAC0039F76E /* SwiftSoup */; };
 		04E5DC0A2C120C4200BF1B7A /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 04E5DC092C120C4200BF1B7A /* Flow */; };
 		04E9EB462C047F19001CBBCA /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04E9EB452C047F19001CBBCA /* YouTubePlayerKit */; };
-		B5DA41952E9C36600069ECF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA41942E9C36600069ECF5 /* Alamofire */; };
-		B5DA41972E9C36880069ECF5 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA41962E9C36880069ECF5 /* FactoryKit */; };
-		B5DA41992E9C36BC0069ECF5 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA41982E9C36BC0069ECF5 /* Defaults */; };
-		B5DA419B2E9C36D00069ECF5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA419A2E9C36D00069ECF5 /* SwiftSoup */; };
-		B5DA419E2E9C373F0069ECF5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA419D2E9C373F0069ECF5 /* Kingfisher */; };
-		B5DA41A12E9C39040069ECF5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA41A02E9C39040069ECF5 /* FirebaseAnalytics */; };
-		B5DA41A32E9C390C0069ECF5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA41A22E9C390C0069ECF5 /* FirebaseCrashlytics */; };
-		B5DA44452E9CEAE60069ECF5 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA44442E9CEAE60069ECF5 /* Algorithms */; };
-		B5DA44492E9CFC3E0069ECF5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA44482E9CFC3E0069ECF5 /* OrderedCollections */; };
-		B5DA45342E9D3E770069ECF5 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45332E9D3E770069ECF5 /* Algorithms */; };
-		B5DA45362E9D3E7F0069ECF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45352E9D3E7F0069ECF5 /* Alamofire */; };
-		B5DA45382E9D3E8F0069ECF5 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45372E9D3E8F0069ECF5 /* Defaults */; };
-		B5DA453A2E9D3E9B0069ECF5 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45392E9D3E9B0069ECF5 /* FactoryKit */; };
-		B5DA453C2E9D3EA90069ECF5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA453B2E9D3EA90069ECF5 /* FirebaseAnalytics */; };
-		B5DA453E2E9D3EA90069ECF5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA453D2E9D3EA90069ECF5 /* FirebaseCrashlytics */; };
-		B5DA45402E9D3EB90069ECF5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA453F2E9D3EB90069ECF5 /* OrderedCollections */; };
-		B5DA45422E9D3EB90069ECF5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45412E9D3EB90069ECF5 /* Kingfisher */; };
-		B5DA45442E9D3ECE0069ECF5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */; };
 		DE188EE52CA6AB3100E7B1AE /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = DE188EE42CA6AB3100E7B1AE /* Pow */; };
 		DE2D67382DC3D5E900A9187C /* LicensesList in Frameworks */ = {isa = PBXBuildFile; productRef = DE2D67372DC3D5E900A9187C /* LicensesList */; };
 		DE3DCCE62DFB92050062CF81 /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = DE3DCCE52DFB92050062CF81 /* SwiftFormat */; };
 		DE3EF0392CFF04CA0022C311 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DE3EF0382CFF04CA0022C311 /* Alamofire */; };
+		DE4AD63E2EAA4A7200CE7AB3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DE4AD63D2EAA4A7200CE7AB3 /* Kingfisher */; };
+		DE7608DA2EB4231600C4A23E /* LRUCache in Frameworks */ = {isa = PBXBuildFile; productRef = DE7608D92EB4231600C4A23E /* LRUCache */; };
 		DEB035B52C89E1DB004ABFA1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEB035B42C89E1DB004ABFA1 /* FirebaseAnalytics */; };
 		DEB035B72C89E1DB004ABFA1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEB035B62C89E1DB004ABFA1 /* FirebaseCrashlytics */; };
 		DEB035BA2C89E57A004ABFA1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = DEB035B92C89E57A004ABFA1 /* Defaults */; };
-		DEE64D0B2C8869D0002C2F2F /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = DEE64D0A2C8869D0002C2F2F /* Sparkle */; };
+		DEE64D0B2C8869D0002C2F2F /* Sparkle in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = DEE64D0A2C8869D0002C2F2F /* Sparkle */; };
 		DEF920382DD5CAF20087C32C /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = DEF920372DD5CAF20087C32C /* FactoryKit */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B5DA44672E9D3B750069ECF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04B3CA6C2BA06C9C0039F76E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5DA44572E9D3B6E0069ECF5;
-			remoteInfo = RezkaTV;
-		};
-		B5DA44712E9D3B750069ECF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04B3CA6C2BA06C9C0039F76E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5DA44572E9D3B6E0069ECF5;
-			remoteInfo = RezkaTV;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B5DA40B82E9C31360069ECF5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		04B3CA742BA06C9C0039F76E /* HDrezka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDrezka.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5DA40BA2E9C31360069ECF5 /* libHDRezkaTv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHDRezkaTv.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5DA44582E9D3B6E0069ECF5 /* RezkaTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RezkaTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5DA44662E9D3B750069ECF5 /* RezkaTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RezkaTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5DA44702E9D3B750069ECF5 /* RezkaTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RezkaTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2D67352DC3D13700A9187C /* LicensesList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LicensesList; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B5DA40FD2E9C34690069ECF5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		DE8580E32E9D2B3800EFD65D /* Exceptions for "HDrezka" folder in "HDrezka" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Core/Const.swift,
-				Core/Container.swift,
-				Core/Defaults.swift,
-				Core/Errors.swift,
-				Data/Network/AccountService.swift,
-				Data/Network/Aria2Service.swift,
-				Data/Network/CollectionsService.swift,
-				Data/Network/MovieDetailsService.swift,
-				Data/Network/MovieListsService.swift,
-				Data/Network/PeopleService.swift,
-				Data/Network/SearchService.swift,
-				Data/Parsing/AccountParser.swift,
-				Data/Parsing/CollectionsParser.swift,
-				Data/Parsing/Extensions.swift,
-				Data/Parsing/MovieDetailsParser.swift,
-				Data/Parsing/MovieListsParser.swift,
-				Data/Parsing/PeopleParser.swift,
-				Data/Parsing/Scanner.swift,
-				Data/Parsing/SearchParser.swift,
-				Data/Parsing/WebVTTParser.swift,
-				Data/Repositories/AccountRepositoryImpl.swift,
-				Data/Repositories/Aria2RepositoryImpl.swift,
-				Data/Repositories/CollectionsRepositoryImpl.swift,
-				Data/Repositories/MovieDetailsRepositoryImpl.swift,
-				Data/Repositories/MovieListsRepositoryImpl.swift,
-				Data/Repositories/PeopleRepositoryImpl.swift,
-				Data/Repositories/SearchRepositoryImpl.swift,
-				Data/Utils/CustomInterceptor.swift,
-				Data/Utils/CustomMonitor.swift,
-				Data/Utils/Decrypt.swift,
-				Data/Utils/Utils.swift,
-				Domain/Entities/Aria2.swift,
-				Domain/Entities/Bookmark.swift,
-				Domain/Entities/Comment.swift,
-				Domain/Entities/Likes.swift,
-				Domain/Entities/Movie/MovieBest.swift,
-				Domain/Entities/Movie/MovieCountry.swift,
-				Domain/Entities/Movie/MovieDetailed.swift,
-				Domain/Entities/Movie/MovieEpisode.swift,
-				Domain/Entities/Movie/MovieFranchisePart.swift,
-				Domain/Entities/Movie/MovieGenre.swift,
-				Domain/Entities/Movie/MovieList.swift,
-				Domain/Entities/Movie/MovieRating.swift,
-				Domain/Entities/Movie/MovieSeason.swift,
-				Domain/Entities/Movie/MovieSimple.swift,
-				Domain/Entities/Movie/MovieSubtitles.swift,
-				Domain/Entities/Movie/MovieType.swift,
-				Domain/Entities/Movie/MovieVideo.swift,
-				Domain/Entities/Movie/MovieVoiceActing.swift,
-				Domain/Entities/Movie/MovieVoiceActingRating.swift,
-				Domain/Entities/Movie/MovieWatchLater.swift,
-				Domain/Entities/Movie/MovieYear.swift,
-				Domain/Entities/MoviesCollection.swift,
-				Domain/Entities/Named.swift,
-				Domain/Entities/Person/PersonDetailed.swift,
-				Domain/Entities/Person/PersonSimple.swift,
-				Domain/Entities/PlayerData.swift,
-				Domain/Entities/PlayerPosition.swift,
-				Domain/Entities/SelectPosition.swift,
-				Domain/Entities/SendCommentResult.swift,
-				Domain/Entities/Series.swift,
-				Domain/Entities/Series/SeriesScheduleGroup.swift,
-				Domain/Entities/Series/SeriesScheduleItem.swift,
-				Domain/Entities/Series/SeriesUpdateGroup.swift,
-				Domain/Entities/Series/SeriesUpdateItem.swift,
-				Domain/Entities/WebVTT.swift,
-				Domain/Repositories/AccountRepository.swift,
-				Domain/Repositories/Aria2Repository.swift,
-				Domain/Repositories/CollectionsRepository.swift,
-				Domain/Repositories/MovieDetailsRepository.swift,
-				Domain/Repositories/MovieListsRepository.swift,
-				Domain/Repositories/PeopleRepository.swift,
-				Domain/Repositories/SearchRepository.swift,
-				Domain/UseCases/Account/AddToBookmarksUseCase.swift,
-				Domain/UseCases/Account/ChangeBookmarksCategoryNameUseCase.swift,
-				Domain/UseCases/Account/CheckEmailUseCase.swift,
-				Domain/UseCases/Account/CheckUsernameUseCase.swift,
-				Domain/UseCases/Account/CreateBookmarksCategoryUseCase.swift,
-				Domain/UseCases/Account/DeleteBookmarksCategoryUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksByCategoryAddedUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksByCategoryPopularUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksByCategoryYearUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksUseCase.swift,
-				Domain/UseCases/Account/GetSeriesUpdatesUseCase.swift,
-				Domain/UseCases/Account/GetVersionUseCase.swift,
-				Domain/UseCases/Account/GetWatchingLaterMoviesUseCase.swift,
-				Domain/UseCases/Account/LogoutUseCase.swift,
-				Domain/UseCases/Account/MoveBetweenBookmarksUseCase.swift,
-				Domain/UseCases/Account/RemoveFromBookmarksUseCase.swift,
-				Domain/UseCases/Account/RemoveWatchingItemUseCase.swift,
-				Domain/UseCases/Account/ReorderBookmarksCategoriesUseCase.swift,
-				Domain/UseCases/Account/RestoreUseCase.swift,
-				Domain/UseCases/Account/SaveWatchingStateUseCase.swift,
-				Domain/UseCases/Account/SignInUseCase.swift,
-				Domain/UseCases/Account/SignUpUseCase.swift,
-				Domain/UseCases/Account/SwitchWatchedItemUseCase.swift,
-				Domain/UseCases/Aria2/CallUseCase.swift,
-				Domain/UseCases/Aria2/MulticallUseCase.swift,
-				Domain/UseCases/Collections/GetCollectionsUseCase.swift,
-				Domain/UseCases/Collections/GetLatestMoviesInCollectionUseCase.swift,
-				Domain/UseCases/Collections/GetPopularMoviesInCollectionUseCase.swift,
-				Domain/UseCases/Collections/GetSoonMoviesInCollectionUseCase.swift,
-				Domain/UseCases/Collections/GetWatchingNowMoviesInCollectionUseCase.swift,
-				Domain/UseCases/MovieDetails/DeleteCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/GetCommentsPageUseCase.swift,
-				Domain/UseCases/MovieDetails/GetCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/GetLikesUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieBookmarksUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieDetailsUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieThumbnailsUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieTrailerIdUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieVideoUseCase.swift,
-				Domain/UseCases/MovieDetails/GetSeriesSeasonsUseCase.swift,
-				Domain/UseCases/MovieDetails/RateUseCase.swift,
-				Domain/UseCases/MovieDetails/ReportCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/SendCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/ToggleLikeCommentUseCase.swift,
-				Domain/UseCases/MovieLists/GetFeaturedMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetHotMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestNewestMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetMovieListUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularNewestMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetSoonMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetSoonMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetSoonMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowNewestMoviesUseCase.swift,
-				Domain/UseCases/People/GetPersonDetailsUseCase.swift,
-				Domain/UseCases/Search/CategoriesUseCase.swift,
-				Domain/UseCases/Search/SearchUseCase.swift,
-				Presentation/Bookmarks/BookmarksViewModel.swift,
-				Presentation/Categories/CategoriesViewModel.swift,
-				Presentation/Collections/CollectionsViewModel.swift,
-				Presentation/Comments/CommentsViewModel.swift,
-				Presentation/Details/DetailsViewModel.swift,
-				Presentation/Home/HomeViewModel.swift,
-				Presentation/List/ListViewModel.swift,
-				Presentation/Person/PersonViewModel.swift,
-				Presentation/Search/SearchViewModel.swift,
-				Presentation/Utils/Array.swift,
-				Presentation/Utils/Int.swift,
-				Presentation/Utils/Set.swift,
-				Presentation/Utils/Shimmer.swift,
-				Presentation/Utils/State.swift,
-				Presentation/Utils/String.swift,
-				Presentation/Utils/URL.swift,
-				Presentation/Utils/View.swift,
-				Presentation/WatchingLater/WatchingLaterViewModel.swift,
+				iOS/Resources/Info.plist,
+				macOS/Resources/Info.plist,
 			);
-			target = B5DA40B92E9C31360069ECF5 /* HDRezkaTv */;
-		};
-		B5DA44822E9D3C2F0069ECF5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Core/Const.swift,
-				Core/Container.swift,
-				Core/Defaults.swift,
-				Core/Errors.swift,
-				Data/Network/AccountService.swift,
-				Data/Network/Aria2Service.swift,
-				Data/Network/CollectionsService.swift,
-				Data/Network/MovieDetailsService.swift,
-				Data/Network/MovieListsService.swift,
-				Data/Network/PeopleService.swift,
-				Data/Network/SearchService.swift,
-				Data/Parsing/AccountParser.swift,
-				Data/Parsing/CollectionsParser.swift,
-				Data/Parsing/Extensions.swift,
-				Data/Parsing/MovieDetailsParser.swift,
-				Data/Parsing/MovieListsParser.swift,
-				Data/Parsing/PeopleParser.swift,
-				Data/Parsing/Scanner.swift,
-				Data/Parsing/SearchParser.swift,
-				Data/Parsing/WebVTTParser.swift,
-				Data/Repositories/AccountRepositoryImpl.swift,
-				Data/Repositories/Aria2RepositoryImpl.swift,
-				Data/Repositories/CollectionsRepositoryImpl.swift,
-				Data/Repositories/MovieDetailsRepositoryImpl.swift,
-				Data/Repositories/MovieListsRepositoryImpl.swift,
-				Data/Repositories/PeopleRepositoryImpl.swift,
-				Data/Repositories/SearchRepositoryImpl.swift,
-				Data/Utils/CustomInterceptor.swift,
-				Data/Utils/CustomMonitor.swift,
-				Data/Utils/Decrypt.swift,
-				Data/Utils/Utils.swift,
-				Domain/Entities/Aria2.swift,
-				Domain/Entities/Bookmark.swift,
-				Domain/Entities/Comment.swift,
-				Domain/Entities/Likes.swift,
-				Domain/Entities/Movie/MovieBest.swift,
-				Domain/Entities/Movie/MovieCountry.swift,
-				Domain/Entities/Movie/MovieDetailed.swift,
-				Domain/Entities/Movie/MovieEpisode.swift,
-				Domain/Entities/Movie/MovieFranchisePart.swift,
-				Domain/Entities/Movie/MovieGenre.swift,
-				Domain/Entities/Movie/MovieList.swift,
-				Domain/Entities/Movie/MovieRating.swift,
-				Domain/Entities/Movie/MovieSeason.swift,
-				Domain/Entities/Movie/MovieSimple.swift,
-				Domain/Entities/Movie/MovieSubtitles.swift,
-				Domain/Entities/Movie/MovieType.swift,
-				Domain/Entities/Movie/MovieVideo.swift,
-				Domain/Entities/Movie/MovieVoiceActing.swift,
-				Domain/Entities/Movie/MovieVoiceActingRating.swift,
-				Domain/Entities/Movie/MovieWatchLater.swift,
-				Domain/Entities/Movie/MovieYear.swift,
-				Domain/Entities/MoviesCollection.swift,
-				Domain/Entities/Named.swift,
-				Domain/Entities/Person/PersonDetailed.swift,
-				Domain/Entities/Person/PersonSimple.swift,
-				Domain/Entities/PlayerData.swift,
-				Domain/Entities/PlayerPosition.swift,
-				Domain/Entities/SelectPosition.swift,
-				Domain/Entities/SendCommentResult.swift,
-				Domain/Entities/Series.swift,
-				Domain/Entities/Series/SeriesScheduleGroup.swift,
-				Domain/Entities/Series/SeriesScheduleItem.swift,
-				Domain/Entities/Series/SeriesUpdateGroup.swift,
-				Domain/Entities/Series/SeriesUpdateItem.swift,
-				Domain/Entities/WebVTT.swift,
-				Domain/Repositories/AccountRepository.swift,
-				Domain/Repositories/Aria2Repository.swift,
-				Domain/Repositories/CollectionsRepository.swift,
-				Domain/Repositories/MovieDetailsRepository.swift,
-				Domain/Repositories/MovieListsRepository.swift,
-				Domain/Repositories/PeopleRepository.swift,
-				Domain/Repositories/SearchRepository.swift,
-				Domain/UseCases/Account/AddToBookmarksUseCase.swift,
-				Domain/UseCases/Account/ChangeBookmarksCategoryNameUseCase.swift,
-				Domain/UseCases/Account/CheckEmailUseCase.swift,
-				Domain/UseCases/Account/CheckUsernameUseCase.swift,
-				Domain/UseCases/Account/CreateBookmarksCategoryUseCase.swift,
-				Domain/UseCases/Account/DeleteBookmarksCategoryUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksByCategoryAddedUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksByCategoryPopularUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksByCategoryYearUseCase.swift,
-				Domain/UseCases/Account/GetBookmarksUseCase.swift,
-				Domain/UseCases/Account/GetSeriesUpdatesUseCase.swift,
-				Domain/UseCases/Account/GetVersionUseCase.swift,
-				Domain/UseCases/Account/GetWatchingLaterMoviesUseCase.swift,
-				Domain/UseCases/Account/LogoutUseCase.swift,
-				Domain/UseCases/Account/MoveBetweenBookmarksUseCase.swift,
-				Domain/UseCases/Account/RemoveFromBookmarksUseCase.swift,
-				Domain/UseCases/Account/RemoveWatchingItemUseCase.swift,
-				Domain/UseCases/Account/ReorderBookmarksCategoriesUseCase.swift,
-				Domain/UseCases/Account/RestoreUseCase.swift,
-				Domain/UseCases/Account/SaveWatchingStateUseCase.swift,
-				Domain/UseCases/Account/SignInUseCase.swift,
-				Domain/UseCases/Account/SignUpUseCase.swift,
-				Domain/UseCases/Account/SwitchWatchedItemUseCase.swift,
-				Domain/UseCases/Aria2/CallUseCase.swift,
-				Domain/UseCases/Aria2/MulticallUseCase.swift,
-				Domain/UseCases/Collections/GetCollectionsUseCase.swift,
-				Domain/UseCases/Collections/GetLatestMoviesInCollectionUseCase.swift,
-				Domain/UseCases/Collections/GetPopularMoviesInCollectionUseCase.swift,
-				Domain/UseCases/Collections/GetSoonMoviesInCollectionUseCase.swift,
-				Domain/UseCases/Collections/GetWatchingNowMoviesInCollectionUseCase.swift,
-				Domain/UseCases/MovieDetails/DeleteCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/GetCommentsPageUseCase.swift,
-				Domain/UseCases/MovieDetails/GetCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/GetLikesUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieBookmarksUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieDetailsUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieThumbnailsUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieTrailerIdUseCase.swift,
-				Domain/UseCases/MovieDetails/GetMovieVideoUseCase.swift,
-				Domain/UseCases/MovieDetails/GetSeriesSeasonsUseCase.swift,
-				Domain/UseCases/MovieDetails/RateUseCase.swift,
-				Domain/UseCases/MovieDetails/ReportCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/SendCommentUseCase.swift,
-				Domain/UseCases/MovieDetails/ToggleLikeCommentUseCase.swift,
-				Domain/UseCases/MovieLists/GetFeaturedMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetHotMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetLatestNewestMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetMovieListUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetPopularNewestMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetSoonMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetSoonMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetSoonMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowMoviesByCountryUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowMoviesByGenreUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowMoviesUseCase.swift,
-				Domain/UseCases/MovieLists/GetWatchingNowNewestMoviesUseCase.swift,
-				Domain/UseCases/People/GetPersonDetailsUseCase.swift,
-				Domain/UseCases/Search/CategoriesUseCase.swift,
-				Domain/UseCases/Search/SearchUseCase.swift,
-				Presentation/Bookmarks/BookmarksViewModel.swift,
-				Presentation/Categories/CategoriesViewModel.swift,
-				Presentation/Collections/CollectionsViewModel.swift,
-				Presentation/Comments/CommentsViewModel.swift,
-				Presentation/Details/DetailsViewModel.swift,
-				Presentation/Home/HomeViewModel.swift,
-				Presentation/List/ListViewModel.swift,
-				Presentation/Person/PersonViewModel.swift,
-				Presentation/Search/SearchViewModel.swift,
-				Presentation/Utils/Array.swift,
-				Presentation/Utils/Int.swift,
-				Presentation/Utils/Set.swift,
-				Presentation/Utils/Shimmer.swift,
-				Presentation/Utils/State.swift,
-				Presentation/Utils/String.swift,
-				Presentation/Utils/URL.swift,
-				Presentation/Utils/View.swift,
-				Presentation/WatchingLater/WatchingLaterViewModel.swift,
-			);
-			target = B5DA44572E9D3B6E0069ECF5 /* RezkaTV */;
-		};
-		B5DA451E2E9D3D8E0069ECF5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Core/TVAppState.swift,
-				Core/TVDownloaderStub.swift,
-				Presentation/Auth/TVRestoreSheetView.swift,
-				Presentation/Auth/TVSignInSheetView.swift,
-				Presentation/Auth/TVSignUpSheetView.swift,
-				Presentation/Bookmarks/TVBookmarksView.swift,
-				Presentation/Categories/TVCategoriesView.swift,
-				Presentation/Collections/TVCollectionsView.swift,
-				Presentation/Components/TVCardView.swift,
-				Presentation/Components/TVEmptyStateView.swift,
-				Presentation/Details/TVDetailsView.swift,
-				Presentation/Home/TVHomeView.swift,
-				Presentation/List/TVListView.swift,
-				Presentation/Search/TVSearchView.swift,
-				Presentation/Settings/TVSettingsView.swift,
-				Presentation/TVContentView.swift,
-				Presentation/Utils/TVExtensions.swift,
-				Presentation/WatchingLater/TVWatchingLaterView.swift,
-			);
-			target = B5DA40B92E9C31360069ECF5 /* HDRezkaTv */;
-		};
-		DE2A628C2CC443F500301282 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Resources/Info.plist,
-			);
+			platformFiltersByRelativePath = {
+				iOS/Core/AppState.swift = (ios, );
+				iOS/Core/Const.swift = (ios, );
+				iOS/Core/Container.swift = (ios, );
+				iOS/Core/Defaults.swift = (ios, );
+				iOS/Core/Downloader.swift = (ios, );
+				iOS/Domain/Entities/Download.swift = (ios, );
+				iOS/Domain/Entities/DownloadData.swift = (ios, );
+				iOS/Domain/Entities/ExternalPlayers.swift = (ios, );
+				iOS/HDrezkaApp.swift = (ios, );
+				iOS/Presentations/BookmarksView.swift = (ios, );
+				iOS/Presentations/CategoriesView.swift = (ios, );
+				iOS/Presentations/CollectionsView.swift = (ios, );
+				iOS/Presentations/CommentsView.swift = (ios, );
+				iOS/Presentations/Components/Cards/CardView.swift = (ios, );
+				iOS/Presentations/Components/Cards/CollectionCardView.swift = (ios, );
+				iOS/Presentations/Components/Cards/WatchingLaterCardView.swift = (ios, );
+				iOS/Presentations/Components/DownloadsView.swift = (ios, );
+				iOS/Presentations/Components/EmptyStateView.swift = (ios, );
+				iOS/Presentations/Components/ErrorPaginationStateView.swift = (ios, );
+				iOS/Presentations/Components/ErrorStateView.swift = (ios, );
+				iOS/Presentations/Components/ImageView.swift = (ios, );
+				iOS/Presentations/Components/LicensesView.swift = (ios, );
+				iOS/Presentations/Components/LoadingPaginationStateView.swift = (ios, );
+				iOS/Presentations/Components/LoadingStateView.swift = (ios, );
+				iOS/Presentations/Components/OnPressButtonStyle.swift = (ios, );
+				iOS/Presentations/Components/OrientationView.swift = (ios, );
+				iOS/Presentations/Components/Player/CustomAVPlayer.swift = (ios, );
+				iOS/Presentations/Components/Player/PlayerView.swift = (ios, );
+				iOS/Presentations/Components/Player/SliderWithText.swift = (ios, );
+				iOS/Presentations/Components/Player/SliderWithoutText.swift = (ios, );
+				iOS/Presentations/Components/SettingsView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/BookmarksSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/CommentReportSheet.swift = (ios, );
+				iOS/Presentations/Components/Sheets/CommentsRulesSheet.swift = (ios, );
+				iOS/Presentations/Components/Sheets/CreateBookmarkSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/DowloadSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/OpenExternalPlayerSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/RenameBookmarkSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/RestoreSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/ScheduleSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/SeriesUpdatesSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/SignInSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/SignUpSheetView.swift = (ios, );
+				iOS/Presentations/Components/Sheets/WatchSheetView.swift = (ios, );
+				iOS/Presentations/Components/SnowflakesView.swift = (ios, );
+				iOS/Presentations/Components/SpoilerView.swift = (ios, );
+				iOS/Presentations/ContentView.swift = (ios, );
+				iOS/Presentations/DetailsView.swift = (ios, );
+				iOS/Presentations/HomeView.swift = (ios, );
+				iOS/Presentations/ListView.swift = (ios, );
+				iOS/Presentations/PersonView.swift = (ios, );
+				iOS/Presentations/ProfileView.swift = (ios, );
+				iOS/Presentations/SearchView.swift = (ios, );
+				iOS/Presentations/WatchingLaterView.swift = (ios, );
+				iOS/Resources/Assets.xcassets = (ios, );
+				iOS/Resources/InfoPlist.xcstrings = (ios, );
+				"iOS/Resources/Launch Screen.storyboard" = (ios, );
+				iOS/Utils/RemoveBackgroundImageProcessor.swift = (ios, );
+				macOS/Core/AppState.swift = (macos, );
+				macOS/Core/Const.swift = (macos, );
+				macOS/Core/Container.swift = (macos, );
+				macOS/Core/Defaults.swift = (macos, );
+				macOS/Core/Downloader.swift = (macos, );
+				macOS/Data/Network/Aria2Service.swift = (macos, );
+				macOS/Data/Repositories/Aria2RepositoryImpl.swift = (macos, );
+				macOS/Domain/Entities/Aria2.swift = (macos, );
+				macOS/Domain/Entities/Download.swift = (macos, );
+				macOS/Domain/Entities/DownloadData.swift = (macos, );
+				macOS/Domain/Entities/ExternalDownloaders.swift = (macos, );
+				macOS/Domain/Entities/ExternalPlayers.swift = (macos, );
+				macOS/Domain/Entities/UpdateInterval.swift = (macos, );
+				macOS/Domain/Repositories/Aria2Repository.swift = (macos, );
+				macOS/Domain/UseCases/Aria2/CallUseCase.swift = (macos, );
+				macOS/Domain/UseCases/Aria2/MulticallUseCase.swift = (macos, );
+				macOS/HDrezkaApp.swift = (macos, );
+				macOS/Presentations/BookmarksView.swift = (macos, );
+				macOS/Presentations/CategoriesView.swift = (macos, );
+				macOS/Presentations/CollectionsView.swift = (macos, );
+				macOS/Presentations/CommentsView.swift = (macos, );
+				macOS/Presentations/Components/Cards/CardView.swift = (macos, );
+				macOS/Presentations/Components/Cards/CollectionCardView.swift = (macos, );
+				macOS/Presentations/Components/Cards/WatchingLaterCardView.swift = (macos, );
+				macOS/Presentations/Components/DownloadsView.swift = (macos, );
+				macOS/Presentations/Components/EmptyStateView.swift = (macos, );
+				macOS/Presentations/Components/ErrorPaginationStateView.swift = (macos, );
+				macOS/Presentations/Components/ErrorStateView.swift = (macos, );
+				macOS/Presentations/Components/ImageView.swift = (macos, );
+				macOS/Presentations/Components/LicensesView.swift = (macos, );
+				macOS/Presentations/Components/LoadingPaginationStateView.swift = (macos, );
+				macOS/Presentations/Components/LoadingStateView.swift = (macos, );
+				macOS/Presentations/Components/OnPressButtonStyle.swift = (macos, );
+				macOS/Presentations/Components/Player/CustomAVPlayer.swift = (macos, );
+				macOS/Presentations/Components/Player/PlayerView.swift = (macos, );
+				macOS/Presentations/Components/Player/SliderWithText.swift = (macos, );
+				macOS/Presentations/Components/Player/SliderWithoutText.swift = (macos, );
+				macOS/Presentations/Components/SettingsView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/BookmarksSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/CommentReportSheet.swift = (macos, );
+				macOS/Presentations/Components/Sheets/CommentsRulesSheet.swift = (macos, );
+				macOS/Presentations/Components/Sheets/CreateBookmarkSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/DownloadSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/OpenExternalPlayerSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/RenameBookmarkSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/RestoreSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/ScheduleSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/SeriesUpdatesSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/SignInSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/SignUpSheetView.swift = (macos, );
+				macOS/Presentations/Components/Sheets/WatchSheetView.swift = (macos, );
+				macOS/Presentations/Components/SnowflakesView.swift = (macos, );
+				macOS/Presentations/Components/SpoilerView.swift = (macos, );
+				macOS/Presentations/Components/UpdateButton.swift = (macos, );
+				macOS/Presentations/ContentView.swift = (macos, );
+				macOS/Presentations/DetailsView.swift = (macos, );
+				macOS/Presentations/HomeView.swift = (macos, );
+				macOS/Presentations/ListView.swift = (macos, );
+				macOS/Presentations/PersonView.swift = (macos, );
+				macOS/Presentations/SearchView.swift = (macos, );
+				macOS/Presentations/WatchingLaterView.swift = (macos, );
+				macOS/Resources/Assets.xcassets = (macos, );
+				"macOS/Resources/aria2c-arm64" = (macos, );
+				"macOS/Resources/aria2c-x86_64" = (macos, );
+				macOS/Utils/NSImage.swift = (macos, );
+				macOS/Utils/RemoveBackgroundImageProcessor.swift = (macos, );
+				macOS/Utils/WindowAccessor.swift = (macos, );
+			};
 			target = 04B3CA732BA06C9C0039F76E /* HDrezka */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B5DA40BB2E9C31360069ECF5 /* HDRezkaTv */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HDRezkaTv; sourceTree = "<group>"; };
-		B5DA44592E9D3B6E0069ECF5 /* RezkaTV */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B5DA451E2E9D3D8E0069ECF5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = RezkaTV; sourceTree = "<group>"; };
-		B5DA44692E9D3B750069ECF5 /* RezkaTVTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = RezkaTVTests; sourceTree = "<group>"; };
-		B5DA44732E9D3B750069ECF5 /* RezkaTVUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = RezkaTVUITests; sourceTree = "<group>"; };
-		DE2A62132CC443F500301282 /* HDrezka */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (DE2A628C2CC443F500301282 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, B5DA40FD2E9C34690069ECF5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, B5DA44822E9D3C2F0069ECF5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = HDrezka; sourceTree = "<group>"; };
+		DE92A9F62E9D275B00252B87 /* HDrezka */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DE8580E32E9D2B3800EFD65D /* Exceptions for "HDrezka" folder in "HDrezka" target */,
+			);
+			path = HDrezka;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,57 +193,13 @@
 				04B3CA8A2BA06CAC0039F76E /* SwiftSoup in Frameworks */,
 				DE3EF0392CFF04CA0022C311 /* Alamofire in Frameworks */,
 				DEE64D0B2C8869D0002C2F2F /* Sparkle in Frameworks */,
+				DE4AD63E2EAA4A7200CE7AB3 /* Kingfisher in Frameworks */,
 				DE188EE52CA6AB3100E7B1AE /* Pow in Frameworks */,
 				04E5DC0A2C120C4200BF1B7A /* Flow in Frameworks */,
 				DEF920382DD5CAF20087C32C /* FactoryKit in Frameworks */,
 				DEB035B72C89E1DB004ABFA1 /* FirebaseCrashlytics in Frameworks */,
 				DE2D67382DC3D5E900A9187C /* LicensesList in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA40B72E9C31360069ECF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5DA41992E9C36BC0069ECF5 /* Defaults in Frameworks */,
-				B5DA419B2E9C36D00069ECF5 /* SwiftSoup in Frameworks */,
-				B5DA41A12E9C39040069ECF5 /* FirebaseAnalytics in Frameworks */,
-				B5DA41A32E9C390C0069ECF5 /* FirebaseCrashlytics in Frameworks */,
-				B5DA44452E9CEAE60069ECF5 /* Algorithms in Frameworks */,
-				B5DA44492E9CFC3E0069ECF5 /* OrderedCollections in Frameworks */,
-				B5DA41972E9C36880069ECF5 /* FactoryKit in Frameworks */,
-				B5DA41952E9C36600069ECF5 /* Alamofire in Frameworks */,
-				B5DA419E2E9C373F0069ECF5 /* Kingfisher in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA44552E9D3B6E0069ECF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5DA45382E9D3E8F0069ECF5 /* Defaults in Frameworks */,
-				B5DA45342E9D3E770069ECF5 /* Algorithms in Frameworks */,
-				B5DA453A2E9D3E9B0069ECF5 /* FactoryKit in Frameworks */,
-				B5DA453E2E9D3EA90069ECF5 /* FirebaseCrashlytics in Frameworks */,
-				B5DA45422E9D3EB90069ECF5 /* Kingfisher in Frameworks */,
-				B5DA453C2E9D3EA90069ECF5 /* FirebaseAnalytics in Frameworks */,
-				B5DA45402E9D3EB90069ECF5 /* OrderedCollections in Frameworks */,
-				B5DA45362E9D3E7F0069ECF5 /* Alamofire in Frameworks */,
-				B5DA45442E9D3ECE0069ECF5 /* SwiftSoup in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA44632E9D3B750069ECF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA446D2E9D3B750069ECF5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DE7608DA2EB4231600C4A23E /* LRUCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,12 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				DE2D67352DC3D13700A9187C /* LicensesList */,
-				DE2A62132CC443F500301282 /* HDrezka */,
-				B5DA40BB2E9C31360069ECF5 /* HDRezkaTv */,
-				B5DA44592E9D3B6E0069ECF5 /* RezkaTV */,
-				B5DA44692E9D3B750069ECF5 /* RezkaTVTests */,
-				B5DA44732E9D3B750069ECF5 /* RezkaTVUITests */,
-				B5DA41932E9C36600069ECF5 /* Frameworks */,
+				DE92A9F62E9D275B00252B87 /* HDrezka */,
 				04B3CA752BA06C9C0039F76E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -534,19 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				04B3CA742BA06C9C0039F76E /* HDrezka.app */,
-				B5DA40BA2E9C31360069ECF5 /* libHDRezkaTv.a */,
-				B5DA44582E9D3B6E0069ECF5 /* RezkaTV.app */,
-				B5DA44662E9D3B750069ECF5 /* RezkaTVTests.xctest */,
-				B5DA44702E9D3B750069ECF5 /* RezkaTVUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B5DA41932E9C36600069ECF5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,7 +241,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				DE2A62132CC443F500301282 /* HDrezka */,
+				DE92A9F62E9D275B00252B87 /* HDrezka */,
 			);
 			name = HDrezka;
 			packageProductDependencies = (
@@ -585,118 +259,12 @@
 				DE2D67372DC3D5E900A9187C /* LicensesList */,
 				DEF920372DD5CAF20087C32C /* FactoryKit */,
 				DE3DCCE52DFB92050062CF81 /* SwiftFormat */,
+				DE4AD63D2EAA4A7200CE7AB3 /* Kingfisher */,
+				DE7608D92EB4231600C4A23E /* LRUCache */,
 			);
 			productName = HDRezka;
 			productReference = 04B3CA742BA06C9C0039F76E /* HDrezka.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B5DA40B92E9C31360069ECF5 /* HDRezkaTv */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5DA40C02E9C31360069ECF5 /* Build configuration list for PBXNativeTarget "HDRezkaTv" */;
-			buildPhases = (
-				B5DA40B62E9C31360069ECF5 /* Sources */,
-				B5DA40B72E9C31360069ECF5 /* Frameworks */,
-				B5DA40B82E9C31360069ECF5 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				B5DA40BB2E9C31360069ECF5 /* HDRezkaTv */,
-			);
-			name = HDRezkaTv;
-			packageProductDependencies = (
-				B5DA41942E9C36600069ECF5 /* Alamofire */,
-				B5DA41962E9C36880069ECF5 /* FactoryKit */,
-				B5DA41982E9C36BC0069ECF5 /* Defaults */,
-				B5DA419A2E9C36D00069ECF5 /* SwiftSoup */,
-				B5DA419D2E9C373F0069ECF5 /* Kingfisher */,
-				B5DA41A02E9C39040069ECF5 /* FirebaseAnalytics */,
-				B5DA41A22E9C390C0069ECF5 /* FirebaseCrashlytics */,
-				B5DA44442E9CEAE60069ECF5 /* Algorithms */,
-				B5DA44482E9CFC3E0069ECF5 /* OrderedCollections */,
-			);
-			productName = HDRezkaTv;
-			productReference = B5DA40BA2E9C31360069ECF5 /* libHDRezkaTv.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		B5DA44572E9D3B6E0069ECF5 /* RezkaTV */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5DA44782E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTV" */;
-			buildPhases = (
-				B5DA44542E9D3B6E0069ECF5 /* Sources */,
-				B5DA44552E9D3B6E0069ECF5 /* Frameworks */,
-				B5DA44562E9D3B6E0069ECF5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				B5DA44592E9D3B6E0069ECF5 /* RezkaTV */,
-			);
-			name = RezkaTV;
-			packageProductDependencies = (
-				B5DA45332E9D3E770069ECF5 /* Algorithms */,
-				B5DA45352E9D3E7F0069ECF5 /* Alamofire */,
-				B5DA45372E9D3E8F0069ECF5 /* Defaults */,
-				B5DA45392E9D3E9B0069ECF5 /* FactoryKit */,
-				B5DA453B2E9D3EA90069ECF5 /* FirebaseAnalytics */,
-				B5DA453D2E9D3EA90069ECF5 /* FirebaseCrashlytics */,
-				B5DA453F2E9D3EB90069ECF5 /* OrderedCollections */,
-				B5DA45412E9D3EB90069ECF5 /* Kingfisher */,
-				B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */,
-			);
-			productName = RezkaTV;
-			productReference = B5DA44582E9D3B6E0069ECF5 /* RezkaTV.app */;
-			productType = "com.apple.product-type.application";
-		};
-		B5DA44652E9D3B750069ECF5 /* RezkaTVTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5DA447B2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVTests" */;
-			buildPhases = (
-				B5DA44622E9D3B750069ECF5 /* Sources */,
-				B5DA44632E9D3B750069ECF5 /* Frameworks */,
-				B5DA44642E9D3B750069ECF5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B5DA44682E9D3B750069ECF5 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B5DA44692E9D3B750069ECF5 /* RezkaTVTests */,
-			);
-			name = RezkaTVTests;
-			packageProductDependencies = (
-			);
-			productName = RezkaTVTests;
-			productReference = B5DA44662E9D3B750069ECF5 /* RezkaTVTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B5DA446F2E9D3B750069ECF5 /* RezkaTVUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5DA447E2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVUITests" */;
-			buildPhases = (
-				B5DA446C2E9D3B750069ECF5 /* Sources */,
-				B5DA446D2E9D3B750069ECF5 /* Frameworks */,
-				B5DA446E2E9D3B750069ECF5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B5DA44722E9D3B750069ECF5 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B5DA44732E9D3B750069ECF5 /* RezkaTVUITests */,
-			);
-			name = RezkaTVUITests;
-			packageProductDependencies = (
-			);
-			productName = RezkaTVUITests;
-			productReference = B5DA44702E9D3B750069ECF5 /* RezkaTVUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -705,30 +273,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					04B3CA732BA06C9C0039F76E = {
 						CreatedOnToolsVersion = 15.3;
 					};
-					B5DA40B92E9C31360069ECF5 = {
-						CreatedOnToolsVersion = 26.0;
-					};
-					B5DA44572E9D3B6E0069ECF5 = {
-						CreatedOnToolsVersion = 26.0;
-					};
-					B5DA44652E9D3B750069ECF5 = {
-						CreatedOnToolsVersion = 26.0;
-						TestTargetID = B5DA44572E9D3B6E0069ECF5;
-					};
-					B5DA446F2E9D3B750069ECF5 = {
-						CreatedOnToolsVersion = 26.0;
-						TestTargetID = B5DA44572E9D3B6E0069ECF5;
-					};
 				};
 			};
 			buildConfigurationList = 04B3CA6F2BA06C9C0039F76E /* Build configuration list for PBXProject "HDrezka" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -751,44 +304,21 @@
 				DE3EF0372CFF04CA0022C311 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DEF920362DD5CAF20087C32C /* XCRemoteSwiftPackageReference "Factory" */,
 				DE3DCCE42DFB92050062CF81 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
-				B5DA419C2E9C373F0069ECF5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DE4AD63C2EAA4A7200CE7AB3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DE7608D82EB4231600C4A23E /* XCRemoteSwiftPackageReference "LRUCache" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 04B3CA752BA06C9C0039F76E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				04B3CA732BA06C9C0039F76E /* HDrezka */,
-				B5DA40B92E9C31360069ECF5 /* HDRezkaTv */,
-				B5DA44572E9D3B6E0069ECF5 /* RezkaTV */,
-				B5DA44652E9D3B750069ECF5 /* RezkaTVTests */,
-				B5DA446F2E9D3B750069ECF5 /* RezkaTVUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		04B3CA722BA06C9C0039F76E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA44562E9D3B6E0069ECF5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA44642E9D3B750069ECF5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA446E2E9D3B750069ECF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -848,48 +378,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5DA40B62E9C31360069ECF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA44542E9D3B6E0069ECF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA44622E9D3B750069ECF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5DA446C2E9D3B750069ECF5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B5DA44682E9D3B750069ECF5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5DA44572E9D3B6E0069ECF5 /* RezkaTV */;
-			targetProxy = B5DA44672E9D3B750069ECF5 /* PBXContainerItemProxy */;
-		};
-		B5DA44722E9D3B750069ECF5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5DA44572E9D3B6E0069ECF5 /* RezkaTV */;
-			targetProxy = B5DA44712E9D3B750069ECF5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		04B3CA832BA06C9D0039F76E /* Debug */ = {
@@ -949,12 +438,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1005,6 +495,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1012,12 +503,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx;
+				SDKROOT = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -1030,39 +522,63 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
-				CODE_SIGN_ENTITLEMENTS = HDrezka/Resources/HDrezka.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphone*]" = HDrezka/iOS/Resources/HDrezka.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = HDrezka/macOS/Resources/HDrezka.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphone*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 34;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = RFVKD37M39;
+				DEVELOPMENT_TEAM = 68ZUK4XR7F;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HDrezka/Resources/Info.plist;
+				INFOPLIST_FILE = "";
+				"INFOPLIST_FILE[sdk=iphone*]" = HDrezka/iOS/Resources/Info.plist;
+				"INFOPLIST_FILE[sdk=macosx*]" = HDrezka/macOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HDrezka;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.video";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphone*]" = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = NO;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphone*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphone*]" = YES;
+				"INFOPLIST_KEY_UILaunchStoryboardName[sdk=iphone*]" = "Launch Screen";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphone*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0.19;
+				MARKETING_VERSION = 1.0.33;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.silentsea.hdrezka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -1074,234 +590,63 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				ASSETCATALOG_COMPILER_OPTIMIZATION = time;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
-				CODE_SIGN_ENTITLEMENTS = HDrezka/Resources/HDrezka.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphone*]" = HDrezka/iOS/Resources/HDrezka.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = HDrezka/macOS/Resources/HDrezka.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphone*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 34;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HDrezka/Resources/Info.plist;
+				INFOPLIST_FILE = "";
+				"INFOPLIST_FILE[sdk=iphone*]" = HDrezka/iOS/Resources/Info.plist;
+				"INFOPLIST_FILE[sdk=macosx*]" = HDrezka/macOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HDrezka;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.video";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphone*]" = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = NO;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphone*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphone*]" = YES;
+				"INFOPLIST_KEY_UILaunchStoryboardName[sdk=iphone*]" = "Launch Screen";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphone*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0.19;
+				MARKETING_VERSION = 1.0.33;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.silentsea.hdrezka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		B5DA40BE2E9C31360069ECF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		B5DA40BF2E9C31360069ECF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B5DA44792E9D3B750069ECF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=appletvos*]" = RFVKD37M39;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = HDRezka;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc";
-				SDKROOT = appletvos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		B5DA447A2E9D3B750069ECF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=appletvos*]" = RFVKD37M39;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = HDRezka;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTV;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc";
-				SDKROOT = appletvos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B5DA447C2E9D3B750069ECF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RezkaTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RezkaTV";
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		B5DA447D2E9D3B750069ECF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RezkaTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RezkaTV";
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B5DA447F2E9D3B750069ECF5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_TARGET_NAME = RezkaTV;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		B5DA44802E9D3B750069ECF5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_TARGET_NAME = RezkaTV;
-				TVOS_DEPLOYMENT_TARGET = 26.0;
-				VALIDATE_PRODUCT = YES;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -1322,42 +667,6 @@
 			buildConfigurations = (
 				04B3CA862BA06C9D0039F76E /* Debug */,
 				04B3CA872BA06C9D0039F76E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5DA40C02E9C31360069ECF5 /* Build configuration list for PBXNativeTarget "HDRezkaTv" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5DA40BE2E9C31360069ECF5 /* Debug */,
-				B5DA40BF2E9C31360069ECF5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5DA44782E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5DA44792E9D3B750069ECF5 /* Debug */,
-				B5DA447A2E9D3B750069ECF5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5DA447B2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5DA447C2E9D3B750069ECF5 /* Debug */,
-				B5DA447D2E9D3B750069ECF5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5DA447E2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5DA447F2E9D3B750069ECF5 /* Debug */,
-				B5DA44802E9D3B750069ECF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1410,14 +719,6 @@
 				minimumVersion = 0.0.1;
 			};
 		};
-		B5DA419C2E9C373F0069ECF5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.6.0;
-			};
-		};
 		DE188EE32CA6AB3100E7B1AE /* XCRemoteSwiftPackageReference "Pow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EmergeTools/Pow.git";
@@ -1439,6 +740,24 @@
 		DE3EF0372CFF04CA0022C311 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 999.0.0;
+				minimumVersion = 0.0.1;
+			};
+		};
+		DE4AD63C2EAA4A7200CE7AB3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 999.0.0;
+				minimumVersion = 0.0.1;
+			};
+		};
+		DE7608D82EB4231600C4A23E /* XCRemoteSwiftPackageReference "LRUCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/LRUCache.git";
 			requirement = {
 				kind = versionRange;
 				maximumVersion = 999.0.0;
@@ -1509,96 +828,6 @@
 			package = 04E9EB442C047F19001CBBCA /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
 			productName = YouTubePlayerKit;
 		};
-		B5DA41942E9C36600069ECF5 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DE3EF0372CFF04CA0022C311 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		B5DA41962E9C36880069ECF5 /* FactoryKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEF920362DD5CAF20087C32C /* XCRemoteSwiftPackageReference "Factory" */;
-			productName = FactoryKit;
-		};
-		B5DA41982E9C36BC0069ECF5 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEB035B82C89E57A004ABFA1 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
-		B5DA419A2E9C36D00069ECF5 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04B3CA882BA06CAC0039F76E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-		B5DA419D2E9C373F0069ECF5 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B5DA419C2E9C373F0069ECF5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		B5DA41A02E9C39040069ECF5 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEB035B32C89E1DB004ABFA1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		B5DA41A22E9C390C0069ECF5 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEB035B32C89E1DB004ABFA1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		B5DA44442E9CEAE60069ECF5 /* Algorithms */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04B25FD62BA46F9C00200341 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
-		};
-		B5DA44482E9CFC3E0069ECF5 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 043A2B702C036C7C0057721E /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-		B5DA45332E9D3E770069ECF5 /* Algorithms */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04B25FD62BA46F9C00200341 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
-		};
-		B5DA45352E9D3E7F0069ECF5 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DE3EF0372CFF04CA0022C311 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		B5DA45372E9D3E8F0069ECF5 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEB035B82C89E57A004ABFA1 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
-		B5DA45392E9D3E9B0069ECF5 /* FactoryKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEF920362DD5CAF20087C32C /* XCRemoteSwiftPackageReference "Factory" */;
-			productName = FactoryKit;
-		};
-		B5DA453B2E9D3EA90069ECF5 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEB035B32C89E1DB004ABFA1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		B5DA453D2E9D3EA90069ECF5 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DEB035B32C89E1DB004ABFA1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		B5DA453F2E9D3EB90069ECF5 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 043A2B702C036C7C0057721E /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-		B5DA45412E9D3EB90069ECF5 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B5DA419C2E9C373F0069ECF5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04B3CA882BA06CAC0039F76E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
 		DE188EE42CA6AB3100E7B1AE /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DE188EE32CA6AB3100E7B1AE /* XCRemoteSwiftPackageReference "Pow" */;
@@ -1617,6 +846,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE3EF0372CFF04CA0022C311 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		DE4AD63D2EAA4A7200CE7AB3 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE4AD63C2EAA4A7200CE7AB3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		DE7608D92EB4231600C4A23E /* LRUCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7608D82EB4231600C4A23E /* XCRemoteSwiftPackageReference "LRUCache" */;
+			productName = LRUCache;
 		};
 		DEB035B42C89E1DB004ABFA1 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
