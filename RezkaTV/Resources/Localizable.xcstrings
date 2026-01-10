@@ -236,7 +236,6 @@
 
     },
     "key.acting" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1860,7 +1859,6 @@
       }
     },
     "key.default" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2413,7 +2411,6 @@
       }
     },
     "key.episode" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5351,7 +5348,6 @@
       }
     },
     "key.quality" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6271,7 +6267,6 @@
       }
     },
     "key.season" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6543,7 +6538,6 @@
       }
     },
     "key.sign_in.access" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

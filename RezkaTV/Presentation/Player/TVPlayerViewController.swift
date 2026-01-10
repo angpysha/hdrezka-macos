@@ -1,147 +1,17 @@
 import AVKit
-import Combine
-import Defaults
-import FactoryKit
 import SwiftUI
 
-// ViewModel для плеєра
-@Observable
-class TVPlayerViewModel {
-    @ObservationIgnored @LazyInjected(\.getMovieVideoUseCase) private var getMovieVideoUseCase
-    @ObservationIgnored @LazyInjected(\.getSeriesSeasonsUseCase) private var getSeriesSeasonsUseCase
-
-    @ObservationIgnored private var subscriptions: Set<AnyCancellable> = []
-
-    private(set) var isLoading = true
-    private(set) var error: String?
-    private(set) var player: AVPlayer?
-
+struct TVPlayerConfiguration: Identifiable {
+    let id = UUID()
     let details: MovieDetailed
-
-    @ObservationIgnored private var selectedActing: MovieVoiceActing?
-    @ObservationIgnored private var selectedSeason: MovieSeason?
-    @ObservationIgnored private var selectedEpisode: MovieEpisode?
-    @ObservationIgnored private var seasons: [MovieSeason]?
-
-    init(details: MovieDetailed) {
-        self.details = details
-    }
-
-    func loadVideo() {
-        isLoading = true
-        error = nil
-
-        // Вибираємо озвучку (перша доступна)
-        guard let voiceActing = details.voiceActing?.first else {
-            error = String(localized: "key.no_voice_acting")
-            isLoading = false
-            return
-        }
-
-        selectedActing = voiceActing
-
-        // Якщо серіал - завантажуємо сезони
-        if details.series != nil {
-            loadSeriesAndPlay(voiceActing: voiceActing)
-        } else {
-            // Фільм - просто отримуємо відео
-            loadVideoStream(voiceActing: voiceActing, season: nil, episode: nil)
-        }
-    }
-
-    private func loadSeriesAndPlay(voiceActing: MovieVoiceActing) {
-        getSeriesSeasonsUseCase(movieId: details.movieId, voiceActing: voiceActing, favs: details.favs)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.error = error.localizedDescription
-                    self?.isLoading = false
-                }
-            } receiveValue: { [weak self] seasons in
-                guard let self else { return }
-
-                self.seasons = seasons
-
-                // Вибираємо перший сезон та епізод
-                if let firstSeason = seasons.first,
-                   let firstEpisode = firstSeason.episodes.first
-                {
-                    selectedSeason = firstSeason
-                    selectedEpisode = firstEpisode
-                    loadVideoStream(voiceActing: voiceActing, season: firstSeason, episode: firstEpisode)
-                } else {
-                    error = String(localized: "key.no_episodes")
-                    isLoading = false
-                }
-            }
-            .store(in: &subscriptions)
-    }
-
-    private func loadVideoStream(voiceActing: MovieVoiceActing, season: MovieSeason?, episode: MovieEpisode?) {
-        getMovieVideoUseCase(
-            voiceActing: voiceActing,
-            season: season,
-            episode: episode,
-            favs: details.favs,
-        )
-        .receive(on: DispatchQueue.main)
-        .sink { [weak self] completion in
-            if case let .failure(error) = completion {
-                self?.error = error.localizedDescription
-                self?.isLoading = false
-            }
-        } receiveValue: { [weak self] movieVideo in
-            guard let self else { return }
-
-            // Перевіряємо чи потрібен premium
-            if movieVideo.needPremium {
-                error = String(localized: "key.premium_content")
-                isLoading = false
-                return
-            }
-
-            // Отримуємо URL відео (найкраща якість або за замовчуванням)
-            let defaultQuality = Defaults[.defaultQuality]
-            let videoURL: URL? = if defaultQuality == .ask || defaultQuality.rawValue == "ask" {
-                // Вибираємо найкращу якість
-                movieVideo.getMaxQuality()
-            } else {
-                // Використовуємо вибрану користувачем якість
-                movieVideo.getClosestTo(quality: defaultQuality.rawValue)
-            }
-
-            guard let url = videoURL else {
-                error = String(localized: "key.video_url_not_available")
-                isLoading = false
-                return
-            }
-
-            // Створюємо AVPlayer
-            let player = AVPlayer(url: url)
-
-            // Налаштування плеєра для tvOS
-            player.allowsExternalPlayback = true
-            player.usesExternalPlaybackWhileExternalScreenIsActive = true
-
-            // Додаємо субтитри якщо доступні
-            if !movieVideo.subtitles.isEmpty {
-                // AVPlayer автоматично підхопить субтитри з HLS
-                // Або можна додати через AVMediaSelectionGroup
-            }
-
-            // TODO: Відновити позицію відтворення з бази даних
-            // let savedPosition = getSavedPosition(for: details.movieId)
-            // player.seek(to: CMTime(seconds: savedPosition, preferredTimescale: 1))
-
-            self.player = player
-            isLoading = false
-        }
-        .store(in: &subscriptions)
-    }
+    let video: MovieVideo
+    let acting: MovieVoiceActing
+    let season: MovieSeason?
+    let episode: MovieEpisode?
+    let quality: String?
 }
 
-// SwiftUI обгортка для AVPlayerViewController
-struct TVPlayerViewController: UIViewControllerRepresentable {
+private struct TVPlayerViewController: UIViewControllerRepresentable {
     let player: AVPlayer
     let onDismiss: () -> Void
 
@@ -149,16 +19,6 @@ struct TVPlayerViewController: UIViewControllerRepresentable {
         let controller = AVPlayerViewController()
         controller.player = player
         controller.allowsPictureInPicturePlayback = true
-
-        // Додаємо спостерігач за закриттям
-        NotificationCenter.default.addObserver(
-            forName: .AVPlayerViewControllerDidDismiss,
-            object: controller,
-            queue: .main,
-        ) { _ in
-            onDismiss()
-        }
-
         return controller
     }
 
@@ -167,27 +27,18 @@ struct TVPlayerViewController: UIViewControllerRepresentable {
     }
 }
 
-extension Notification.Name {
-    static let AVPlayerViewControllerDidDismiss = Notification.Name("AVPlayerViewControllerDidDismiss")
-}
-
-// View для відтворення
 struct TVPlayerView: View {
-    let details: MovieDetailed
+    let configuration: TVPlayerConfiguration
 
-    @State private var viewModel: TVPlayerViewModel
+    @State private var player: AVPlayer?
+    @State private var error: String?
     @Environment(\.dismiss) private var dismiss
-
-    init(details: MovieDetailed) {
-        self.details = details
-        _viewModel = State(initialValue: TVPlayerViewModel(details: details))
-    }
 
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
 
-            if let player = viewModel.player {
+            if let player {
                 TVPlayerViewController(player: player) {
                     dismiss()
                 }
@@ -197,19 +48,8 @@ struct TVPlayerView: View {
                 }
                 .onDisappear {
                     player.pause()
-                    // TODO: Зберегти позицію відтворення
                 }
-            } else if viewModel.isLoading {
-                VStack(spacing: 40) {
-                    ProgressView()
-                        .scaleEffect(2.0)
-                        .tint(.white)
-
-                    Text("key.loading")
-                        .font(.system(size: 32))
-                        .foregroundStyle(.white)
-                }
-            } else if let error = viewModel.error {
+            } else if let error {
                 VStack(spacing: 40) {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 80))
@@ -232,10 +72,46 @@ struct TVPlayerView: View {
                             .cornerRadius(15)
                     }
                 }
+            } else {
+                VStack(spacing: 40) {
+                    ProgressView()
+                        .scaleEffect(2.0)
+                        .tint(.white)
+
+                    Text("key.loading")
+                        .font(.system(size: 32))
+                        .foregroundStyle(.white)
+                }
             }
         }
         .task {
-            viewModel.loadVideo()
+            await setupPlayer()
+        }
+    }
+
+    private func setupPlayer() async {
+        let url: URL?
+        if let quality = configuration.quality {
+            url = configuration.video.getClosestTo(quality: quality)
+        } else {
+            url = configuration.video.getMaxQuality()
+        }
+
+        guard let url else {
+            await MainActor.run {
+                error = String(localized: "key.video_url_not_available")
+            }
+            return
+        }
+
+        let player = AVPlayer(url: url)
+        player.allowsExternalPlayback = true
+        player.usesExternalPlaybackWhileExternalScreenIsActive = true
+
+        await MainActor.run {
+            self.player = player
         }
     }
 }
+
+

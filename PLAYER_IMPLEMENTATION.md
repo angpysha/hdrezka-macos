@@ -2,60 +2,52 @@
 
 ## ✅ Що реалізовано
 
-### 1. TVPlayerViewModel
-**Файл:** `RezkaTV/Presentation/Player/TVPlayerViewController.swift`
+### 1. TVWatchOverlayViewModel
+**Файл:** `RezkaTV/Presentation/Details/TVWatchOverlayView.swift`
 
 **Функціонал:**
-- ✅ Автоматичний вибір озвучки (перша доступна)
-- ✅ Підтримка фільмів
-- ✅ Підтримка серіалів (сезони + епізоди)
-- ✅ Перевірка premium контенту
-- ✅ Вибір якості відео (default quality з налаштувань)
-- ✅ Створення AVPlayer з HLS потоком
-- ✅ Підтримка субтитрів
+- ✅ Повторює macOS-логіку вибору озвучки, сезону, епізоду та якості
+- ✅ Перевіряє доступ користувача до преміум-озвучок та заблокованих якостей
+- ✅ Автоматично підбирає стартові значення (озвучка, сезон, епізод, якість)
+- ✅ Завантажує сезони/епізоди для серіалів через `GetSeriesSeasonsUseCase`
+- ✅ Завантажує потік відео через `GetMovieVideoUseCase`
 
-### 2. TVPlayerViewController
-**UIViewControllerRepresentable** для AVPlayerViewController
+### 2. TVWatchOverlayView
+**Файл:** `RezkaTV/Presentation/Details/TVWatchOverlayView.swift`
 
 **Особливості:**
-- ✅ Picture-in-Picture підтримка
-- ✅ External playback (AirPlay)
-- ✅ Native tvOS контроли
-- ✅ Автоматичний dismiss callback
+- ✅ Відображає горизонтальні каруселі для озвучок, сезонів, епізодів і якостей
+- ✅ Підтримує фокус та керування Siri Remote
+- ✅ Показує стани завантаження та помилки
+- ✅ Формує `TVPlayerConfiguration` і передає його в плеєр
 
 ### 3. TVPlayerView
-**SwiftUI View** з станами:
+**Файл:** `RezkaTV/Presentation/Player/TVPlayerViewController.swift`
 
-- ✅ Loading (ProgressView)
-- ✅ Playing (AVPlayerViewController)
-- ✅ Error (помилка + кнопка закрити)
+**Особливості:**
+- ✅ Приймає готову конфігурацію з відео та виборами користувача
+- ✅ Створює `AVPlayer` з обраною якістю
+- ✅ Відтворює контент у `AVPlayerViewController`
+- ✅ Підтримує Picture-in-Picture та зовнішній екран
 
 ---
 
 ## 🎮 Як це працює
 
-### Процес відтворення:
-
 ```
 1. Користувач натискає "Дивитись"
    ↓
-2. TVDetailsView.playMovie()
+2. TVDetailsView відкриває TVWatchOverlayView у sheet
    ↓
-3. Відкривається fullScreenCover з TVPlayerView
+3. Користувач обирає озвучку/сезон/епізод/якість
    ↓
-4. TVPlayerViewModel.loadVideo()
+4. ViewModel отримує необхідні дані з use case-ів
    ↓
-5. Вибирається озвучка
+5. Формується TVPlayerConfiguration з MovieVideo та вибраними параметрами
    ↓
-6. Для серіалів: завантаження сезонів
+6. fullScreenCover показує TVPlayerView
    ↓
-7. GetMovieVideoUseCase отримує HLS потік
-   ↓
-8. Перевірка premium
-   ↓
-9. Створення AVPlayer з URL
-   ↓
-10. Автоматичний play()
+7. AVPlayer починає відтворення HLS потоку
 ```
 
 ---
@@ -64,27 +56,32 @@
 
 ```swift
 struct TVDetailsView: View {
-    @State private var isPlayerPresented = false
-    
+    @State private var isWatchOverlayPresented = false
+    @State private var activePlayerConfig: TVPlayerConfiguration?
+
     var body: some View {
-        ScrollView {
-            // ... контент ...
-            
-            Button {
-                playMovie()  // ← Відкрити плеєр
-            } label: {
-                Text("Дивитись")
+        // ... контент ...
+        Button {
+            playMovie()              // ← Відкрити overlay з виборами
+        } label: {
+            Text("Дивитись")
+        }
+        .sheet(isPresented: $isWatchOverlayPresented) {
+            if let details = viewModel.state.data {
+                TVWatchOverlayView(details: details) { config in
+                    activePlayerConfig = config
+                } onCancel: {
+                    activePlayerConfig = nil
+                }
             }
         }
-        .fullScreenCover(isPresented: $isPlayerPresented) {
-            if let details = viewModel.state.data {
-                TVPlayerView(details: details)  // ← Плеєр
-            }
+        .fullScreenCover(item: $activePlayerConfig) { config in
+            TVPlayerView(configuration: config)  // ← Плеєр
         }
     }
-    
+
     private func playMovie() {
-        isPlayerPresented = true
+        isWatchOverlayPresented = true
     }
 }
 ```
@@ -93,43 +90,58 @@ struct TVDetailsView: View {
 
 ## 🎯 Основні функції
 
-### 1. Автоматичний вибір озвучки
+### 1. Вибір озвучки (з урахуванням преміум)
 
 ```swift
-guard let voiceActing = details.voiceActing?.first else {
-    error = "No voice acting available"
+if acting.isPremium, isUserPremium == nil {
+    error = String(localized: "key.premium_content")
     return
 }
+
+selectedActing = acting
 ```
 
 ### 2. Підтримка серіалів
 
 ```swift
-if details.series != nil {
-    loadSeriesAndPlay(voiceActing: voiceActing)
-} else {
-    loadVideoStream(voiceActing: voiceActing, season: nil, episode: nil)
-}
+getSeriesSeasonsUseCase(movieId: details.movieId,
+                        voiceActing: acting,
+                        favs: details.favs)
+    .sink { ... } receiveValue: { seasons in
+        self.seasons = seasons
+        self.selectSeason(seasons.first ?? ...)
+    }
 ```
 
-### 3. Вибір якості
+### 3. Завантаження відео та вибір якості
 
 ```swift
-let defaultQuality = Defaults[.defaultQuality]
-
-if defaultQuality == .ask {
-    videoURL = movieVideo.getMaxQuality()  // Найкраща
-} else {
-    videoURL = movieVideo.getClosestTo(quality: defaultQuality.rawValue)
-}
+getMovieVideoUseCase(voiceActing: acting,
+                     season: season,
+                     episode: episode,
+                     favs: details.favs)
+    .sink { ... } receiveValue: { movie in
+        self.movie = movie
+        self.availableQualities = movie.getAvailableQualities()
+        self.lockedQualities = movie.getLockedQualities()
+        self.selectedQuality = defaultQualitySelection(from: movie)
+    }
 ```
 
-### 4. Налаштування AVPlayer
+### 4. Формування конфігурації для плеєра
 
 ```swift
-let player = AVPlayer(url: videoURL)
-player.allowsExternalPlayback = true  // AirPlay
-player.usesExternalPlaybackWhileExternalScreenIsActive = true
+func makeConfiguration() -> TVPlayerConfiguration? {
+    guard let movie, let acting = selectedActing else { return nil }
+    return TVPlayerConfiguration(
+        details: details,
+        video: movie,
+        acting: acting,
+        season: details.series != nil ? selectedSeason : nil,
+        episode: details.series != nil ? selectedEpisode : nil,
+        quality: selectedQuality
+    )
+}
 ```
 
 ---
@@ -274,7 +286,7 @@ Button {
 // 3. fullScreenCover
 .fullScreenCover(isPresented: $isPlayerPresented) {
     if let details = viewModel.state.data {
-        TVPlayerView(details: details)
+        TVPlayerView(configuration: config)
     }
 }
 
@@ -291,7 +303,7 @@ private func playMovie() {
 ```swift
 // Просто відкрити плеєр з MovieDetailed
 let details: MovieDetailed = ...
-let playerView = TVPlayerView(details: details)
+let playerView = TVPlayerView(configuration: config)
 
 // Плеєр автоматично:
 // 1. Завантажить відео потік

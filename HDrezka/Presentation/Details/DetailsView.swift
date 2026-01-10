@@ -35,21 +35,31 @@ struct DetailsView: View {
         ScrollView(.vertical) {
             LazyVStack(alignment: .leading, spacing: 18) {
                 if let details = viewModel.state.data {
+#if os(macOS)
                     DetailsViewComponent(
                         details: details,
-                        #if os(macOS)
-                            trailer: viewModel.trailer,
-                            #else
-                            trailerId: viewModel.trailerId,
-                        #endif
+                        trailer: viewModel.trailer,
                         topSafeAreaInset: topSafeAreaInset,
                         isSchedulePresented: $isSchedulePresented,
                         countryDestination: $countryDestination,
                         genreDestination: $genreDestination,
                         personDestination: $personDestination,
                         listDestination: $listDestination,
-                        collectionDestination: $collectionDestination,
+                        collectionDestination: $collectionDestination
                     )
+#else
+                    DetailsViewComponent(
+                        details: details,
+                        trailerId: viewModel.trailerId,
+                        topSafeAreaInset: topSafeAreaInset,
+                        isSchedulePresented: $isSchedulePresented,
+                        countryDestination: $countryDestination,
+                        genreDestination: $genreDestination,
+                        personDestination: $personDestination,
+                        listDestination: $listDestination,
+                        collectionDestination: $collectionDestination
+                    )
+#endif
                     .environment(viewModel)
                 }
             }

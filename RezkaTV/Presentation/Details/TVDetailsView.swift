@@ -6,7 +6,8 @@ struct TVDetailsView: View {
     let movie: MovieSimple
 
     @State private var viewModel: DetailsViewModel
-    @State private var isPlayerPresented = false
+    @State private var isWatchOverlayPresented = false
+    @State private var activePlayerConfig: TVPlayerConfiguration?
 
     @Default(.isLoggedIn) private var isLoggedIn
     @Environment(AppState.self) private var appState
@@ -199,10 +200,17 @@ struct TVDetailsView: View {
                 viewModel.load()
             }
         }
-        .fullScreenCover(isPresented: $isPlayerPresented) {
+        .sheet(isPresented: $isWatchOverlayPresented) {
             if let details = viewModel.state.data {
-                TVPlayerView(details: details)
+                TVWatchOverlayView(details: details) { config in
+                    activePlayerConfig = config
+                } onCancel: {
+                    activePlayerConfig = nil
+                }
             }
+        }
+        .fullScreenCover(item: $activePlayerConfig) { config in
+            TVPlayerView(configuration: config)
         }
         .navigationDestination(for: MovieSimple.self) { movie in
             TVDetailsView(movie: movie)
@@ -210,6 +218,6 @@ struct TVDetailsView: View {
     }
 
     private func playMovie() {
-        isPlayerPresented = true
+        isWatchOverlayPresented = true
     }
 }
