@@ -156,46 +156,60 @@ class MovieDetailsParser {
     }
 
     static func parseSeriesSeasons(from: String) throws -> [MovieSeason] {
+        // Спочатку спробуємо парсити як HTML (пряма відповідь)
         if let seasons = try? SwiftSoup.parse(from).getSeasons() {
             return seasons
-        } else {
-            guard let json = try? JSONSerialization.jsonObject(with: from.data(using: .utf8).orThrow(), options: .allowFragments) as? [String: Any] else {
-                throw HDrezkaError.parseJson("json", "parseSeriesSeasons")
-            }
-
-            guard let seasonsString = json["seasons"] as? String, let seasons = try SwiftSoup.parse(seasonsString).body() else {
-                throw HDrezkaError.parseJson("seasons", "parseSeriesSeasons")
-            }
-
-            guard let episodeString = json["episodes"] as? String, let episodes = try SwiftSoup.parse(episodeString).body() else {
-                throw HDrezkaError.parseJson("episodes", "parseSeriesSeasons")
-            }
-
-            return try seasons
-                .select(".b-simple_season__item")
-                .map { season in
-                    let seasonId = try season.attr("data-tab_id")
-
-                    let seasonEpisodes = try episodes
-                        .select(".b-simple_episode__item[data-season_id=\(seasonId)]")
-                        .map { episode in
-                            try MovieEpisode(
-                                episodeId: episode.attr("data-episode_id"),
-                                name: episode.text().trimmingCharacters(in: .decimalDigits.inverted).isEmpty ? episode.text() : episode.text().trimmingCharacters(in: .decimalDigits.inverted),
-                                isSelected: episode.hasClass("active"),
-                                url: episode.attr("href").cleanPath,
-                            )
-                        }
-
-                    return try MovieSeason(
-                        seasonId: seasonId,
-                        name: season.text().trimmingCharacters(in: .decimalDigits.inverted).isEmpty ? season.text() : season.text().trimmingCharacters(in: .decimalDigits.inverted),
-                        episodes: seasonEpisodes,
-                        isSelected: season.hasClass("active"),
-                        url: season.attr("href").cleanPath,
-                    )
-                }
         }
+        
+        // Якщо не HTML, спробуємо парсити як JSON
+        guard let data = from.data(using: .utf8) else {
+            throw HDrezkaError.parseJson("utf8 encoding", "parseSeriesSeasons")
+        }
+        
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+            throw HDrezkaError.parseJson("json", "parseSeriesSeasons")
+        }
+
+        guard let seasonsString = json["seasons"] as? String else {
+            throw HDrezkaError.parseJson("seasons", "parseSeriesSeasons")
+        }
+        
+        guard let seasons = try? SwiftSoup.parse(seasonsString).body() else {
+            throw HDrezkaError.parseJson("seasons body", "parseSeriesSeasons")
+        }
+
+        guard let episodeString = json["episodes"] as? String else {
+            throw HDrezkaError.parseJson("episodes", "parseSeriesSeasons")
+        }
+        
+        guard let episodes = try? SwiftSoup.parse(episodeString).body() else {
+            throw HDrezkaError.parseJson("episodes body", "parseSeriesSeasons")
+        }
+
+        return try seasons
+            .select(".b-simple_season__item")
+            .map { season in
+                let seasonId = try season.attr("data-tab_id")
+
+                let seasonEpisodes = try episodes
+                    .select(".b-simple_episode__item[data-season_id=\(seasonId)]")
+                    .map { episode in
+                        try MovieEpisode(
+                            episodeId: episode.attr("data-episode_id"),
+                            name: episode.text().trimmingCharacters(in: .decimalDigits.inverted).isEmpty ? episode.text() : episode.text().trimmingCharacters(in: .decimalDigits.inverted),
+                            isSelected: episode.hasClass("active"),
+                            url: episode.attr("href").cleanPath,
+                        )
+                    }
+
+                return try MovieSeason(
+                    seasonId: seasonId,
+                    name: season.text().trimmingCharacters(in: .decimalDigits.inverted).isEmpty ? season.text() : season.text().trimmingCharacters(in: .decimalDigits.inverted),
+                    episodes: seasonEpisodes,
+                    isSelected: season.hasClass("active"),
+                    url: season.attr("href").cleanPath,
+                )
+            }
     }
 
     static func parseComments(from: String) throws -> [Comment] {

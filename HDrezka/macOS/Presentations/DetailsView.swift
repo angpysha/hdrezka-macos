@@ -32,7 +32,6 @@ struct DetailsView: View {
         ScrollView(.vertical) {
             LazyVStack(alignment: .leading, spacing: 18) {
                 if let details = viewModel.state.data {
-#if os(macOS)
                     DetailsViewComponent(
                         details: details,
                         trailerId: viewModel.trailerId,
@@ -42,21 +41,8 @@ struct DetailsView: View {
                         genreDestination: $genreDestination,
                         personDestination: $personDestination,
                         listDestination: $listDestination,
-                        collectionDestination: $collectionDestination
+                        collectionDestination: $collectionDestination,
                     )
-#else
-                    DetailsViewComponent(
-                        details: details,
-                        trailerId: viewModel.trailerId,
-                        topSafeAreaInset: topSafeAreaInset,
-                        isSchedulePresented: $isSchedulePresented,
-                        countryDestination: $countryDestination,
-                        genreDestination: $genreDestination,
-                        personDestination: $personDestination,
-                        listDestination: $listDestination,
-                        collectionDestination: $collectionDestination
-                    )
-#endif
                     .environment(viewModel)
                 }
             }
@@ -649,10 +635,18 @@ struct DetailsView: View {
                             }
                         }
                     }
-                #else
-                    // На tvOS трейлери не показуємо (YouTubePlayerKit не підтримується)
-                    // Можна додати посилання на YouTube у майбутньому
-                #endif
+                    .aspectRatio(16 / 9, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                    .contentShape(.rect(cornerRadius: 6))
+                    .clipShape(.rect(cornerRadius: 6))
+                    .onScrollVisibilityChange { isVisible in
+                        if !isVisible, trailer.isPlaying {
+                            Task {
+                                try? await trailer.pause()
+                            }
+                        }
+                    }
+                }
             }
             .padding(.horizontal, 36)
 

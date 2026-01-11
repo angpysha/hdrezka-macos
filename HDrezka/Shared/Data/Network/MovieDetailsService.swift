@@ -129,8 +129,15 @@ extension MovieDetailsService: URLRequestConvertible {
             guard voiceActing.url == nil else {
                 return request
             }
+            
+            // Витягуємо чистий числовий ID з повного шляху (наприклад, з series/drama/84621-ego-i-ee-2026.html витягуємо 84621)
+            // Створюємо повний URL з baseURL та movieId шляхом
+            guard let fullURL = URL(string: movieId, relativeTo: baseURL),
+                  let numericId = fullURL.id else {
+                throw HDrezkaError.parseJson("movieId.id", "getSeriesSeasons")
+            }
 
-            return try URLEncoding.httpBody.encode(URLEncoding.queryString.encode(request, with: ["t": Int(Date().timeIntervalSince1970 * 1000)]), with: ["id": movieId, "translator_id": voiceActing.translatorId, "action": "get_episodes", "favs": favs])
+            return try URLEncoding.httpBody.encode(URLEncoding.queryString.encode(request, with: ["t": Int(Date().timeIntervalSince1970 * 1000)]), with: ["id": numericId, "translator_id": voiceActing.translatorId, "action": "get_episodes", "favs": favs])
         case let .getComments(movieId, page, type, commentId, skin):
             var params: [String: Any] = [:]
             params["news_id"] = movieId
