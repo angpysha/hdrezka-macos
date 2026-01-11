@@ -298,8 +298,8 @@ struct TVWatchOverlayView: View {
         ScrollView {
             VStack(spacing: 35) {
                 voiceActingSection
-//                seasonsSection
-//                episodesSection
+                seasonsSection
+                episodesSection
                 qualitiesSection
             }
             .padding(.horizontal, 60)
@@ -509,8 +509,8 @@ struct TVWatchOverlayView: View {
                                             )
                                     }
                                     .buttonStyle(.plain)
-                                    .focusable(true)
-                                    .focused($focusedTarget, equals: .season(season.id))
+//                                    .focusable(true)
+//                                    .focused($focusedTarget, equals: .season(season.id))
                                 }
                             }
                             .padding(.vertical, 10)
@@ -556,8 +556,8 @@ struct TVWatchOverlayView: View {
                                         )
                                 }
                                 .buttonStyle(.plain)
-                                .focusable(true)
-                                .focused($focusedTarget, equals: .episode(episode.id))
+//                                .focusable(true)
+//                                .focused($focusedTarget, equals: .episode(episode.id))
                             }
                         }
                         .padding(.vertical, 10)
