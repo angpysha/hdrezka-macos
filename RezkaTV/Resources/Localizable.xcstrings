@@ -280,10 +280,14 @@
         }
       }
     },
+    "key.all" : {
+
+    },
     "key.appearance" : {
 
     },
     "key.aria2.error.bencodeParseError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -306,6 +310,7 @@
       }
     },
     "key.aria2.error.bittorrentParseError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -328,6 +333,7 @@
       }
     },
     "key.aria2.error.cannotResume" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -350,6 +356,7 @@
       }
     },
     "key.aria2.error.checksumError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -372,6 +379,7 @@
       }
     },
     "key.aria2.error.dirCreateError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,6 +402,7 @@
       }
     },
     "key.aria2.error.duplicateDownload" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -416,6 +425,7 @@
       }
     },
     "key.aria2.error.duplicateInfoHash" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -438,6 +448,7 @@
       }
     },
     "key.aria2.error.fileAlreadyExists" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -460,6 +471,7 @@
       }
     },
     "key.aria2.error.fileCreateError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -482,6 +494,7 @@
       }
     },
     "key.aria2.error.fileIoError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -504,6 +517,7 @@
       }
     },
     "key.aria2.error.fileOpenError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -526,6 +540,7 @@
       }
     },
     "key.aria2.error.fileRenamingFailed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -548,6 +563,7 @@
       }
     },
     "key.aria2.error.finished" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -570,6 +586,7 @@
       }
     },
     "key.aria2.error.ftpProtocolError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -592,6 +609,7 @@
       }
     },
     "key.aria2.error.httpAuthFailed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -614,6 +632,7 @@
       }
     },
     "key.aria2.error.httpProtocolError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -636,6 +655,7 @@
       }
     },
     "key.aria2.error.httpServiceUnavailable" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -658,6 +678,7 @@
       }
     },
     "key.aria2.error.httpTooManyRedirects" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -680,6 +701,7 @@
       }
     },
     "key.aria2.error.inProgress" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -702,6 +724,7 @@
       }
     },
     "key.aria2.error.jsonParseError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -724,6 +747,7 @@
       }
     },
     "key.aria2.error.magnetParseError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -746,6 +770,7 @@
       }
     },
     "key.aria2.error.maxFileNotFound" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -768,6 +793,7 @@
       }
     },
     "key.aria2.error.metalinkParseError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -790,6 +816,7 @@
       }
     },
     "key.aria2.error.nameResolveError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -812,6 +839,7 @@
       }
     },
     "key.aria2.error.networkProblem" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -834,6 +862,7 @@
       }
     },
     "key.aria2.error.notEnoughDiskSpace" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -856,6 +885,7 @@
       }
     },
     "key.aria2.error.optionError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -878,6 +908,7 @@
       }
     },
     "key.aria2.error.pieceLengthChanged" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -900,6 +931,7 @@
       }
     },
     "key.aria2.error.removed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -922,6 +954,7 @@
       }
     },
     "key.aria2.error.resourceNotFound" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -944,6 +977,7 @@
       }
     },
     "key.aria2.error.timeOut" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -966,6 +1000,7 @@
       }
     },
     "key.aria2.error.tooSlowDownloadSpeed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -988,6 +1023,7 @@
       }
     },
     "key.aria2.error.unknownError" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2610,6 +2646,9 @@
           }
         }
       }
+    },
+    "key.errors.photosDenied" : {
+
     },
     "key.errors.swiftsoup-%@-%@" : {
       "localizations" : {
@@ -5600,7 +5639,6 @@
       }
     },
     "key.report.flood" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5623,7 +5661,6 @@
       }
     },
     "key.report.insulting" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5669,7 +5706,6 @@
       }
     },
     "key.report.obscene" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5692,7 +5728,6 @@
       }
     },
     "key.report.other" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5715,7 +5750,6 @@
       }
     },
     "key.report.spoiler" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6606,7 +6640,6 @@
       }
     },
     "key.sign_in.error" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

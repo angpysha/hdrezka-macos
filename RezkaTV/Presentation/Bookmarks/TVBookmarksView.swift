@@ -8,6 +8,7 @@ struct TVBookmarksView: View {
     var body: some View {
         Group {
             if isLoggedIn {
+                // Подібно до iOS версії - показуємо список категорій та фільми
                 if let bookmarks = viewModel.bookmarksState.data, !bookmarks.isEmpty {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: 50) {
@@ -24,13 +25,17 @@ struct TVBookmarksView: View {
                                             .font(.system(size: 28))
                                             .foregroundStyle(.secondary)
                                     }
-                                    .padding(.horizontal, 90)
+                                    .tvSafeArea()
 
-                                    // Список фільмів - треба завантажити окремо
-                                    Text("key.tap_to_view")
-                                        .font(.system(size: 24))
-                                        .foregroundStyle(.secondary)
-                                        .padding(.horizontal, 90)
+                                    // Список фільмів для цієї категорії
+                                    Button {
+                                        viewModel.selectedBookmark = category.bookmarkId
+                                    } label: {
+                                        Text("key.tap_to_view")
+                                            .font(.system(size: 24))
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    .tvSafeArea()
                                 }
                             }
                         }
@@ -51,7 +56,7 @@ struct TVBookmarksView: View {
                             .foregroundStyle(.secondary)
 
                         Button {
-                            viewModel.load()
+                            viewModel.getBookmarks(reset: true)
                         } label: {
                             Text("key.retry")
                                 .font(.system(size: 28))
@@ -73,6 +78,7 @@ struct TVBookmarksView: View {
                     .padding(90)
                 }
             } else {
+                // Показуємо екран авторизації
                 VStack(spacing: 40) {
                     Image(systemName: "person.fill.questionmark")
                         .font(.system(size: 80))
@@ -83,7 +89,6 @@ struct TVBookmarksView: View {
                         .foregroundStyle(.secondary)
 
                     Button {
-                        // Відкрити екран входу
                         AppState.shared.isSignInPresented = true
                     } label: {
                         Text("key.sign_in")
@@ -95,9 +100,14 @@ struct TVBookmarksView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .onChange(of: viewModel.selectedBookmark) {
+            if viewModel.selectedBookmark != nil {
+                viewModel.load()
+            }
+        }
         .task(id: isLoggedIn) {
             if isLoggedIn, viewModel.bookmarksState.data == nil {
-                viewModel.load()
+                viewModel.getBookmarks()
             }
         }
         .navigationDestination(for: MovieSimple.self) { movie in

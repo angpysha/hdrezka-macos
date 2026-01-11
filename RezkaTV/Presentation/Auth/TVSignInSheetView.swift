@@ -64,7 +64,8 @@ struct TVSignInSheetView: View {
                             .cornerRadius(15)
                             .focused($focusedField, equals: .password)
                             .onSubmit {
-                                signIn()
+                                // На tvOS прибираємо фокус, щоб фокус перейшов на кнопку
+                                focusedField = nil
                             }
                     }
                 }
@@ -157,7 +158,14 @@ struct TVSignInSheetView: View {
                 if case let .failure(error) = completion {
                     self.error = error.localizedDescription
                 }
-            } receiveValue: { _ in }
+            } receiveValue: { success in
+                isLoading = false
+                if success {
+                    dismiss()
+                } else {
+                    error = String(localized: "key.sign_in.error")
+                }
+            }
             .store(in: &subscriptions)
     }
 }
