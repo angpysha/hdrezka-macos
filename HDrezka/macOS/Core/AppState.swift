@@ -13,10 +13,11 @@ class AppState {
     var commentsRulesPresented = false
 
     var isPremiumPresented = false
+    #if os(macos)
+        var selectedTab: Tabs = .home
 
-    var selectedTab: Tabs = .home
-
-    var window: NSWindow?
+        var window: NSWindow?
+    #endif
 }
 
 enum Tabs: Hashable, Identifiable, CaseIterable, View {

@@ -20,7 +20,6 @@ class TVAppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct RezkaTVApp: App {
-    
     @UIApplicationDelegateAdaptor(TVAppDelegate.self) private var delegate
     @State private var appState = AppState.shared
 

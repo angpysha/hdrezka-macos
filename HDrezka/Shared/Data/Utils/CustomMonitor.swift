@@ -1,6 +1,8 @@
 import Alamofire
 import Defaults
-import FirebaseCrashlytics
+#if os(macOS)
+    import FirebaseCrashlytics
+#endif
 import Foundation
 import SwiftSoup
 
@@ -9,7 +11,9 @@ final class CustomMonitor: EventMonitor {
         #if DEBUG
             print(response.customDebugDescription)
         #else
-            Crashlytics.crashlytics().log(response.customDebugDescription)
+            #if os(macOS)
+                Crashlytics.crashlytics().log(response.customDebugDescription)
+            #endif
         #endif
     }
 }

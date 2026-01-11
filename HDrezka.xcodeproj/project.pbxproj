@@ -12,6 +12,15 @@
 		04B3CA8A2BA06CAC0039F76E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 04B3CA892BA06CAC0039F76E /* SwiftSoup */; };
 		04E5DC0A2C120C4200BF1B7A /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 04E5DC092C120C4200BF1B7A /* Flow */; };
 		04E9EB462C047F19001CBBCA /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04E9EB452C047F19001CBBCA /* YouTubePlayerKit */; };
+		B53391562F13C98200DB2229 /* LRUCache in Frameworks */ = {isa = PBXBuildFile; productRef = B53391552F13C98200DB2229 /* LRUCache */; };
+		B533915C2F13C9F800DB2229 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = B533915B2F13C9F800DB2229 /* Pow */; };
+		B533915E2F13C9FE00DB2229 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = B533915D2F13C9FE00DB2229 /* Flow */; };
+		B5DA45362E9D3E7F0069ECF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45352E9D3E7F0069ECF5 /* Alamofire */; };
+		B5DA45382E9D3E8F0069ECF5 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45372E9D3E8F0069ECF5 /* Defaults */; };
+		B5DA453A2E9D3E9B0069ECF5 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45392E9D3E9B0069ECF5 /* FactoryKit */; };
+		B5DA45402E9D3EB90069ECF5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA453F2E9D3EB90069ECF5 /* OrderedCollections */; };
+		B5DA45422E9D3EB90069ECF5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45412E9D3EB90069ECF5 /* Kingfisher */; };
+		B5DA45442E9D3ECE0069ECF5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */; };
 		DE188EE52CA6AB3100E7B1AE /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = DE188EE42CA6AB3100E7B1AE /* Pow */; };
 		DE2D67382DC3D5E900A9187C /* LicensesList in Frameworks */ = {isa = PBXBuildFile; productRef = DE2D67372DC3D5E900A9187C /* LicensesList */; };
 		DE3DCCE62DFB92050062CF81 /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = DE3DCCE52DFB92050062CF81 /* SwiftFormat */; };
@@ -25,12 +34,176 @@
 		DEF920382DD5CAF20087C32C /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = DEF920372DD5CAF20087C32C /* FactoryKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B5DA44672E9D3B750069ECF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B3CA6C2BA06C9C0039F76E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5DA44572E9D3B6E0069ECF5;
+			remoteInfo = RezkaTV;
+		};
+		B5DA44712E9D3B750069ECF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B3CA6C2BA06C9C0039F76E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5DA44572E9D3B6E0069ECF5;
+			remoteInfo = RezkaTV;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		04B3CA742BA06C9C0039F76E /* HDrezka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDrezka.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5DA44582E9D3B6E0069ECF5 /* RezkaTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RezkaTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5DA44662E9D3B750069ECF5 /* RezkaTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RezkaTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5DA44702E9D3B750069ECF5 /* RezkaTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RezkaTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2D67352DC3D13700A9187C /* LicensesList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LicensesList; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B5DA44822E9D3C2F0069ECF5 /* Exceptions for "HDrezka" folder in "RezkaTV" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				iOS/Core/AppState.swift,
+				iOS/Core/Const.swift,
+				iOS/Core/Container.swift,
+				iOS/Core/Defaults.swift,
+				iOS/Core/Downloader.swift,
+				iOS/Domain/Entities/Download.swift,
+				iOS/Domain/Entities/DownloadData.swift,
+				iOS/Domain/Entities/ExternalPlayers.swift,
+				iOS/HDrezkaApp.swift,
+				iOS/Presentations/BookmarksView.swift,
+				iOS/Presentations/CategoriesView.swift,
+				iOS/Presentations/CollectionsView.swift,
+				iOS/Presentations/CommentsView.swift,
+				iOS/Presentations/Components/Cards/CardView.swift,
+				iOS/Presentations/Components/Cards/CollectionCardView.swift,
+				iOS/Presentations/Components/Cards/WatchingLaterCardView.swift,
+				iOS/Presentations/Components/DownloadsView.swift,
+				iOS/Presentations/Components/EmptyStateView.swift,
+				iOS/Presentations/Components/ErrorPaginationStateView.swift,
+				iOS/Presentations/Components/ErrorStateView.swift,
+				iOS/Presentations/Components/ImageView.swift,
+				iOS/Presentations/Components/LicensesView.swift,
+				iOS/Presentations/Components/LoadingPaginationStateView.swift,
+				iOS/Presentations/Components/LoadingStateView.swift,
+				iOS/Presentations/Components/OnPressButtonStyle.swift,
+				iOS/Presentations/Components/OrientationView.swift,
+				iOS/Presentations/Components/Player/CustomAVPlayer.swift,
+				iOS/Presentations/Components/Player/PlayerView.swift,
+				iOS/Presentations/Components/Player/SliderWithoutText.swift,
+				iOS/Presentations/Components/Player/SliderWithText.swift,
+				iOS/Presentations/Components/SettingsView.swift,
+				iOS/Presentations/Components/Sheets/BookmarksSheetView.swift,
+				iOS/Presentations/Components/Sheets/CommentReportSheet.swift,
+				iOS/Presentations/Components/Sheets/CommentsRulesSheet.swift,
+				iOS/Presentations/Components/Sheets/CreateBookmarkSheetView.swift,
+				iOS/Presentations/Components/Sheets/DowloadSheetView.swift,
+				iOS/Presentations/Components/Sheets/OpenExternalPlayerSheetView.swift,
+				iOS/Presentations/Components/Sheets/RenameBookmarkSheetView.swift,
+				iOS/Presentations/Components/Sheets/RestoreSheetView.swift,
+				iOS/Presentations/Components/Sheets/ScheduleSheetView.swift,
+				iOS/Presentations/Components/Sheets/SeriesUpdatesSheetView.swift,
+				iOS/Presentations/Components/Sheets/SignInSheetView.swift,
+				iOS/Presentations/Components/Sheets/SignUpSheetView.swift,
+				iOS/Presentations/Components/Sheets/WatchSheetView.swift,
+				iOS/Presentations/Components/SnowflakesView.swift,
+				iOS/Presentations/Components/SpoilerView.swift,
+				iOS/Presentations/ContentView.swift,
+				iOS/Presentations/DetailsView.swift,
+				iOS/Presentations/HomeView.swift,
+				iOS/Presentations/ListView.swift,
+				iOS/Presentations/PersonView.swift,
+				iOS/Presentations/ProfileView.swift,
+				iOS/Presentations/SearchView.swift,
+				iOS/Presentations/WatchingLaterView.swift,
+				iOS/Resources/Assets.xcassets,
+				iOS/Resources/Info.plist,
+				iOS/Resources/InfoPlist.xcstrings,
+				"iOS/Resources/Launch Screen.storyboard",
+				iOS/Utils/RemoveBackgroundImageProcessor.swift,
+				macOS/Core/AppState.swift,
+				macOS/Core/Const.swift,
+				macOS/Core/Container.swift,
+				macOS/Core/Defaults.swift,
+				macOS/Core/Downloader.swift,
+				macOS/Data/Network/Aria2Service.swift,
+				macOS/Data/Repositories/Aria2RepositoryImpl.swift,
+				macOS/Domain/Entities/Aria2.swift,
+				macOS/Domain/Entities/Download.swift,
+				macOS/Domain/Entities/DownloadData.swift,
+				macOS/Domain/Entities/ExternalDownloaders.swift,
+				macOS/Domain/Entities/ExternalPlayers.swift,
+				macOS/Domain/Entities/UpdateInterval.swift,
+				macOS/Domain/Repositories/Aria2Repository.swift,
+				macOS/Domain/UseCases/Aria2/CallUseCase.swift,
+				macOS/Domain/UseCases/Aria2/MulticallUseCase.swift,
+				macOS/HDrezkaApp.swift,
+				macOS/Presentations/BookmarksView.swift,
+				macOS/Presentations/CategoriesView.swift,
+				macOS/Presentations/CollectionsView.swift,
+				macOS/Presentations/CommentsView.swift,
+				macOS/Presentations/Components/Cards/CardView.swift,
+				macOS/Presentations/Components/Cards/CollectionCardView.swift,
+				macOS/Presentations/Components/Cards/WatchingLaterCardView.swift,
+				macOS/Presentations/Components/DownloadsView.swift,
+				macOS/Presentations/Components/EmptyStateView.swift,
+				macOS/Presentations/Components/ErrorPaginationStateView.swift,
+				macOS/Presentations/Components/ErrorStateView.swift,
+				macOS/Presentations/Components/ImageView.swift,
+				macOS/Presentations/Components/LicensesView.swift,
+				macOS/Presentations/Components/LoadingPaginationStateView.swift,
+				macOS/Presentations/Components/LoadingStateView.swift,
+				macOS/Presentations/Components/OnPressButtonStyle.swift,
+				macOS/Presentations/Components/Player/CustomAVPlayer.swift,
+				macOS/Presentations/Components/Player/PlayerView.swift,
+				macOS/Presentations/Components/Player/SliderWithoutText.swift,
+				macOS/Presentations/Components/Player/SliderWithText.swift,
+				macOS/Presentations/Components/SettingsView.swift,
+				macOS/Presentations/Components/Sheets/BookmarksSheetView.swift,
+				macOS/Presentations/Components/Sheets/CommentReportSheet.swift,
+				macOS/Presentations/Components/Sheets/CommentsRulesSheet.swift,
+				macOS/Presentations/Components/Sheets/CreateBookmarkSheetView.swift,
+				macOS/Presentations/Components/Sheets/DownloadSheetView.swift,
+				macOS/Presentations/Components/Sheets/OpenExternalPlayerSheetView.swift,
+				macOS/Presentations/Components/Sheets/RenameBookmarkSheetView.swift,
+				macOS/Presentations/Components/Sheets/RestoreSheetView.swift,
+				macOS/Presentations/Components/Sheets/ScheduleSheetView.swift,
+				macOS/Presentations/Components/Sheets/SeriesUpdatesSheetView.swift,
+				macOS/Presentations/Components/Sheets/SignInSheetView.swift,
+				macOS/Presentations/Components/Sheets/SignUpSheetView.swift,
+				macOS/Presentations/Components/Sheets/WatchSheetView.swift,
+				macOS/Presentations/Components/SnowflakesView.swift,
+				macOS/Presentations/Components/SpoilerView.swift,
+				macOS/Presentations/Components/UpdateButton.swift,
+				macOS/Presentations/ContentView.swift,
+				macOS/Presentations/DetailsView.swift,
+				macOS/Presentations/HomeView.swift,
+				macOS/Presentations/ListView.swift,
+				macOS/Presentations/PersonView.swift,
+				macOS/Presentations/SearchView.swift,
+				macOS/Presentations/WatchingLaterView.swift,
+				"macOS/Resources/aria2c-arm64",
+				"macOS/Resources/aria2c-x86_64",
+				macOS/Resources/Assets.xcassets,
+				macOS/Resources/Info.plist,
+				macOS/Utils/NSImage.swift,
+				macOS/Utils/RemoveBackgroundImageProcessor.swift,
+				macOS/Utils/WindowAccessor.swift,
+				Shared/Domain/Entities/BookmarkFilters.swift,
+				Shared/Domain/Entities/Cache.swift,
+				Shared/Domain/Entities/DefaultQuality.swift,
+				Shared/Domain/Entities/Filters.swift,
+				Shared/Domain/Entities/Genres.swift,
+				Shared/Domain/Entities/NewFilters.swift,
+				Shared/Domain/Entities/SpatialAudio.swift,
+				Shared/Domain/Entities/Theme.swift,
+				Shared/Resources/HDrezka.icon,
+				Shared/Resources/Localizable.xcstrings,
+				Shared/Utils/Zoomable.swift,
+			);
+			target = B5DA44572E9D3B6E0069ECF5 /* RezkaTV */;
+		};
 		DE8580E32E9D2B3800EFD65D /* Exceptions for "HDrezka" folder in "HDrezka" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -169,10 +342,26 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B5DA44592E9D3B6E0069ECF5 /* RezkaTV */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RezkaTV;
+			sourceTree = "<group>";
+		};
+		B5DA44692E9D3B750069ECF5 /* RezkaTVTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RezkaTVTests;
+			sourceTree = "<group>";
+		};
+		B5DA44732E9D3B750069ECF5 /* RezkaTVUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RezkaTVUITests;
+			sourceTree = "<group>";
+		};
 		DE92A9F62E9D275B00252B87 /* HDrezka */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				DE8580E32E9D2B3800EFD65D /* Exceptions for "HDrezka" folder in "HDrezka" target */,
+				B5DA44822E9D3C2F0069ECF5 /* Exceptions for "HDrezka" folder in "RezkaTV" target */,
 			);
 			path = HDrezka;
 			sourceTree = "<group>";
@@ -203,6 +392,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5DA44552E9D3B6E0069ECF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5DA45382E9D3E8F0069ECF5 /* Defaults in Frameworks */,
+				B533915E2F13C9FE00DB2229 /* Flow in Frameworks */,
+				B5DA453A2E9D3E9B0069ECF5 /* FactoryKit in Frameworks */,
+				B5DA45422E9D3EB90069ECF5 /* Kingfisher in Frameworks */,
+				B5DA45402E9D3EB90069ECF5 /* OrderedCollections in Frameworks */,
+				B533915C2F13C9F800DB2229 /* Pow in Frameworks */,
+				B5DA45362E9D3E7F0069ECF5 /* Alamofire in Frameworks */,
+				B5DA45442E9D3ECE0069ECF5 /* SwiftSoup in Frameworks */,
+				B53391562F13C98200DB2229 /* LRUCache in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA44632E9D3B750069ECF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA446D2E9D3B750069ECF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -211,6 +430,10 @@
 			children = (
 				DE2D67352DC3D13700A9187C /* LicensesList */,
 				DE92A9F62E9D275B00252B87 /* HDrezka */,
+				B5DA44592E9D3B6E0069ECF5 /* RezkaTV */,
+				B5DA44692E9D3B750069ECF5 /* RezkaTVTests */,
+				B5DA44732E9D3B750069ECF5 /* RezkaTVUITests */,
+				B53391542F13C98200DB2229 /* Frameworks */,
 				04B3CA752BA06C9C0039F76E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -219,8 +442,18 @@
 			isa = PBXGroup;
 			children = (
 				04B3CA742BA06C9C0039F76E /* HDrezka.app */,
+				B5DA44582E9D3B6E0069ECF5 /* RezkaTV.app */,
+				B5DA44662E9D3B750069ECF5 /* RezkaTVTests.xctest */,
+				B5DA44702E9D3B750069ECF5 /* RezkaTVUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B53391542F13C98200DB2229 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +499,84 @@
 			productReference = 04B3CA742BA06C9C0039F76E /* HDrezka.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B5DA44572E9D3B6E0069ECF5 /* RezkaTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5DA44782E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTV" */;
+			buildPhases = (
+				B5DA44542E9D3B6E0069ECF5 /* Sources */,
+				B5DA44552E9D3B6E0069ECF5 /* Frameworks */,
+				B5DA44562E9D3B6E0069ECF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B5DA44592E9D3B6E0069ECF5 /* RezkaTV */,
+				DE92A9F62E9D275B00252B87 /* HDrezka */,
+			);
+			name = RezkaTV;
+			packageProductDependencies = (
+				B5DA45352E9D3E7F0069ECF5 /* Alamofire */,
+				B5DA45372E9D3E8F0069ECF5 /* Defaults */,
+				B5DA45392E9D3E9B0069ECF5 /* FactoryKit */,
+				B5DA453F2E9D3EB90069ECF5 /* OrderedCollections */,
+				B5DA45412E9D3EB90069ECF5 /* Kingfisher */,
+				B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */,
+				B53391552F13C98200DB2229 /* LRUCache */,
+				B533915B2F13C9F800DB2229 /* Pow */,
+				B533915D2F13C9FE00DB2229 /* Flow */,
+			);
+			productName = RezkaTV;
+			productReference = B5DA44582E9D3B6E0069ECF5 /* RezkaTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B5DA44652E9D3B750069ECF5 /* RezkaTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5DA447B2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVTests" */;
+			buildPhases = (
+				B5DA44622E9D3B750069ECF5 /* Sources */,
+				B5DA44632E9D3B750069ECF5 /* Frameworks */,
+				B5DA44642E9D3B750069ECF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5DA44682E9D3B750069ECF5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B5DA44692E9D3B750069ECF5 /* RezkaTVTests */,
+			);
+			name = RezkaTVTests;
+			packageProductDependencies = (
+			);
+			productName = RezkaTVTests;
+			productReference = B5DA44662E9D3B750069ECF5 /* RezkaTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B5DA446F2E9D3B750069ECF5 /* RezkaTVUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5DA447E2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVUITests" */;
+			buildPhases = (
+				B5DA446C2E9D3B750069ECF5 /* Sources */,
+				B5DA446D2E9D3B750069ECF5 /* Frameworks */,
+				B5DA446E2E9D3B750069ECF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5DA44722E9D3B750069ECF5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B5DA44732E9D3B750069ECF5 /* RezkaTVUITests */,
+			);
+			name = RezkaTVUITests;
+			packageProductDependencies = (
+			);
+			productName = RezkaTVUITests;
+			productReference = B5DA44702E9D3B750069ECF5 /* RezkaTVUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -278,6 +589,17 @@
 				TargetAttributes = {
 					04B3CA732BA06C9C0039F76E = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					B5DA44572E9D3B6E0069ECF5 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					B5DA44652E9D3B750069ECF5 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = B5DA44572E9D3B6E0069ECF5;
+					};
+					B5DA446F2E9D3B750069ECF5 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = B5DA44572E9D3B6E0069ECF5;
 					};
 				};
 			};
@@ -313,12 +635,36 @@
 			projectRoot = "";
 			targets = (
 				04B3CA732BA06C9C0039F76E /* HDrezka */,
+				B5DA44572E9D3B6E0069ECF5 /* RezkaTV */,
+				B5DA44652E9D3B750069ECF5 /* RezkaTVTests */,
+				B5DA446F2E9D3B750069ECF5 /* RezkaTVUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		04B3CA722BA06C9C0039F76E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA44562E9D3B6E0069ECF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA44642E9D3B750069ECF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA446E2E9D3B750069ECF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -378,7 +724,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5DA44542E9D3B6E0069ECF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA44622E9D3B750069ECF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5DA446C2E9D3B750069ECF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5DA44682E9D3B750069ECF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5DA44572E9D3B6E0069ECF5 /* RezkaTV */;
+			targetProxy = B5DA44672E9D3B750069ECF5 /* PBXContainerItemProxy */;
+		};
+		B5DA44722E9D3B750069ECF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5DA44572E9D3B6E0069ECF5 /* RezkaTV */;
+			targetProxy = B5DA44712E9D3B750069ECF5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		04B3CA832BA06C9D0039F76E /* Debug */ = {
@@ -534,7 +914,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 68ZUK4XR7F;
+				DEVELOPMENT_TEAM = RFVKD37M39;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
@@ -650,6 +1030,173 @@
 			};
 			name = Release;
 		};
+		B5DA44792E9D3B750069ECF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=appletvos*]" = RFVKD37M39;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = HDRezka;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		B5DA447A2E9D3B750069ECF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=appletvos*]" = RFVKD37M39;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = HDRezka;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5DA447C2E9D3B750069ECF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RezkaTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RezkaTV";
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		B5DA447D2E9D3B750069ECF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RezkaTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RezkaTV";
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5DA447F2E9D3B750069ECF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = RezkaTV;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		B5DA44802E9D3B750069ECF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = RezkaTV;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -667,6 +1214,33 @@
 			buildConfigurations = (
 				04B3CA862BA06C9D0039F76E /* Debug */,
 				04B3CA872BA06C9D0039F76E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5DA44782E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5DA44792E9D3B750069ECF5 /* Debug */,
+				B5DA447A2E9D3B750069ECF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5DA447B2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5DA447C2E9D3B750069ECF5 /* Debug */,
+				B5DA447D2E9D3B750069ECF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5DA447E2E9D3B750069ECF5 /* Build configuration list for PBXNativeTarget "RezkaTVUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5DA447F2E9D3B750069ECF5 /* Debug */,
+				B5DA44802E9D3B750069ECF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -827,6 +1401,51 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04E9EB442C047F19001CBBCA /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
 			productName = YouTubePlayerKit;
+		};
+		B53391552F13C98200DB2229 /* LRUCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE7608D82EB4231600C4A23E /* XCRemoteSwiftPackageReference "LRUCache" */;
+			productName = LRUCache;
+		};
+		B533915B2F13C9F800DB2229 /* Pow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE188EE32CA6AB3100E7B1AE /* XCRemoteSwiftPackageReference "Pow" */;
+			productName = Pow;
+		};
+		B533915D2F13C9FE00DB2229 /* Flow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04E5DC082C120C4200BF1B7A /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */;
+			productName = Flow;
+		};
+		B5DA45352E9D3E7F0069ECF5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE3EF0372CFF04CA0022C311 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		B5DA45372E9D3E8F0069ECF5 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEB035B82C89E57A004ABFA1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		B5DA45392E9D3E9B0069ECF5 /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEF920362DD5CAF20087C32C /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
+		B5DA453F2E9D3EB90069ECF5 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 043A2B702C036C7C0057721E /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		B5DA45412E9D3EB90069ECF5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE4AD63C2EAA4A7200CE7AB3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04B3CA882BA06CAC0039F76E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		DE188EE42CA6AB3100E7B1AE /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -51,12 +51,13 @@ class Const {
 
     static var deviceUUID: String {
         #if os(macOS)
-        let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
-        if service != 0 {
-            defer { IOObjectRelease(service) }
+            let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice"))
+            if service != 0 {
+                defer { IOObjectRelease(service) }
 
-            if let uuid = IORegistryEntryCreateCFProperty(service, kIOPlatformUUIDKey as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? String, !uuid.isEmpty {
-                return uuid.uppercased()
+                if let uuid = IORegistryEntryCreateCFProperty(service, kIOPlatformUUIDKey as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? String, !uuid.isEmpty {
+                    return uuid.uppercased()
+                }
             }
         #endif
 

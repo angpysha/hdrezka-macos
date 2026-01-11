@@ -35,9 +35,9 @@ final class TVWatchOverlayViewModel {
 
     init(details: MovieDetailed) {
         self.details = details
-        self.isUserPremium = Defaults[.isUserPremium]
-        self.defaultQuality = Defaults[.defaultQuality]
-        self.voiceActings = details.voiceActing ?? []
+        isUserPremium = Defaults[.isUserPremium]
+        defaultQuality = Defaults[.defaultQuality]
+        voiceActings = details.voiceActing ?? []
     }
 
     func prepare() {
@@ -125,7 +125,7 @@ final class TVWatchOverlayViewModel {
             acting: acting,
             season: details.series != nil ? selectedSeason : nil,
             episode: details.series != nil ? selectedEpisode : nil,
-            quality: selectedQuality
+            quality: selectedQuality,
         )
     }
 
@@ -168,10 +168,10 @@ final class TVWatchOverlayViewModel {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 guard let self else { return }
-                self.isLoadingSeasons = false
+                isLoadingSeasons = false
 
                 if case let .failure(error) = completion {
-                    self.presentError(error.localizedDescription)
+                    presentError(error.localizedDescription)
                 }
             } receiveValue: { [weak self] seasons in
                 guard let self else { return }
@@ -179,7 +179,7 @@ final class TVWatchOverlayViewModel {
                 self.seasons = seasons
 
                 if let currentSeason = seasons.first(where: { $0.isSelected }) ?? seasons.first {
-                    self.selectSeason(currentSeason)
+                    selectSeason(currentSeason)
                 }
             }
             .store(in: &cancellables)
@@ -193,30 +193,30 @@ final class TVWatchOverlayViewModel {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 guard let self else { return }
-                self.isLoadingVideo = false
+                isLoadingVideo = false
 
                 if case let .failure(error) = completion {
-                    self.presentError(error.localizedDescription)
+                    presentError(error.localizedDescription)
                 }
             } receiveValue: { [weak self] movie in
                 guard let self else { return }
 
                 if movie.needPremium {
-                    self.presentError(String(localized: "key.premium_content"))
+                    presentError(String(localized: "key.premium_content"))
                     self.movie = nil
-                    self.availableQualities = []
-                    self.lockedQualities = []
+                    availableQualities = []
+                    lockedQualities = []
                     return
                 }
 
                 self.movie = movie
-                self.availableQualities = movie.getAvailableQualities()
-                self.lockedQualities = movie.getLockedQualities()
+                availableQualities = movie.getAvailableQualities()
+                lockedQualities = movie.getLockedQualities()
 
-                if let quality = self.defaultQualitySelection(from: movie) {
-                    self.selectedQuality = quality
+                if let quality = defaultQualitySelection(from: movie) {
+                    selectedQuality = quality
                 } else if let first = movie.getAvailableQualities().first {
-                    self.selectedQuality = first
+                    selectedQuality = first
                 }
             }
             .store(in: &cancellables)
@@ -225,12 +225,12 @@ final class TVWatchOverlayViewModel {
     private func defaultQualitySelection(from movie: MovieVideo) -> String? {
         switch defaultQuality {
         case .ask:
-            return nil
+            nil
         case .q360, .q480, .q720, .q1080, .q1440, .q2160:
             if movie.getAvailableQualities().contains(defaultQuality.rawValue) {
-                return defaultQuality.rawValue
+                defaultQuality.rawValue
             } else {
-                return nil
+                nil
             }
         }
     }
@@ -328,7 +328,7 @@ struct TVWatchOverlayView: View {
                 .cornerRadius(16)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(focusedTarget == .cancel ? Color.white : .clear, lineWidth: 3)
+                        .stroke(focusedTarget == .cancel ? Color.white : .clear, lineWidth: 3),
                 )
         }
         .buttonStyle(.plain)
@@ -351,7 +351,7 @@ struct TVWatchOverlayView: View {
                 .cornerRadius(16)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(focusedTarget == .play ? Color.white : .clear, lineWidth: 3)
+                        .stroke(focusedTarget == .play ? Color.white : .clear, lineWidth: 3),
                 )
         }
         .buttonStyle(.plain)
@@ -387,7 +387,7 @@ struct TVWatchOverlayView: View {
     private func focusSelectedActing(force: Bool = false) {
         if let acting = viewModel.selectedActing ?? viewModel.voiceActings.first {
             if !force {
-                if case .acting(let id) = focusedTarget, id == acting.id { return }
+                if case let .acting(id) = focusedTarget, id == acting.id { return }
                 if focusedTarget != nil { return }
             }
             focusedTarget = .acting(acting.id)
@@ -399,7 +399,7 @@ struct TVWatchOverlayView: View {
     private func focusSelectedSeason(force: Bool = false) {
         guard let season = viewModel.selectedSeason else { return }
         if !force {
-            if case .season(let id) = focusedTarget, id == season.id { return }
+            if case let .season(id) = focusedTarget, id == season.id { return }
             if focusedTarget != nil { return }
         }
         focusedTarget = .season(season.id)
@@ -408,7 +408,7 @@ struct TVWatchOverlayView: View {
     private func focusSelectedEpisode(force: Bool = false) {
         guard let episode = viewModel.selectedEpisode else { return }
         if !force {
-            if case .episode(let id) = focusedTarget, id == episode.id { return }
+            if case let .episode(id) = focusedTarget, id == episode.id { return }
             if focusedTarget != nil { return }
         }
         focusedTarget = .episode(episode.id)
@@ -417,7 +417,7 @@ struct TVWatchOverlayView: View {
     private func focusSelectedQuality(force: Bool = false) {
         guard let quality = viewModel.selectedQuality else { return }
         if !force {
-            if case .quality(let value) = focusedTarget, value == quality { return }
+            if case let .quality(value) = focusedTarget, value == quality { return }
             if focusedTarget != nil { return }
         }
         focusedTarget = .quality(quality)
@@ -465,7 +465,7 @@ struct TVWatchOverlayView: View {
                                 .cornerRadius(18)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 18)
-                                        .stroke(borderColorForActing(isFocused: isFocused, acting: acting), lineWidth: 3)
+                                        .stroke(borderColorForActing(isFocused: isFocused, acting: acting), lineWidth: 3),
                                 )
                             }
                             .buttonStyle(.plain)
@@ -505,7 +505,7 @@ struct TVWatchOverlayView: View {
                                             .cornerRadius(18)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 18)
-                                                    .stroke(borderColorForSelection(isFocused: isFocused, isSelected: viewModel.selectedSeason == season), lineWidth: 3)
+                                                    .stroke(borderColorForSelection(isFocused: isFocused, isSelected: viewModel.selectedSeason == season), lineWidth: 3),
                                             )
                                     }
                                     .buttonStyle(.plain)
@@ -552,7 +552,7 @@ struct TVWatchOverlayView: View {
                                         .cornerRadius(18)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 18)
-                                                .stroke(borderColorForSelection(isFocused: isFocused, isSelected: viewModel.selectedEpisode == episode), lineWidth: 3)
+                                                .stroke(borderColorForSelection(isFocused: isFocused, isSelected: viewModel.selectedEpisode == episode), lineWidth: 3),
                                         )
                                 }
                                 .buttonStyle(.plain)
@@ -590,7 +590,7 @@ struct TVWatchOverlayView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 25) {
                 availableQualityButtons
-               // lockedQualityButtons
+                // lockedQualityButtons
             }
             .padding(.vertical, 10)
         }
@@ -632,7 +632,7 @@ struct TVWatchOverlayView: View {
             .cornerRadius(18)
             .overlay(
                 RoundedRectangle(cornerRadius: 18)
-                    .stroke(borderColorForSelection(isFocused: isFocused, isSelected: viewModel.selectedQuality == quality), lineWidth: 3)
+                    .stroke(borderColorForSelection(isFocused: isFocused, isSelected: viewModel.selectedQuality == quality), lineWidth: 3),
             )
     }
 
@@ -647,7 +647,7 @@ struct TVWatchOverlayView: View {
         .cornerRadius(18)
         .overlay(
             RoundedRectangle(cornerRadius: 18)
-                .stroke(isFocused ? Color.white : Color.gray.opacity(0.4), lineWidth: 3)
+                .stroke(isFocused ? Color.white : Color.gray.opacity(0.4), lineWidth: 3),
         )
     }
 

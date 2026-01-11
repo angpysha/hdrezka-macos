@@ -90,11 +90,10 @@ struct TVPlayerView: View {
     }
 
     private func setupPlayer() async {
-        let url: URL?
-        if let quality = configuration.quality {
-            url = configuration.video.getClosestTo(quality: quality)
+        let url: URL? = if let quality = configuration.quality {
+            configuration.video.getClosestTo(quality: quality)
         } else {
-            url = configuration.video.getMaxQuality()
+            configuration.video.getMaxQuality()
         }
 
         guard let url else {
@@ -113,5 +112,3 @@ struct TVPlayerView: View {
         }
     }
 }
-
-

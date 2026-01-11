@@ -110,4 +110,3 @@ extension Container {
     var categoriesUseCase: Factory<CategoriesUseCase> { self { CategoriesUseCase(repository: self.searchRepository()) }.singleton }
     var searchUseCase: Factory<SearchUseCase> { self { SearchUseCase(repository: self.searchRepository()) }.singleton }
 }
-

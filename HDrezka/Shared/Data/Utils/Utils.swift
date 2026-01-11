@@ -2,7 +2,9 @@ import Alamofire
 import AVFoundation
 import Combine
 import Defaults
-import FirebaseCrashlytics
+#if os(macOS)
+    import FirebaseCrashlytics
+#endif
 import Foundation
 import SwiftSoup
 import SwiftUI
@@ -145,7 +147,9 @@ extension Optional {
     ) throws -> Wrapped {
         guard let self else {
             let error = HDrezkaError.null(functionName, lineNumber, columnNumber)
-            Crashlytics.crashlytics().record(error: error)
+            #if os(macOS)
+                Crashlytics.crashlytics().record(error: error)
+            #endif
             throw error
         }
 
@@ -156,109 +160,108 @@ extension Optional {
 #if os(macOS)
     import AppKit
 
-    #if os(macOS)
+    func font(
+        bold: Bool = false,
+        italic: Bool = false,
+        underline: Bool = false,
+        strikethrough: Bool = false,
+        link: String? = nil,
+    ) {
+        var font = NSFont.systemFont(ofSize: 13)
+        let fontManager = NSFontManager.shared
 
-        func font(
-            bold: Bool = false,
-            italic: Bool = false,
-            underline: Bool = false,
-            strikethrough: Bool = false,
-            link: String? = nil,
-        ) {
-            var font = NSFont.systemFont(ofSize: 13)
-            let fontManager = NSFontManager.shared
-
-            if bold {
-                font = fontManager.convert(font, toHaveTrait: .boldFontMask)
-            }
-
-            if italic {
-                font = fontManager.convert(font, toHaveTrait: .italicFontMask)
-            }
-
-            self.font(font, underline, strikethrough, link)
+        if bold {
+            font = fontManager.convert(font, toHaveTrait: .boldFontMask)
         }
 
-        func font(_ font: NSFont, _ underline: Bool, _ strikethrough: Bool, _ link: String?) {
-            attributes[.font] = font
-            attributes[.foregroundColor] = NSColor.labelColor
-
-            if underline {
-                attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
-            }
-
-            if strikethrough {
-                attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
-            }
-
-            if let link {
-                attributes[.link] = link
-                attributes[.foregroundColor] = NSColor(Color.accentColor)
-            }
-
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .left
-            paragraphStyle.lineBreakMode = .byWordWrapping
-
-            attributes[.paragraphStyle] = paragraphStyle
+        if italic {
+            font = fontManager.convert(font, toHaveTrait: .italicFontMask)
         }
 
-    #elseif os(iOS)
+        self.font(font, underline, strikethrough, link)
+    }
 
-        func font(
-            bold: Bool = false,
-            italic: Bool = false,
-            underline: Bool = false,
-            strikethrough: Bool = false,
-            link: String? = nil,
-        ) {
-            var fontDescriptor = UIFont.systemFont(ofSize: 13).fontDescriptor
+    func font(_ font: NSFont, _ underline: Bool, _ strikethrough: Bool, _ link: String?) {
+        attributes[.font] = font
+        attributes[.foregroundColor] = NSColor.labelColor
 
-            if bold {
-                fontDescriptor = fontDescriptor.withSymbolicTraits(.traitBold) ?? fontDescriptor
-            }
-
-            if italic {
-                fontDescriptor = fontDescriptor.withSymbolicTraits(.traitItalic) ?? fontDescriptor
-            }
-
-            let font = UIFont(descriptor: fontDescriptor, size: 13)
-            self.font(font, underline, strikethrough, link)
+        if underline {
+            attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
         }
 
-        func font(_ font: UIFont, _ underline: Bool, _ strikethrough: Bool, _ link: String?) {
-            attributes[.font] = font
-            attributes[.foregroundColor] = UIColor.label
-
-            if underline {
-                attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
-            }
-
-            if strikethrough {
-                attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
-            }
-
-            if let link {
-                attributes[.link] = link
-                attributes[.foregroundColor] = UIColor(Color.accentColor)
-            }
-
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .left
-            paragraphStyle.lineBreakMode = .byWordWrapping
-
-            attributes[.paragraphStyle] = paragraphStyle
+        if strikethrough {
+            attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
         }
 
-    #endif
-}
+        if let link {
+            attributes[.link] = link
+            attributes[.foregroundColor] = NSColor(Color.accentColor)
+        }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineBreakMode = .byWordWrapping
+
+        attributes[.paragraphStyle] = paragraphStyle
+    }
+
+#elseif os(iOS)
+
+    func font(
+        bold: Bool = false,
+        italic: Bool = false,
+        underline: Bool = false,
+        strikethrough: Bool = false,
+        link: String? = nil,
+    ) {
+        var fontDescriptor = UIFont.systemFont(ofSize: 13).fontDescriptor
+
+        if bold {
+            fontDescriptor = fontDescriptor.withSymbolicTraits(.traitBold) ?? fontDescriptor
+        }
+
+        if italic {
+            fontDescriptor = fontDescriptor.withSymbolicTraits(.traitItalic) ?? fontDescriptor
+        }
+
+        let font = UIFont(descriptor: fontDescriptor, size: 13)
+        self.font(font, underline, strikethrough, link)
+    }
+
+    func font(_ font: UIFont, _ underline: Bool, _ strikethrough: Bool, _ link: String?) {
+        attributes[.font] = font
+        attributes[.foregroundColor] = UIColor.label
+
+        if underline {
+            attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
+        }
+
+        if strikethrough {
+            attributes[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
+        }
+
+        if let link {
+            attributes[.link] = link
+            attributes[.foregroundColor] = UIColor(Color.accentColor)
+        }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineBreakMode = .byWordWrapping
+
+        attributes[.paragraphStyle] = paragraphStyle
+    }
+
+#endif
 
 extension NSMutableAttributedString {
-    func append(string: String, _ styleConfigurationBlock: (AttributedTextStyle) -> Void) {
-        let style = AttributedTextStyle()
-        styleConfigurationBlock(style)
-        append(NSAttributedString(string: string, attributes: style.attributes))
-    }
+    #if os(macos)
+        func append(string: String, _ styleConfigurationBlock: (AttributedTextStyle) -> Void) {
+            let style = AttributedTextStyle()
+            styleConfigurationBlock(style)
+            append(NSAttributedString(string: string, attributes: style.attributes))
+        }
+    #endif
 }
 
 extension Publisher where Failure == Error {
@@ -319,6 +322,8 @@ private extension Publisher {
     }
 
     private func recordToCrashlytics(_ error: Error) {
-        Crashlytics.crashlytics().record(error: error)
+        #if os(macOS)
+            Crashlytics.crashlytics().record(error: error)
+        #endif
     }
 }

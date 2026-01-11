@@ -1,4 +1,6 @@
-import Algorithms
+#if !os(tvOS)
+    import Algorithms
+#endif
 import SwiftUI
 
 class Snowflakes {
@@ -86,8 +88,22 @@ class Snowflakes {
     }
 
     static var cgImages: [CGImage] {
-        product(Const.minRects ... Const.maxRects, Const.minRays ... Const.maxRays).compactMap { rectCount, raysCount in
-            createCGImage(size: Const.size, rectCount: rectCount, raysCount: raysCount)
-        }
+        #if os(tvOS)
+            // На tvOS не використовуємо Snowflakes, тому повертаємо порожній масив
+            // Або можна реалізувати product вручну без Algorithms
+            var images: [CGImage] = []
+            for rectCount in Const.minRects ... Const.maxRects {
+                for raysCount in Const.minRays ... Const.maxRays {
+                    if let image = createCGImage(size: Const.size, rectCount: rectCount, raysCount: raysCount) {
+                        images.append(image)
+                    }
+                }
+            }
+            return images
+        #else
+            product(Const.minRects ... Const.maxRects, Const.minRays ... Const.maxRays).compactMap { rectCount, raysCount in
+                createCGImage(size: Const.size, rectCount: rectCount, raysCount: raysCount)
+            }
+        #endif
     }
 }

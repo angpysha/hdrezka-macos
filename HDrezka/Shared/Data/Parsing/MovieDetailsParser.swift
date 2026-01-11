@@ -1,4 +1,6 @@
-import Algorithms
+#if !os(tvOS)
+    import Algorithms
+#endif
 import Defaults
 import Foundation
 import OrderedCollections
@@ -395,11 +397,13 @@ private extension Element {
                 }
             }
 
-            return (commentText, spoilers)
+            // Конвертуємо NSMutableAttributedString в AttributedString
+            let attributedString = AttributedString(commentText)
+            return (attributedString, spoilers)
         #else
             // На tvOS просто повертаємо plain text без форматування
             let plainText = try text()
-            let attributedString = NSAttributedString(string: plainText)
+            let attributedString = AttributedString(plainText)
             return (attributedString, [])
         #endif
     }
@@ -458,8 +462,15 @@ private extension Element {
             .select("tbody")
             .forEach { tr in
                 for tableItem in try tr.select("tr") {
-                    try tableItem.select("td").chunks(ofCount: 2).forEach { chunk in
-                        try onGot(chunk.base)
+                    let tds = try tableItem.select("td")
+                    var index = 0
+                    while index < tds.size() {
+                        let chunkElements = SwiftSoup.Elements()
+                        for i in 0 ..< min(2, tds.size() - index) {
+                            try chunkElements.add(tds.get(index + i))
+                        }
+                        try onGot(chunkElements)
+                        index += 2
                     }
                 }
             }

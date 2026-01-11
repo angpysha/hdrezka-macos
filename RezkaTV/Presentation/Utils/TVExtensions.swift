@@ -163,9 +163,9 @@ extension String {
 enum Cache: Int, CaseIterable, Identifiable, Defaults.Serializable {
     case off
     case all
-    
+
     var id: Int { rawValue }
-    
+
     var name: String {
         switch self {
         case .off: String(localized: "key.off")
@@ -175,15 +175,15 @@ enum Cache: Int, CaseIterable, Identifiable, Defaults.Serializable {
 }
 
 // HomeCategory для tvOS
-/*enum HomeCategory: LocalizedStringKey, CaseIterable, Identifiable {
-    case updates = "key.home.updates"
-    case added = "key.home.added"
-    case expected = "key.home.expected"
-    case watching = "key.home.watching"
-    case popular = "key.home.popular"
-    
-    var id: HomeCategory { self }
-}*/
+/* enum HomeCategory: LocalizedStringKey, CaseIterable, Identifiable {
+     case updates = "key.home.updates"
+     case added = "key.home.added"
+     case expected = "key.home.expected"
+     case watching = "key.home.watching"
+     case popular = "key.home.popular"
+
+     var id: HomeCategory { self }
+ } */
 
 // Defaults.Keys для tvOS
 extension Defaults.Keys {
