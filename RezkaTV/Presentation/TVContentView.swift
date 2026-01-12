@@ -55,19 +55,19 @@ struct TVContentView: View {
                 }
             }
 
-            // Таб налаштувань
-            NavigationStack {
-                TVSettingsView()
-                    .navigationTitle("key.settings")
-            }
-            .tabItem {
-                Label {
-                    Text("key.settings")
-                } icon: {
-                    Image(systemName: "gear")
-                }
-            }
-            .tag(Tabs.settings)
+//            // Таб налаштувань
+//            NavigationStack {
+//                TVSettingsView()
+//                    .navigationTitle("key.settings")
+//            }
+//            .tabItem {
+//                Label {
+//                    Text("key.settings")
+//                } icon: {
+//                    Image(systemName: "gear")
+//                }
+//            }
+//            .tag(Tabs.settings)
         }
         .tabViewStyle(.automatic)
         .task {
@@ -132,6 +132,8 @@ extension Tabs {
             TVBookmarksView()
         case .watchingLater:
             TVWatchingLaterView()
+        case .settings:
+            TVSettingsView()
         default:
             Text("Coming soon")
         }
