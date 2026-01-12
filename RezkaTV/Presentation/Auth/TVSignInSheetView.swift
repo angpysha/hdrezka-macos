@@ -161,6 +161,7 @@ struct TVSignInSheetView: View {
             } receiveValue: { success in
                 isLoading = false
                 if success {
+                    isLoggedIn = true
                     dismiss()
                 } else {
                     error = String(localized: "key.sign_in.error")
