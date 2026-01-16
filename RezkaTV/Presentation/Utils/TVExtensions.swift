@@ -185,6 +185,52 @@ enum Cache: Int, CaseIterable, Identifiable, Defaults.Serializable {
      var id: HomeCategory { self }
  } */
 
+// Кеш для збереження останніх виборів сезонів та епізодів
+struct SeriesSelectionCache: Codable, Defaults.Serializable {
+    // Ключ: "movieId_voiceActingId_seasonId", Значення: episodeId
+    var episodeSelections: [String: String] = [:]
+    // Ключ: "movieId_voiceActingId", Значення: seasonId
+    var seasonSelections: [String: String] = [:]
+    // Ключ: "movieId", Значення: voiceActingId
+    var actingSelections: [String: String] = [:]
+    
+    mutating func saveEpisodeSelection(movieId: String, voiceActingId: String, seasonId: String, episodeId: String) {
+        let key = makeEpisodeKey(movieId: movieId, voiceActingId: voiceActingId, seasonId: seasonId)
+        episodeSelections[key] = episodeId
+    }
+    
+    func getEpisodeSelection(movieId: String, voiceActingId: String, seasonId: String) -> String? {
+        let key = makeEpisodeKey(movieId: movieId, voiceActingId: voiceActingId, seasonId: seasonId)
+        return episodeSelections[key]
+    }
+    
+    mutating func saveSeasonSelection(movieId: String, voiceActingId: String, seasonId: String) {
+        let key = makeSeasonKey(movieId: movieId, voiceActingId: voiceActingId)
+        seasonSelections[key] = seasonId
+    }
+    
+    func getSeasonSelection(movieId: String, voiceActingId: String) -> String? {
+        let key = makeSeasonKey(movieId: movieId, voiceActingId: voiceActingId)
+        return seasonSelections[key]
+    }
+    
+    mutating func saveActingSelection(movieId: String, voiceActingId: String) {
+        actingSelections[movieId] = voiceActingId
+    }
+    
+    func getActingSelection(movieId: String) -> String? {
+        return actingSelections[movieId]
+    }
+    
+    private func makeEpisodeKey(movieId: String, voiceActingId: String, seasonId: String) -> String {
+        "\(movieId)_\(voiceActingId)_\(seasonId)"
+    }
+    
+    private func makeSeasonKey(movieId: String, voiceActingId: String) -> String {
+        "\(movieId)_\(voiceActingId)"
+    }
+}
+
 // Defaults.Keys для tvOS
 extension Defaults.Keys {
     static let mirror = Key<URL>("mirror", default: Const.mirror)
@@ -204,4 +250,5 @@ extension Defaults.Keys {
     static let isFirstLaunch = Key<Bool>("is_first_launch", default: true)
     static let snow = Key<Bool>("snow", default: true)
     static let forceSnow = Key<Bool>("force_snow", default: false)
+    static let seriesSelectionCache = Key<SeriesSelectionCache>("series_selection_cache", default: SeriesSelectionCache())
 }

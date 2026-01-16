@@ -41,7 +41,20 @@ final class TVWatchOverlayViewModel {
     }
 
     func prepare() {
-        selectInitialActing()
+        // Перевіряємо кеш перед вибором початкової озвучки
+        if details.series != nil, let cachedActing = getCachedActing() {
+            // Перевіряємо, чи доступна кешована озвучка
+            if cachedActing.isPremium && isUserPremium == nil {
+                // Якщо преміум і користувач не преміум, використовуємо стандартну логіку
+                selectInitialActing()
+            } else {
+                // Якщо є кешована озвучка, використовуємо її
+                selectActing(cachedActing)
+            }
+        } else {
+            // Інакше використовуємо стандартну логіку
+            selectInitialActing()
+        }
     }
 
     func presentError(_ message: String) {
@@ -65,6 +78,10 @@ final class TVWatchOverlayViewModel {
 
         clearError()
         selectedActing = acting
+        
+        // Зберігаємо вибір озвучки
+        saveCachedActing(voiceActing: acting)
+        
         seasons = nil
         selectedSeason = nil
         selectedEpisode = nil
@@ -91,7 +108,17 @@ final class TVWatchOverlayViewModel {
         availableQualities = []
         lockedQualities = []
 
-        if let firstEpisode = season.episodes.first {
+        // Зберігаємо вибір сезону для цієї озвучки
+        if let acting = selectedActing {
+            saveCachedSeason(voiceActing: acting, season: season)
+        }
+
+        // Відновлюємо останній вибраний епізод для цієї комбінації озвучки + сезону
+        if let acting = selectedActing,
+           let cachedEpisodeId = getCachedEpisode(voiceActing: acting, season: season),
+           let cachedEpisode = season.episodes.first(where: { $0.episodeId == cachedEpisodeId }) {
+            selectEpisode(cachedEpisode)
+        } else if let firstEpisode = season.episodes.first {
             selectEpisode(firstEpisode)
         }
     }
@@ -106,7 +133,9 @@ final class TVWatchOverlayViewModel {
         availableQualities = []
         lockedQualities = []
 
+        // Зберігаємо вибір епізоду для цієї комбінації озвучки + сезону
         if let acting = selectedActing, let season = selectedSeason {
+            saveCachedEpisode(voiceActing: acting, season: season, episode: episode)
             loadVideo(acting: acting, season: season, episode: episode)
         }
     }
@@ -173,13 +202,25 @@ final class TVWatchOverlayViewModel {
                 if case let .failure(error) = completion {
                     presentError(error.localizedDescription)
                 }
-            } receiveValue: { [weak self] seasons in
+            }             receiveValue: { [weak self] seasons in
                 guard let self else { return }
 
                 self.seasons = seasons
 
-                if let currentSeason = seasons.first(where: { $0.isSelected }) ?? seasons.first {
-                    selectSeason(currentSeason)
+                // Відновлюємо останній вибраний сезон для цієї озвучки
+                // Використовуємо Task для відкладення до повної ініціалізації UI
+                Task { @MainActor [weak self] in
+                    guard let self else { return }
+                    
+                    if let cachedSeasonId = self.getCachedSeasonId(voiceActing: acting),
+                       let cachedSeason = seasons.first(where: { $0.seasonId == cachedSeasonId }) {
+                        // Невелика затримка для повної ініціалізації UI
+                        try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 секунди
+                        self.selectSeason(cachedSeason)
+                    } else if let currentSeason = seasons.first(where: { $0.isSelected }) ?? seasons.first {
+                        try? await Task.sleep(nanoseconds: 100_000_000)
+                        self.selectSeason(currentSeason)
+                    }
                 }
             }
             .store(in: &cancellables)
@@ -233,6 +274,65 @@ final class TVWatchOverlayViewModel {
                 nil
             }
         }
+    }
+    
+    // MARK: - Cache Management
+    
+    private func saveCachedEpisode(voiceActing: MovieVoiceActing, season: MovieSeason, episode: MovieEpisode) {
+        var cache = Defaults[.seriesSelectionCache]
+        cache.saveEpisodeSelection(
+            movieId: details.movieId,
+            voiceActingId: voiceActing.voiceId,
+            seasonId: season.seasonId,
+            episodeId: episode.episodeId
+        )
+        Defaults[.seriesSelectionCache] = cache
+    }
+    
+    private func getCachedEpisode(voiceActing: MovieVoiceActing, season: MovieSeason) -> String? {
+        let cache = Defaults[.seriesSelectionCache]
+        return cache.getEpisodeSelection(
+            movieId: details.movieId,
+            voiceActingId: voiceActing.voiceId,
+            seasonId: season.seasonId
+        )
+    }
+    
+    private func saveCachedSeason(voiceActing: MovieVoiceActing, season: MovieSeason) {
+        var cache = Defaults[.seriesSelectionCache]
+        cache.saveSeasonSelection(
+            movieId: details.movieId,
+            voiceActingId: voiceActing.voiceId,
+            seasonId: season.seasonId
+        )
+        Defaults[.seriesSelectionCache] = cache
+    }
+    
+    private func getCachedSeasonId(voiceActing: MovieVoiceActing) -> String? {
+        let cache = Defaults[.seriesSelectionCache]
+        return cache.getSeasonSelection(
+            movieId: details.movieId,
+            voiceActingId: voiceActing.voiceId
+        )
+    }
+    
+    private func saveCachedActing(voiceActing: MovieVoiceActing) {
+        var cache = Defaults[.seriesSelectionCache]
+        cache.saveActingSelection(
+            movieId: details.movieId,
+            voiceActingId: voiceActing.translatorId
+        )
+        Defaults[.seriesSelectionCache] = cache
+    }
+    
+    private func getCachedActing() -> MovieVoiceActing? {
+        let cache = Defaults[.seriesSelectionCache]
+        guard let cachedActingId = cache.getActingSelection(movieId: details.movieId) else {
+            return nil
+        }
+        
+        // Знаходимо озвучку за ID
+        return voiceActings.first { $0.translatorId == cachedActingId }
     }
 }
 
