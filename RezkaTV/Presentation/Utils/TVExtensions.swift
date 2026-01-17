@@ -231,6 +231,39 @@ struct SeriesSelectionCache: Codable, Defaults.Serializable {
     }
 }
 
+// Кеш для збереження історії пошуку (останні 20 фраз)
+struct SearchHistoryCache: Codable, Defaults.Serializable {
+    var phrases: [String] = []
+    
+    mutating func addPhrase(_ phrase: String) {
+        let trimmed = phrase.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        
+        // Видаляємо дублікат, якщо він існує
+        phrases.removeAll { $0.lowercased() == trimmed.lowercased() }
+        
+        // Додаємо на початок
+        phrases.insert(trimmed, at: 0)
+        
+        // Зберігаємо тільки останні 20
+        if phrases.count > 20 {
+            phrases = Array(phrases.prefix(20))
+        }
+    }
+    
+    mutating func removePhrase(_ phrase: String) {
+        phrases.removeAll { $0 == phrase }
+    }
+    
+    mutating func clear() {
+        phrases.removeAll()
+    }
+    
+    var recentPhrases: [String] {
+        Array(phrases.prefix(20))
+    }
+}
+
 // Defaults.Keys для tvOS
 extension Defaults.Keys {
     static let mirror = Key<URL>("mirror", default: Const.mirror)
@@ -251,4 +284,5 @@ extension Defaults.Keys {
     static let snow = Key<Bool>("snow", default: true)
     static let forceSnow = Key<Bool>("force_snow", default: false)
     static let seriesSelectionCache = Key<SeriesSelectionCache>("series_selection_cache", default: SeriesSelectionCache())
+    static let searchHistoryCache = Key<SearchHistoryCache>("search_history_cache", default: SearchHistoryCache())
 }

@@ -22,6 +22,9 @@
     "Item at %@" : {
 
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "key.2k" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1415,8 +1418,49 @@
         }
       }
     },
+    "key.clear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистити"
+          }
+        }
+      }
+    },
     "key.close" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрыть"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрити"
+          }
+        }
+      }
     },
     "key.close-%@" : {
       "extractionState" : "stale",
@@ -6278,6 +6322,28 @@
         }
       }
     },
+    "key.search.recent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Searches"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недавние поиски"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Останні пошуки"
+          }
+        }
+      }
+    },
     "key.search.result-%@" : {
       "localizations" : {
         "en" : {
@@ -7722,7 +7788,26 @@
       }
     },
     "key.video_url_not_available" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video URL is not available"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL видео недоступен"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL відео недоступний"
+          }
+        }
+      }
     },
     "key.view_more" : {
       "extractionState" : "stale",

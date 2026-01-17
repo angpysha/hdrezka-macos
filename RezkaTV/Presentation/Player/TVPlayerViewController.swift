@@ -1,4 +1,6 @@
 import AVKit
+import Combine
+import SwiftData
 import SwiftUI
 
 struct TVPlayerConfiguration: Identifiable {
@@ -32,7 +34,11 @@ struct TVPlayerView: View {
 
     @State private var player: AVPlayer?
     @State private var error: String?
+    @State private var timeObserver: Any?
+    @State private var cancellables: Set<AnyCancellable> = []
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    @Query private var playerPositions: [PlayerPosition]
 
     var body: some View {
         ZStack {
@@ -40,13 +46,18 @@ struct TVPlayerView: View {
 
             if let player {
                 TVPlayerViewController(player: player) {
+                    saveCurrentPosition(for: player)
+                    removeTimeObserver(player: player)
                     dismiss()
                 }
                 .ignoresSafeArea()
                 .onAppear {
+                    setupTimeObserver(for: player)
                     player.play()
                 }
                 .onDisappear {
+                    saveCurrentPosition(for: player)
+                    removeTimeObserver(player: player)
                     player.pause()
                 }
             } else if let error {
@@ -106,9 +117,104 @@ struct TVPlayerView: View {
         let player = AVPlayer(url: url)
         player.allowsExternalPlayback = true
         player.usesExternalPlaybackWhileExternalScreenIsActive = true
+        
+        // Слухаємо статус плеєра для відновлення позиції
+        player.publisher(for: \.status)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak player] status in
+                guard let player = player, status == .readyToPlay else { return }
+                restorePosition(for: player)
+            }
+            .store(in: &cancellables)
 
         await MainActor.run {
             self.player = player
         }
+    }
+    
+    // MARK: - Position Management
+    
+    private func restorePosition(for player: AVPlayer) {
+        guard let position = findPlayerPosition() else { return }
+        
+        // Перевіряємо, чи позиція не дуже близько до кінця (не менше 5 секунд від кінця)
+        // Якщо так, не відновлюємо, щоб не пропустити кінець
+        if let duration = player.currentItem?.duration.seconds, position.position >= duration - 5 {
+            return
+        }
+        
+        let time = CMTime(seconds: position.position, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        player.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero) { completed in
+            if completed {
+                // Можна додати візуальний індикатор відновлення
+            }
+        }
+    }
+    
+    private func setupTimeObserver(for player: AVPlayer) {
+        // Зберігаємо позицію кожну хвилину (60 секунд)
+        let interval = CMTime(seconds: 60, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        
+        timeObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak player] time in
+            guard let player = player else { return }
+            saveCurrentPosition(for: player)
+        }
+    }
+    
+    private func removeTimeObserver(player: AVPlayer) {
+        if let observer = timeObserver {
+            player.removeTimeObserver(observer)
+            timeObserver = nil
+        }
+    }
+    
+    private func saveCurrentPosition(for player: AVPlayer) {
+        guard let currentItem = player.currentItem else { return }
+        let currentTime = player.currentTime().seconds
+        
+        // Не зберігаємо, якщо відео ще не готове або позиція дуже мала
+        guard currentItem.status == .readyToPlay, currentTime > 1 else { return }
+        
+        let voiceActingId = configuration.acting.voiceId
+        let translatorId = configuration.acting.translatorId
+        let seasonId = configuration.season?.seasonId
+        let episodeId = configuration.episode?.episodeId
+        
+        // Шукаємо існуючу позицію
+        if let position = playerPositions.first(where: { position in
+            position.id == voiceActingId &&
+            position.acting == translatorId &&
+            position.season == seasonId &&
+            position.episode == episodeId
+        }) {
+            position.position = currentTime
+        } else {
+            // Створюємо нову позицію
+            let position = PlayerPosition(
+                id: voiceActingId,
+                acting: translatorId,
+                season: seasonId,
+                episode: episodeId,
+                position: currentTime
+            )
+            modelContext.insert(position)
+        }
+        
+        // Зберігаємо контекст
+        try? modelContext.save()
+    }
+    
+    private func findPlayerPosition() -> PlayerPosition? {
+        let voiceActingId = configuration.acting.voiceId
+        let translatorId = configuration.acting.translatorId
+        let seasonId = configuration.season?.seasonId
+        let episodeId = configuration.episode?.episodeId
+        
+        return playerPositions.first(where: { position in
+            position.id == voiceActingId &&
+            position.acting == translatorId &&
+            position.season == seasonId &&
+            position.episode == episodeId
+        })
     }
 }
