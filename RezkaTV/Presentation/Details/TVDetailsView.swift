@@ -8,6 +8,8 @@ struct TVDetailsView: View {
     @State private var viewModel: DetailsViewModel
     @State private var isWatchOverlayPresented = false
     @State private var activePlayerConfig: TVPlayerConfiguration?
+    @State private var isBookmarksPresented = false
+    @State private var isCreateBookmarkPresented = false
 
     @Default(.isLoggedIn) private var isLoggedIn
     @Environment(AppState.self) private var appState
@@ -116,7 +118,7 @@ struct TVDetailsView: View {
 
                                 if isLoggedIn {
                                     Button {
-                                        // Додати до закладок - TODO
+                                        isBookmarksPresented = true
                                     } label: {
                                         Image(systemName: "bookmark")
                                             .font(.system(size: 32))
@@ -126,6 +128,7 @@ struct TVDetailsView: View {
                                             .cornerRadius(15)
                                     }
                                     .buttonStyle(.plain)
+                                    .disabled(viewModel.state.data == nil)
                                 }
                             }
                             .padding(.top, 20)
@@ -211,6 +214,15 @@ struct TVDetailsView: View {
         }
         .fullScreenCover(item: $activePlayerConfig) { config in
             TVPlayerView(configuration: config)
+        }
+        .sheet(isPresented: $isBookmarksPresented) {
+            TVBookmarksSheetView(id: viewModel.id, isCreateBookmarkPresented: $isCreateBookmarkPresented)
+        }
+        .sheet(isPresented: $isCreateBookmarkPresented) {
+            TVCreateBookmarkSheetView()
+        }
+        .onChange(of: isCreateBookmarkPresented) {
+            isBookmarksPresented = !isCreateBookmarkPresented
         }
         .navigationDestination(for: MovieSimple.self) { movie in
             TVDetailsView(movie: movie)

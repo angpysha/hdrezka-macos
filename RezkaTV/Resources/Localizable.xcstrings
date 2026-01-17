@@ -1144,7 +1144,6 @@
       }
     },
     "key.bookmark.empty" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1189,7 +1188,6 @@
       }
     },
     "key.bookmarks.description" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1720,7 +1718,6 @@
 
     },
     "key.create" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1743,7 +1740,6 @@
       }
     },
     "key.create.description" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1766,7 +1762,6 @@
       }
     },
     "key.create.enter" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1789,7 +1784,6 @@
       }
     },
     "key.create.label" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2010,7 +2004,6 @@
 
     },
     "key.done" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4410,7 +4403,6 @@
       }
     },
     "key.name" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4433,7 +4425,6 @@
       }
     },
     "key.name.error" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4788,7 +4779,6 @@
       }
     },
     "key.ops" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5816,7 +5806,6 @@
       }
     },
     "key.request.wait" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
