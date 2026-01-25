@@ -10,7 +10,10 @@ struct TVCategoriesView: View {
                     GridItem(.adaptive(minimum: 400, maximum: 500), spacing: 40),
                 ], spacing: 40) {
                     ForEach(categories) { type in
-                        NavigationLink(value: type) {
+                        // Створюємо MovieGenre з typeId для навігації
+                        let genre = MovieGenre(name: type.name, genreId: type.typeId)
+                        
+                        NavigationLink(value: genre) {
                             VStack(alignment: .leading, spacing: 20) {
                                 // Іконка категорії
                                 Image(systemName: categoryIcon(for: type))
@@ -70,8 +73,8 @@ struct TVCategoriesView: View {
                 viewModel.load()
             }
         }
-        .navigationDestination(for: MovieType.self) { type in
-            Text("Type: \(type.name)")
+        .navigationDestination(for: MovieGenre.self) { genre in
+            TVListView(genre: genre)
         }
     }
 

@@ -7246,9 +7246,6 @@
         }
       }
     },
-    "key.tap_to_view" : {
-
-    },
     "key.theme" : {
       "localizations" : {
         "en" : {
@@ -8053,9 +8050,6 @@
 
     },
     "Select an item" : {
-
-    },
-    "Type: %@" : {
 
     }
   },
