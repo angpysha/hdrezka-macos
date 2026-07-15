@@ -125,6 +125,12 @@ HDrezkaTV/
 3. Запустіть схему HDrezkaTV
 4. Використовуйте симулятор пульта для навігації
 
+## Ad Hoc IPA (release)
+
+Інструкції, `ExportOptions.plist` і профіль: див. [`docs/release/RezkaTV/README.md`](docs/release/RezkaTV/README.md).
+
+Профіль: `/Users/andrii/Downloads/RezkaTv_AdHoc_2026.mobileprovision` (`RezkaTv AdHoc 2026`).
+
 ## Рекомендації для розробки
 
 ### Фокус-навігація

@@ -1,0 +1,102 @@
+# Reusable job template: install signing assets, archive (manual signing), export IPA,
+# and distribute. TestFlight via AppStoreRelease@1; ad-hoc/enterprise as a published IPA.
+
+parameters:
+  - name: macPool
+    type: string
+  - name: scheme
+    type: string
+  - name: bundleId
+    type: string
+  - name: platform
+    type: string
+    default: iOS
+    values: [iOS, macOS, tvOS, watchOS, visionOS]
+  - name: distribution
+    type: string
+    default: app-store-connect
+    values: [app-store-connect, ad-hoc, enterprise, development, developer-id, mac-application]
+  - name: p12SecureFile
+    type: string
+  - name: provProfileSecureFile
+    type: string
+
+jobs:
+  - job: release
+    displayName: Archive & distribute (${{ parameters.distribution }})
+    pool:
+      name: ${{ parameters.macPool }}
+    steps:
+      - checkout: self
+        fetchDepth: 1
+
+      # 1) Install signing assets into a temporary keychain (cleaned up after the job).
+      - task: InstallAppleCertificate@2
+        displayName: Install distribution certificate
+        inputs:
+          certSecureFile: ${{ parameters.p12SecureFile }}
+          certPwd: $(P12_PASSWORD)
+          keychain: temp
+          deleteCert: true
+
+      - task: InstallAppleProvisioningProfile@1
+        displayName: Install provisioning profile
+        inputs:
+          provisioningProfileLocation: secureFiles
+          provProfileSecureFile: ${{ parameters.provProfileSecureFile }}
+          removeProfile: true
+
+      - script: |
+          xcodebuild -resolvePackageDependencies -scheme "${{ parameters.scheme }}" || true
+        displayName: Resolve SPM dependencies
+
+      # 2) Archive with manual signing (CI). Local dev uses Automatic from .xcodeproj via xc-archive.
+      - pwsh: >-
+          .cursor/skills/xc-archive/scripts/xc-archive.ps1
+          -Scheme "${{ parameters.scheme }}"
+          -Platform ${{ parameters.platform }}
+          -SigningStyle Manual
+          -TeamId "$(APPLE_TEAM_ID)"
+          -SigningIdentity "$(APPLE_CERTIFICATE_SIGNING_IDENTITY)"
+          -ProvisioningProfileUuid "$(APPLE_PROV_PROFILE_UUID)"
+        displayName: Archive (manual signing)
+
+      # 3) Export IPA/pkg for the chosen distribution method.
+      - pwsh: >-
+          .cursor/skills/xc-export/scripts/xc-export.ps1
+          -Scheme "${{ parameters.scheme }}"
+          -Method ${{ parameters.distribution }}
+        displayName: Export (${{ parameters.distribution }})
+
+      - task: CopyFiles@2
+        displayName: Stage IPA
+        inputs:
+          SourceFolder: build/export
+          Contents: '**/*.ipa'
+          TargetFolder: $(Build.ArtifactStagingDirectory)
+          flattenFolders: true
+
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: ios-ipa
+        displayName: Publish IPA artifact
+
+      # 4a) App Store / TestFlight upload via App Store Connect API key.
+      - ${{ if eq(parameters.distribution, 'app-store-connect') }}:
+          - task: AppStoreRelease@1
+            displayName: Upload to TestFlight
+            inputs:
+              authType: ApiKey
+              apiKeyId: $(ASC_KEY_ID)
+              apiKeyIssuerId: $(ASC_ISSUER_ID)
+              apitoken: $(ASC_KEY_BASE64)        # base64 of the AuthKey_*.p8 contents
+              appIdentifier: ${{ parameters.bundleId }}
+              appType: iOS
+              releaseTrack: TestFlight
+              ipaPath: $(Build.ArtifactStagingDirectory)/*.ipa
+              shouldSkipWaitingForProcessing: true
+              appSpecificId: $(APP_SPECIFIC_ID)
+
+      # 4b) Ad-hoc / Enterprise: the IPA artifact above is the deliverable (host OTA as needed).
+      - ${{ if ne(parameters.distribution, 'app-store-connect') }}:
+          - pwsh: Write-Host "##[section] ${{ parameters.distribution }} IPA published as artifact 'ios-ipa'."
+            displayName: Distribution note

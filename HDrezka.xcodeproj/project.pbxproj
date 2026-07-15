@@ -13,7 +13,6 @@
 		04E5DC0A2C120C4200BF1B7A /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 04E5DC092C120C4200BF1B7A /* Flow */; };
 		04E9EB462C047F19001CBBCA /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04E9EB452C047F19001CBBCA /* YouTubePlayerKit */; };
 		B53391562F13C98200DB2229 /* LRUCache in Frameworks */ = {isa = PBXBuildFile; productRef = B53391552F13C98200DB2229 /* LRUCache */; };
-		B533915C2F13C9F800DB2229 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = B533915B2F13C9F800DB2229 /* Pow */; };
 		B533915E2F13C9FE00DB2229 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = B533915D2F13C9FE00DB2229 /* Flow */; };
 		B5DA45362E9D3E7F0069ECF5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45352E9D3E7F0069ECF5 /* Alamofire */; };
 		B5DA45382E9D3E8F0069ECF5 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = B5DA45372E9D3E8F0069ECF5 /* Defaults */; };
@@ -401,7 +400,6 @@
 				B5DA453A2E9D3E9B0069ECF5 /* FactoryKit in Frameworks */,
 				B5DA45422E9D3EB90069ECF5 /* Kingfisher in Frameworks */,
 				B5DA45402E9D3EB90069ECF5 /* OrderedCollections in Frameworks */,
-				B533915C2F13C9F800DB2229 /* Pow in Frameworks */,
 				B5DA45362E9D3E7F0069ECF5 /* Alamofire in Frameworks */,
 				B5DA45442E9D3ECE0069ECF5 /* SwiftSoup in Frameworks */,
 				B53391562F13C98200DB2229 /* LRUCache in Frameworks */,
@@ -524,7 +522,6 @@
 				B5DA45412E9D3EB90069ECF5 /* Kingfisher */,
 				B5DA45432E9D3ECE0069ECF5 /* SwiftSoup */,
 				B53391552F13C98200DB2229 /* LRUCache */,
-				B533915B2F13C9F800DB2229 /* Pow */,
 				B533915D2F13C9FE00DB2229 /* Flow */,
 			);
 			productName = RezkaTV;
@@ -1035,9 +1032,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=appletvos*]" = RFVKD37M39;
 				ENABLE_PREVIEWS = YES;
@@ -1054,7 +1051,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc 2026";
 				SDKROOT = appletvos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator";
@@ -1074,9 +1071,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=appletvos*]" = RFVKD37M39;
 				ENABLE_PREVIEWS = YES;
@@ -1093,7 +1090,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.petrovskyi.RezkaTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "RezkaTv AdHoc 2026";
 				SDKROOT = appletvos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator";
@@ -1406,11 +1403,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE7608D82EB4231600C4A23E /* XCRemoteSwiftPackageReference "LRUCache" */;
 			productName = LRUCache;
-		};
-		B533915B2F13C9F800DB2229 /* Pow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DE188EE32CA6AB3100E7B1AE /* XCRemoteSwiftPackageReference "Pow" */;
-			productName = Pow;
 		};
 		B533915D2F13C9FE00DB2229 /* Flow */ = {
 			isa = XCSwiftPackageProductDependency;

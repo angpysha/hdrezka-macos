@@ -1,0 +1,56 @@
+# SwiftLint configuration — native Apple pack (Swift 6 / SwiftUI).
+# Docs: https://realm.github.io/SwiftLint/rule-directory.html
+
+included:
+  - Sources
+  - App
+  - Packages
+  - Tests
+
+excluded:
+  - .build
+  - DerivedData
+  - "**/.build"
+  - "**/Generated"
+  - "**/*.generated.swift"
+
+# Opt-in rules worth enforcing for modern SwiftUI codebases.
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - last_where
+  - modifier_order
+  - redundant_nil_coalescing
+  - sorted_imports
+  - toggle_bool
+  - unused_import
+  - vertical_whitespace_closing_braces
+  - weak_delegate
+
+disabled_rules:
+  - todo            # TODO/FIXME tracked elsewhere; do not fail builds on them
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_comments: true
+  ignores_urls: true
+
+identifier_name:
+  min_length:
+    warning: 2
+  excluded: [id, x, y, z, to, vm]
+
+type_name:
+  max_length:
+    warning: 50
+    error: 60
+
+# Force-unwrap is an error in shipping code; tests may relax via per-file disables.
+force_unwrapping:
+  severity: error
+
+reporter: "xcode"   # switch to "junit" in CI if publishing SwiftLint results separately

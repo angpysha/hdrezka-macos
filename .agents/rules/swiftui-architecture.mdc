@@ -1,0 +1,70 @@
+---
+description: SwiftUI architecture — MV pattern, Observation (@Observable), navigation, DI
+globs: ["**/*.swift"]
+alwaysApply: false
+---
+
+# SwiftUI Architecture — MV + Observation
+
+Apple's 2026 recommended stack: **SwiftUI** views, **`@Observable`** state, **SwiftData**
+persistence, **`NavigationStack`** routing, dependency injection via `@Environment`.
+
+## State management (Observation framework, iOS 17+/18 target)
+
+- **Use the `@Observable` macro** for models/state. Do **not** use `ObservableObject`,
+  `@Published`, or `@StateObject` in new code. `@Observable` tracks reads per property and
+  re-renders only views that read a changed property.
+- Ownership and bindings:
+  - `@State private var model = MyModel()` — the view that **owns** the model creates it.
+  - `@Bindable var model: MyModel` — child views that need two-way bindings to a passed-in
+    `@Observable`.
+  - Plain `let model: MyModel` — read-only child views.
+- Mark UI-driving `@Observable` classes `@MainActor`.
+
+```swift
+@MainActor
+@Observable
+final class CounterModel {
+    private(set) var count = 0
+    func increment() { count += 1 }
+}
+
+struct CounterView: View {
+    @State private var model = CounterModel()
+    var body: some View {
+        Button("Count: \(model.count)") { model.increment() }
+    }
+}
+```
+
+## MV (Model–View), not MVVM-by-rote
+
+- Keep a thin **model layer** (`@Observable` state + domain logic) and a declarative
+  **view layer**. Do not add a view-model wrapper per view "because MVVM" — let views read
+  models directly. Extract a model object when state/logic is shared or non-trivial.
+- No business logic inside `body`. `body` runs on every state change — keep it pure layout.
+
+## Navigation
+
+- Use `NavigationStack` with a **typed `NavigationPath`** / `Hashable` destination enum.
+  Map destination types to views once at the root. No `NavigationView`, no chained
+  `NavigationLink` for programmatic flows.
+- Centralize routing in a `@Observable` router injected via `@Environment` for deep links
+  and state restoration.
+
+## Dependency injection
+
+- Inject services (API client, feature flags, analytics, persistence) through
+  **`@Environment` keys** — never global singletons. Tests and `#Preview`s swap
+  implementations by setting a different environment value at the root.
+
+## Persistence
+
+- Prefer **SwiftData** (`@Model`) for local persistence on iOS 17+/18. Use Core Data only
+  for pre-existing stores or features SwiftData lacks.
+
+## Previews & accessibility
+
+- Every view has a `#Preview` exercising loading / empty / error states with inline stub
+  data (no network/disk in previews). Share stubs via `static func preview(...)`.
+- Accessibility is required: label every interactive element; support Dynamic Type.

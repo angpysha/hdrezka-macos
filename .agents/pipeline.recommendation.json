@@ -1,0 +1,60 @@
+{
+  "project_brief": "PROJECT.md",
+  "code_search_source": "codesearch",
+  "code_search_notes": "Rust codesearch CLI against .codesearch.db (397 files / 1685 chunks). MCP server configured in .cursor/mcp.json but not attached to this agent session. graphify skipped (no LLM API key).",
+  "detected_signals": [
+    "codesearch: Swift 326 / JSON 53 / Markdown 20 indexable files",
+    "codesearch: SwiftUI entry points (HDrezkaTVApp, RezkaTVApp), AVPlayer playback",
+    "filesystem: HDrezka.xcodeproj",
+    "filesystem: HDrezka/{Shared,iOS,macOS}, HDrezkaTV/, RezkaTV/",
+    "PROJECT.md: Swift, SwiftUI, macOS/iPadOS/tvOS, Xcode",
+    "auth: login/Defaults isLoggedIn → security-reviewer",
+    "no Podfile → no cocoapods-migration",
+    "no .github/workflows or azure-pipelines → PR manual",
+    "tracker: beads (PROJECT.md / manifest default)"
+  ],
+  "packs": [
+    {
+      "name": "ios-native",
+      "score": 0.95,
+      "features": [],
+      "rationale": "xcodeproj + Swift/SwiftUI dominant; scores: codesearch language/layout (3) + PROJECT.md (2) + filesystem xcodeproj (2) + SwiftUI keywords (1)"
+    }
+  ],
+  "agents": [
+    { "name": "coordinator", "enabled": true },
+    { "name": "ba-analyst", "enabled": true },
+    { "name": "architect", "enabled": true },
+    { "name": "team-lead", "enabled": true },
+    { "name": "developer", "enabled": true },
+    { "name": "tester", "enabled": true },
+    { "name": "devops", "enabled": true, "reason": "ios-native agents_extra" },
+    { "name": "security-reviewer", "enabled": true, "reason": "auth / session storage signals" },
+    { "name": "tech-writer", "enabled": true, "reason": "full lane default" }
+  ],
+  "tracker": { "type": "beads", "prefix": "task" },
+  "pr": { "type": "manual", "target_branch": "main" },
+  "host": "cursor",
+  "build": {
+    "command": "pwsh .cursor/skills/swift-lint/scripts/swift-lint.ps1 -Mode lint && pwsh .cursor/skills/xcode-build/scripts/xcode-build.ps1 -Action build"
+  },
+  "test": {
+    "command": "pwsh .cursor/skills/swift-test/scripts/swift-test.ps1",
+    "results": {
+      "directory": "TestResults",
+      "junit": "TestResults/junit.xml",
+      "cobertura": "TestResults/coverage/cobertura.xml",
+      "xcresult": "TestResults/Test.xcresult",
+      "summary": "TestResults/azure-devops-results.json"
+    }
+  },
+  "format": {
+    "command": "pwsh .cursor/skills/swift-lint/scripts/swift-lint.ps1 -Mode format"
+  },
+  "spec_kit": { "enabled": true, "integration": "cursor" },
+  "confidence": "high",
+  "adapt": {
+    "last_run": "2026-07-15T15:16:00Z",
+    "codebase_name": "hdrezka-macos"
+  }
+}

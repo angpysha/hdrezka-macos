@@ -1,0 +1,55 @@
+---
+description: Apple code signing & secrets — Secure Files, App Store Connect API key, manual signing
+globs: ["**/*.plist", "**/*.entitlements", "**/azure-pipelines*.yml", "**/exportOptions*.plist"]
+alwaysApply: false
+---
+
+# iOS / Apple Code Signing — Best Practices
+
+Applies to all release builds and CI. Signing is **manual** in CI; secrets never enter
+the repo.
+
+## Never commit / never hardcode
+
+- No certificates (`.cer`, `.p12`), provisioning profiles (`.mobileprovision`,
+  `.provisionprofile`), App Store Connect API keys (`.p8`), or passwords in the repo.
+- `.gitignore` must cover `*.p12`, `*.mobileprovision`, `*.provisionprofile`, `*.p8`,
+  `*.cer`, `AuthKey_*.p8`, exported `*.ipa`/`*.xcarchive`, and any keychain files.
+- Secrets live in **Azure DevOps Secure Files** + secret pipeline variables / variable
+  groups (ideally backed by Azure Key Vault).
+
+## CI signing flow (Azure DevOps native)
+
+1. `InstallAppleCertificate@2` — imports the `.p12` from Secure Files into a **temporary
+   keychain** (password from a secret variable). Sets `$(APPLE_CERTIFICATE_SIGNING_IDENTITY)`.
+2. `InstallAppleProvisioningProfile@1` — installs the profile; sets `$(APPLE_PROV_PROFILE_UUID)`.
+3. `xcodebuild archive` / `-exportArchive` with `CODE_SIGN_STYLE=Manual`,
+   `DEVELOPMENT_TEAM`, and `PROVISIONING_PROFILE_SPECIFIER` from those variables.
+4. **App Store Connect API key** (Issuer ID + Key ID + base64 `.p8`) for TestFlight /
+   App Store uploads via `AppStoreRelease@1`. Prefer API key over Apple ID + app-specific
+   password (no 2FA prompts, revocable, scoped).
+
+## Signing style
+
+- **Local archive/export:** default **Automatic** — provisioning profiles and team come from
+  the **`.xcodeproj` / `.pbxproj`** and the Xcode account (`-allowProvisioningUpdates`).
+  Use skills **`xc-archive`** and **`xc-export`**; do not override profiles unless asked.
+- **CI release/archive:** **Manual** signing with `InstallAppleCertificate@2` +
+  `InstallAppleProvisioningProfile@1` (reproducible). Pass `-SigningStyle Manual` to
+  `xc-archive`.
+- One distribution certificate (**Apple Distribution**) per team; rotate before expiry.
+- Match the export method to the profile: `development`, `ad-hoc`, `app-store-connect`,
+  `enterprise`, `developer-id`, `mac-application`.
+
+## Self-hosted Mac agents
+
+- Use a **dedicated keychain per CI role**; unlock it in the pipeline before `xcodebuild`
+  (`security unlock-keychain`) and add it to the search list (`security list-keychains -s`).
+- Keep the login keychain uncluttered; clean up imported profiles/keychains after the run.
+- Treat the `.p12` private key as KMS-grade: transfer only via Secure Files / encrypted
+  channels. Enterprise certificate misuse can revoke an entire catalog — isolate strictly.
+
+## Entitlements & capabilities
+
+- Keep `*.entitlements` in source control (no secrets there). Capabilities must match the
+  provisioning profile; mismatches fail export.

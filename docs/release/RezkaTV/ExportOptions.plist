@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>destination</key>
+	<string>export</string>
+	<key>method</key>
+	<string>release-testing</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>net.petrovskyi.RezkaTV</key>
+		<string>RezkaTv AdHoc 2026</string>
+	</dict>
+	<key>signingCertificate</key>
+	<string>BD085C2141CAA8B738089CF246C5D16D9D4BA52A</string>
+	<key>signingStyle</key>
+	<string>manual</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>teamID</key>
+	<string>RFVKD37M39</string>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
+</dict>
+</plist>

@@ -1,0 +1,79 @@
+# Azure DevOps pipeline — native Apple app (Swift / SwiftUI) on a self-hosted Mac.
+#
+# Stages:
+#   Validate : lint + format check + compile (no signing)   — every push/PR
+#   Test     : Swift Testing + coverage, publish results     — every push/PR
+#   Release  : archive (manual signing) + export + distribute — main / tags only
+#
+# Prereqs (one-time):
+#   - Self-hosted macOS agent in pool `$(macPool)` with Xcode + pwsh + xcbeautify + swiftlint.
+#   - Variable group `ios-signing` (link a Key Vault) containing:
+#       APPLE_TEAM_ID, P12_PASSWORD, ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_BASE64, APP_SPECIFIC_ID
+#   - Secure Files: distribution .p12 + .mobileprovision (referenced by name below).
+#   - Apple App Store Azure DevOps extension installed (for AppStoreRelease@1).
+
+trigger:
+  branches:
+    include: [main]
+  tags:
+    include: ['v*']
+pr:
+  branches:
+    include: [main]
+
+parameters:
+  - name: distribution
+    displayName: Release distribution method
+    type: string
+    default: app-store-connect
+    values: [app-store-connect, ad-hoc, enterprise]
+
+variables:
+  - group: ios-signing
+  - name: macPool
+    value: 'macOS-self-hosted'        # your self-hosted Mac agent pool
+  - name: scheme
+    value: 'MyApp'                    # set by `.agents adapt` / pipeline.manifest.json (ios.scheme)
+  - name: bundleId
+    value: 'com.example.myapp'
+  - name: simDestination
+    value: 'platform=iOS Simulator,name=iPhone 16'
+  - name: p12SecureFile
+    value: 'distribution.p12'
+  - name: provProfileSecureFile
+    value: 'MyApp_Distribution.mobileprovision'
+
+stages:
+  - stage: Validate
+    displayName: Lint & build
+    jobs:
+      - template: stage-build-test.yml
+        parameters:
+          macPool: $(macPool)
+          scheme: $(scheme)
+          runTests: false
+
+  - stage: Test
+    displayName: Test & coverage
+    dependsOn: Validate
+    jobs:
+      - template: stage-build-test.yml
+        parameters:
+          macPool: $(macPool)
+          scheme: $(scheme)
+          simDestination: $(simDestination)
+          runTests: true
+
+  - stage: Release
+    displayName: Archive, sign & distribute
+    dependsOn: Test
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/tags/v')))
+    jobs:
+      - template: stage-release.yml
+        parameters:
+          macPool: $(macPool)
+          scheme: $(scheme)
+          bundleId: $(bundleId)
+          distribution: ${{ parameters.distribution }}
+          p12SecureFile: $(p12SecureFile)
+          provProfileSecureFile: $(provProfileSecureFile)

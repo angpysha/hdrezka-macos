@@ -1,0 +1,53 @@
+---
+description: Swift 6 code style — concurrency, naming, error handling, API design
+globs: ["**/*.swift", "Package.swift"]
+alwaysApply: false
+---
+
+# Swift Code Style — Swift 6
+
+Follow Apple's Swift API Design Guidelines and Swift 6 strict concurrency.
+
+## Language & concurrency
+
+- **Swift 6 language mode** with strict concurrency checking (`-strict-concurrency=complete`).
+- Use `async`/`await` and structured concurrency (`Task`, `TaskGroup`, `async let`). No
+  semaphores or manual thread hopping; no `DispatchQueue` for new code unless bridging.
+- `@MainActor`-isolate anything that touches UI state. Prefer module-wide
+  `defaultIsolation = MainActor` (Swift 6.2) and opt out with `nonisolated` / `@concurrent`
+  for CPU-bound work.
+- Cross-actor types must be `Sendable`. Make value types `Sendable` by design; annotate
+  reference types explicitly and justify any `@unchecked Sendable`.
+- Never block the main thread on `await` over network/disk.
+
+## Naming & API design
+
+- Types `UpperCamelCase`; members, vars, funcs `lowerCamelCase`. No Hungarian/`m_` prefixes.
+- Methods read as phrases at the call site; name by role, not type.
+- Booleans read as assertions (`isEnabled`, `hasChanges`).
+- Prefer `struct` and `enum` (value semantics) over `class`. Use `final class` when a
+  reference type is genuinely needed.
+
+## Error handling
+
+- Model expected failures with typed `throws` (Swift 6 typed throws) or `Result`; reserve
+  `fatalError`/`preconditionFailure` for programmer errors only.
+- No force-unwrap (`!`) or `try!` in shipping code paths — use `guard let` / `if let`.
+  (`!` is acceptable only in tests and `@IBOutlet`-style guaranteed setup.)
+
+## Code organization
+
+- One primary type per file; extensions for protocol conformances.
+- Organize by **feature/domain**, not by technical layer-then-screen.
+- `let` over `var`; explicit `private`/`internal` access control; smallest scope that works.
+- Comments in **English**, explaining non-obvious intent only — not narrating the code.
+
+## Multiplatform
+
+- Gate platform code with `#if os(iOS)` / `os(macOS)` / `os(watchOS)` / `os(visionOS)`.
+- Keep shared logic platform-agnostic; isolate platform specifics behind protocols.
+
+## Dependencies
+
+- **Swift Package Manager only.** Declare in `Package.swift` or the Xcode package list.
+  Pin with `.upToNextMajor`. No CocoaPods, no Carthage. See the `swift-package` skill.

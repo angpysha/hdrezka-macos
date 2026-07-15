@@ -1,0 +1,64 @@
+# Reusable job template: lint + compile, and optionally run tests with coverage.
+# Used by both the Validate stage (runTests: false) and Test stage (runTests: true).
+
+parameters:
+  - name: macPool
+    type: string
+  - name: scheme
+    type: string
+  - name: simDestination
+    type: string
+    default: 'platform=iOS Simulator,name=iPhone 16'
+  - name: runTests
+    type: boolean
+    default: true
+
+jobs:
+  - job: build_test
+    displayName: ${{ if eq(parameters.runTests, true) }}Test & coverage${{ else }}Lint & build${{ endif }}
+    pool:
+      name: ${{ parameters.macPool }}
+    steps:
+      - checkout: self
+        fetchDepth: 1
+
+      # Self-hosted Mac agent is expected to have Xcode, pwsh, xcbeautify, and swiftlint
+      # preinstalled (see ios-azure-pipelines/SKILL.md one-time setup).
+      - script: |
+          xcodebuild -resolvePackageDependencies -scheme "${{ parameters.scheme }}" || true
+        displayName: Resolve SPM dependencies
+
+      - pwsh: .cursor/skills/swift-lint/scripts/swift-lint.ps1 -Mode check
+        displayName: SwiftLint + swift-format check
+
+      - ${{ if eq(parameters.runTests, false) }}:
+          - pwsh: .cursor/skills/xcode-build/scripts/xcode-build.ps1 -Action build -Scheme "${{ parameters.scheme }}"
+            displayName: Compile (no signing)
+
+      - ${{ if eq(parameters.runTests, true) }}:
+          - pwsh: >-
+              .cursor/skills/swift-test/scripts/swift-test.ps1
+              -Scheme "${{ parameters.scheme }}"
+              -Destination "${{ parameters.simDestination }}"
+            displayName: Swift Testing + coverage
+
+          - task: PublishTestResults@2
+            condition: always()
+            displayName: Publish test results (JUnit)
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: TestResults/junit.xml
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+
+          - task: PublishCodeCoverageResults@2
+            condition: succeededOrFailed()
+            displayName: Publish coverage (Cobertura)
+            inputs:
+              codeCoverageTool: Cobertura
+              summaryFileLocation: $(System.DefaultWorkingDirectory)/TestResults/coverage/cobertura.xml
+
+          - publish: TestResults/Test.xcresult
+            condition: always()
+            artifact: xcresult
+            displayName: Publish .xcresult bundle
